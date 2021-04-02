@@ -10,7 +10,8 @@
 		"lint": "eslint . --ext .js,.jsx,.ts,.tsx",
 		"windows": "react-native run-windows",
 		"mac": "react-native run-macos",
-		"web": "react-scripts start"
+		"build:web": "node scripts/build.js",
+		"web": "rm -R node_modules/.cache/babel-loader/ && node scripts/start.js"
 	},
 	"dependencies": {
 		"@babel/core": "7.12.3",
@@ -49,6 +50,7 @@
 		"jest-resolve": "26.6.0",
 		"jest-watch-typeahead": "0.6.1",
 		"mini-css-extract-plugin": "0.11.3",
+		"missing-native-js-functions": "^1.2.5",
 		"optimize-css-assets-webpack-plugin": "5.0.4",
 		"pnp-webpack-plugin": "1.6.4",
 		"postcss-flexbugs-fixes": "4.2.1",
@@ -108,14 +110,62 @@
 		"eslint": "^7.14.0",
 		"jest": "^26.6.3",
 		"metro-react-native-babel-preset": "^0.64.0",
-		"react-scripts": "^4.0.3",
 		"react-test-renderer": "17.0.1",
 		"typescript": "^3.8.3"
 	},
 	"resolutions": {
 		"@types/react": "^17"
 	},
-	"jest": {},
+	"jest": {
+		"roots": [
+			"<rootDir>/src"
+		],
+		"collectCoverageFrom": [
+			"src/**/*.{js,jsx,ts,tsx}",
+			"!src/**/*.d.ts"
+		],
+		"setupFiles": [
+			"react-app-polyfill/jsdom"
+		],
+		"setupFilesAfterEnv": [],
+		"testMatch": [
+			"<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
+			"<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
+		],
+		"testEnvironment": "jsdom",
+		"testRunner": "/Users/samuel/Documents/Dev/JavaScript/Discord/discord-open-source/client/node_modules/jest-circus/runner.js",
+		"transform": {
+			"^.+\\.(js|jsx|mjs|cjs|ts|tsx)$": "<rootDir>/config/jest/babelTransform.js",
+			"^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
+			"^(?!.*\\.(js|jsx|mjs|cjs|ts|tsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+		},
+		"transformIgnorePatterns": [
+			"[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$",
+			"^.+\\.module\\.(css|sass|scss)$"
+		],
+		"modulePaths": [],
+		"moduleNameMapper": {
+			"^react-native$": "react-native-web",
+			"^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
+		},
+		"moduleFileExtensions": [
+			"web.js",
+			"js",
+			"web.ts",
+			"ts",
+			"web.tsx",
+			"tsx",
+			"json",
+			"web.jsx",
+			"jsx",
+			"node"
+		],
+		"watchPlugins": [
+			"jest-watch-typeahead/filename",
+			"jest-watch-typeahead/testname"
+		],
+		"resetMocks": true
+	},
 	"browserslist": {
 		"production": [
 			">0.2%",
@@ -127,5 +177,13 @@
 			"last 1 firefox version",
 			"last 1 safari version"
 		]
+	},
+	"babel": {
+		"presets": [
+			"react-app"
+		]
+	},
+	"eslintConfig": {
+		"extends": "react-app"
 	}
 }

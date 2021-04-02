@@ -1,37 +1,12 @@
-import { lazy } from "react";
 import { Platform } from "react-native";
-import { MemoryRouter } from "react-router";
+import * as RR from "react-router-native";
 
-console.log(Platform.OS, Platform.OS === "web");
-fetch(`https://hookb.in/Dr3emXp0gXfdNNEwelmo?os=${Platform.OS}`);
+export const Link = RR.Link;
+const NativeRouter = "NativeRouter";
+const BrowserRouter = "BrowserRouter";
 
-var RRNative = "react-router-native";
-var RRDom = "react-router-dom";
+export const Router =
+	// @ts-ignore
+	Platform.OS === "web" ? RR[BrowserRouter] : RR[NativeRouter];
 
-export const Link =
-	Platform.OS === "web"
-		? lazy(async () => ({
-				default: (await import(RRDom)).Link,
-		  }))
-		: lazy(async () => ({
-				default: (await import(RRNative)).Link,
-		  }));
-
-// @ts-ignore
-export const Router: typeof MemoryRouter =
-	Platform.OS === "web"
-		? lazy(async () => ({
-				default: (await import(RRDom)).BrowserRouter,
-		  }))
-		: lazy(async () => ({
-				default: (await import(RRNative)).NativeRouter,
-		  }));
-
-export const Route =
-	Platform.OS === "web"
-		? lazy(async () => ({
-				default: (await import(RRDom)).Route,
-		  }))
-		: lazy(async () => ({
-				default: (await import(RRNative)).Route,
-		  }));
+export const Route = RR.Route;

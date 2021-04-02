@@ -1,0 +1,2 @@
+// @ts-ignore
+globalThis.styles = [];

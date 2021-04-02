@@ -1,9 +1,8 @@
 import React from "react";
 import { Text, View, TouchableHighlight } from "react-native-withcss";
-// import { Text, View, TouchableHighlight } from "react-native";
 import { ColorProps, getColor } from "./Theme";
-// import ButtonCSS from "./Button.css";
-// console.log(ButtonCSS);
+// @preval
+import "./Button.css";
 
 export type ButtonProps = ColorProps & {
 	outline?: boolean;
@@ -21,8 +20,8 @@ export const Button = (props: ButtonProps) => {
 	return (
 		<TouchableHighlight
 			className={"button " + color}
-			// underlayColor={theme[type].activeColor[color]}
-			// activeOpacity={theme[type].activeTextOpacity[color]}
+			underlayColor={"blue"}
+			activeOpacity={0}
 			onPress={() => {}}
 		>
 			<View>{text && <Text>{text}</Text>}</View>

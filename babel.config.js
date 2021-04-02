@@ -1,9 +1,9 @@
-// const {
-// 	ReactNativeWithCssBabelPlugin,
-// } = require("react-native-withcss/dist/BabelPlugin");
+const {
+	ReactNativeWithCssBabelPlugin,
+} = require("react-native-withcss/dist/BabelPlugin");
 
 module.exports = function (api) {
-	api.cache(true);
+	api.cache(false);
 	return {
 		// module: {
 		// 	rules: [
@@ -30,7 +30,7 @@ module.exports = function (api) {
 			"@babel/plugin-transform-runtime",
 			"@babel/plugin-transform-destructuring",
 			"babel-plugin-react-native-web",
-			// ReactNativeWithCssBabelPlugin,
+			ReactNativeWithCssBabelPlugin,
 		],
 	};
 };
