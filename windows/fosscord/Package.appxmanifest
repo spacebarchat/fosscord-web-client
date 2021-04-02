@@ -7,11 +7,11 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="337a9a26-a9b7-4616-97ba-3461e99e70d3"
+    Name="dcc834af-3ff5-479b-a366-94ade210a918"
     Publisher="CN=samuel"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="337a9a26-a9b7-4616-97ba-3461e99e70d3" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="dcc834af-3ff5-479b-a366-94ade210a918" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>fosscord</DisplayName>
