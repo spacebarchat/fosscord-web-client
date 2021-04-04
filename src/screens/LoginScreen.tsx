@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-native";
-import { View, Text } from "react-native";
+import { View, Text } from "react-native-withcss";
 
 export default function LoginScreen() {
 	return (

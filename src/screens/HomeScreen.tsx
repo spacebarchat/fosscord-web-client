@@ -10,7 +10,7 @@ export default function HomeScreen() {
 			<Link to={"/login"}>
 				<Text className="login">login</Text>
 			</Link>
-			<Button primary text="button"></Button>
+			<Button text="button"></Button>
 		</View>
 	);
 }

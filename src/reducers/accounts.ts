@@ -5,7 +5,7 @@ export function accounts(state = [], action: any) {
 		case "REMOVE_ACCOUNT":
 			return state.filter((x) => x !== action.payload);
 		case "":
-
+			break;
 		default:
 			return state;
 	}

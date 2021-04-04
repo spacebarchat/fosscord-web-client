@@ -1,2 +1,2 @@
 // @ts-ignore
-globalThis.styles = [];
+if (!globalThis.styles) globalThis.styles = [];

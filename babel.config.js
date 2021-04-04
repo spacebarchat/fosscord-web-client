@@ -32,5 +32,10 @@ module.exports = function (api) {
 			"babel-plugin-react-native-web",
 			ReactNativeWithCssBabelPlugin,
 		],
+		env: {
+			production: {
+				plugins: ["babel-plugin-transform-remove-console"],
+			},
+		},
 	};
 };
