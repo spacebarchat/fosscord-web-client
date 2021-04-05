@@ -22,10 +22,10 @@ export function App() {
 	}
 
 	return (
-		<StyleProvider>
-			<Provider store={store}>
+		<Provider store={store}>
+			<StyleProvider>
 				<SafeAreaProvider>
-					<StatusBar />;
+					<StatusBar />
 					<View className="root">
 						<ErrorBoundary>
 							<Suspense
@@ -45,7 +45,7 @@ export function App() {
 						</ErrorBoundary>
 					</View>
 				</SafeAreaProvider>
-			</Provider>
-		</StyleProvider>
+			</StyleProvider>
+		</Provider>
 	);
 }
