@@ -1,26 +1,32 @@
 import "./init";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import React, { lazy, Suspense } from "react";
-import { View, Text, ThemeContext, SafeAreaView } from "react-native-withcss";
+import { View, Text, StyleProvider } from "react-native-withcss";
 import { Provider } from "react-redux";
 import store from "./util/store";
 import { ErrorBoundary } from "./components/ErrorBoundary";
-import { Router, Route, Link } from "./util/ReactRouter";
+import { StatusBar } from "expo-status-bar";
 import HomeScreen from "./screens/HomeScreen";
 import LoginScreen from "./screens/LoginScreen";
+import useCachedResources from "./hooks/useCachedResources";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
-function Home() {
-	return <Text>home</Text>;
-}
-
-// @ts-ignore
-const { styles } = globalThis;
+const Stack = createStackNavigator();
 
 export function App() {
+	const isLoadingComplete = useCachedResources();
+
+	if (!isLoadingComplete) {
+		return null;
+	}
+
 	return (
-		<ThemeContext.Provider value={styles}>
-			<SafeAreaView>
-				<View className="root">
-					<Provider store={store}>
+		<StyleProvider>
+			<Provider store={store}>
+				<SafeAreaProvider>
+					<StatusBar />;
+					<View className="root">
 						<ErrorBoundary>
 							<Suspense
 								fallback={
@@ -29,26 +35,17 @@ export function App() {
 									</View>
 								}
 							>
-								<Router>
-									<Link to="/">
-										<Text>ROOT</Text>
-									</Link>
-									<Route
-										exact
-										path="/"
-										component={HomeScreen}
-									/>
-									<Route
-										exact
-										path="/login"
-										component={LoginScreen}
-									/>
-								</Router>
+								<NavigationContainer>
+									<Stack.Navigator initialRouteName="Home">
+										<Stack.Screen name="Home" component={HomeScreen} />
+										<Stack.Screen name="Login" component={LoginScreen} />
+									</Stack.Navigator>
+								</NavigationContainer>
 							</Suspense>
 						</ErrorBoundary>
-					</Provider>
-				</View>
-			</SafeAreaView>
-		</ThemeContext.Provider>
+					</View>
+				</SafeAreaProvider>
+			</Provider>
+		</StyleProvider>
 	);
 }
