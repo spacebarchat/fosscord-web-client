@@ -1,10 +1,5 @@
 import React, { Component } from "react";
-import {
-	Text,
-	View,
-	TouchableHighlight,
-	StyleConsumer,
-} from "react-native-withcss";
+import { Text, View, TouchableHighlight, StyleConsumer } from "react-native-withcss";
 import { ColorProps, getColor } from "./Theme";
 // @preval
 import "./Button.css";
