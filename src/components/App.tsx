@@ -1,11 +1,12 @@
 import React, { Suspense } from "react";
-import "./App.css";
+import "./App.scss";
 import { Provider } from "react-redux";
 import store from "../util/store";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { ErrorBoundary } from "./ErrorBoundary";
 
 const Home = React.lazy(() => import("../pages/Home"));
+const Login = React.lazy(() => import("../pages/Login"));
 
 function App() {
 	return (
@@ -13,7 +14,8 @@ function App() {
 			<ErrorBoundary>
 				<Suspense fallback={<div>Loading ...</div>}>
 					<Router>
-						<Route component={Home}></Route>
+						<Route exact path="/login" component={Login}></Route>
+						<Route exact path="/" component={Home}></Route>
 					</Router>
 				</Suspense>
 			</ErrorBoundary>
