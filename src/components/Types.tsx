@@ -13,17 +13,19 @@ export interface Children {
 }
 
 export function getColor(props: ColorProps) {
-	if (props.primary) return "primary";
-	if (props.danger) return "danger";
-	if (props.secondary) return "secondary";
-	if (props.success) return "success";
-	if (props.warning) return "warning";
+	const value = (() => {
+		if (props.primary) return "primary";
+		if (props.danger) return "danger";
+		if (props.secondary) return "secondary";
+		if (props.success) return "success";
+		if (props.warning) return "warning";
+	})();
+	deleteProps(props, "primary", "danger", "secondary", "success", "warning");
 
-	return "";
+	return value || "";
 }
 
-export function deleteProps(p: any, ...keys: string[]) {
-	let props = { ...p };
+export function deleteProps(props: any, ...keys: string[]) {
 	for (const key of keys) {
 		delete props[key];
 	}
