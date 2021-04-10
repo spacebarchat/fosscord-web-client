@@ -1,1 +1,28 @@
-@import "~fosscord-css/scss/input-fields.scss";
+.page.register,
+.page.login {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	.form {
+		width: 480px;
+		display: flex;
+		flex-direction: column;
+		box-shadow: 0 2px 10px 0 rgb(0 0 0 / 20%);
+		border-radius: 5px;
+		padding: 32px;
+
+		> * {
+			margin: var(--element-margin);
+		}
+
+		.headline {
+			text-align: center;
+		}
+
+		.submit {
+			margin-top: var(--element-margin);
+			height: 44px;
+		}
+	}
+}
