@@ -1,0 +1,10 @@
+{
+	"register": "Register",
+	"email": "Email",
+	"username": "Username",
+	"password": "Password",
+	"dateOfBirth": "Date of birth",
+	"consent": "I have read an agree to the Terms of Service",
+	"submit": "Continue",
+	"loginNotice": "Already have an account? Login"
+}
