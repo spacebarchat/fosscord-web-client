@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+import "./index.scss";
 // import "../node_modules/fosscord-css/scss/general.scss";
 // import "fossord-css/css/index.css";
 import App from "./components/App";

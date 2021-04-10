@@ -477,6 +477,7 @@ module.exports = function (webpackEnv) {
 								},
 								"sass-loader"
 							),
+
 							// Don't consider CSS imports dead code even if the
 							// containing package claims to have no side effects.
 							// Remove this when webpack adds a warning or an error for this.
