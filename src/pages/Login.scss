@@ -3,26 +3,49 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	background: url("https://discord.com/assets/fd91131ea693096d6be5e8aa99d18f9e.jpg") no-repeat center center;
+	background-size: cover;
 
 	.form {
-		width: 480px;
-		display: flex;
-		flex-direction: column;
+		max-width: 480px;
+		flex-grow: 1;
 		box-shadow: 0 2px 10px 0 rgb(0 0 0 / 20%);
 		border-radius: 5px;
 		padding: 32px;
+		background: var(--background-primary);
+		overflow: auto;
+		max-height: 100%;
 
 		> * {
-			margin: var(--element-margin);
+			margin: calc(var(--element-margin) * 2);
+			height: auto;
+		}
+
+		.checkbox {
 		}
 
 		.headline {
 			text-align: center;
+			margin-bottom: 1.5rem;
+		}
+
+		.small {
+			font-size: small;
+			margin-top: 0;
+		}
+
+		.text.muted {
+			font-size: 0.8rem;
+
+			a {
+				font-size: var(--text-size);
+			}
 		}
 
 		.submit {
 			margin-top: var(--element-margin);
 			height: 44px;
+			width: 100%;
 		}
 	}
 }

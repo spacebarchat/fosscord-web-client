@@ -3,5 +3,6 @@
 	"password": "Password",
 	"forgotPassword": "Forgot your password?",
 	"login": "Login",
-	"registerNotice": "Don't have an account? Register"
+	"registerNotice": "Don't have an account? ",
+	"register": "Register"
 }

@@ -7,7 +7,7 @@ export interface CheckboxProps
 	labelText?: string;
 }
 
-export default function Checkbox(p: CheckboxProps) {
+export function Checkbox(p: CheckboxProps) {
 	let props = { ...p };
 
 	return (

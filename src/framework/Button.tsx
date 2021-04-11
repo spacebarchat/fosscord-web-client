@@ -6,7 +6,7 @@ export interface ButtonProps
 	extends ColorProps,
 		React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {}
 
-export default function Button(p: ButtonProps) {
+export function Button(p: ButtonProps) {
 	let props = { ...p };
 	props.className = `button ${props.className || ""} ${getColor(props)}`;
 

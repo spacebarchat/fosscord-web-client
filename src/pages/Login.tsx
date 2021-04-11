@@ -1,7 +1,9 @@
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import Button from "../components/Button";
-import Input from "../components/Input";
+import { Branding } from "../components/Branding";
+import { InstanceSelection } from "../components/InstanceSelection";
+import { Button } from "../framework/Button";
+import { Input } from "../framework/Input";
 import "./Login.scss";
 
 export default function LoginScreen() {
@@ -10,8 +12,10 @@ export default function LoginScreen() {
 	return (
 		<div className="page login">
 			<form className="form">
+				<Branding />
 				<h1 className="text headline">{t("login")}</h1>
 
+				<InstanceSelection />
 				{/* email or phone autocomplete */}
 				<Input autoComplete="email" type="text" className="emailPhone" labelText={t("emailTelephone")}></Input>
 
@@ -24,13 +28,18 @@ export default function LoginScreen() {
 
 				{/* // TODO instance selection */}
 
-				<Link to="/resetPassword">{t("forgotPassword")}</Link>
+				<Link className="small" to="/resetPassword">
+					{t("forgotPassword")}
+				</Link>
 
 				<Button className="submit " primary>
 					{t("login")}
 				</Button>
 
-				<Link to="/register">{t("registerNotice")}</Link>
+				<div className="text muted">
+					{t("registerNotice")}
+					<Link to="/register">{t("register")}</Link>
+				</div>
 			</form>
 		</div>
 	);

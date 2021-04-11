@@ -7,7 +7,7 @@ export interface InputProps
 	labelText?: string;
 }
 
-export default function Input(p: InputProps) {
+export function Input(p: InputProps) {
 	var props = { ...p };
 	props.className = `input ${props.className || ""}`;
 
