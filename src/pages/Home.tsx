@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../reducers/";
+import { useSelector, useDispatch, RootState } from "react-redux";
 import("../test");
 
 export default function HomeScreen(props: any) {

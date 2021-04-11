@@ -17,9 +17,21 @@ export function InstanceSelection(props: InstanceSelectionProps) {
 			className="instance-selection"
 			labelText="Instance"
 			onChange={(index) => props.onChange?.(instances[index])}
-			children={instances.map((instance) => (
-				<DropdownItem name={instance.host} key={instance.id} id={instance.id}></DropdownItem>
-			))}
+			children={[
+				...instances.map((instance) => {
+					const icon = instance.icon && <img className="icon" alt="" src={instance.icon}></img>;
+
+					return (
+						<DropdownItem
+							name={instance.host}
+							key={instance.id}
+							id={instance.id}
+							icon={icon}
+						></DropdownItem>
+					);
+				}),
+				<DropdownItem name="Add Instance" id="" icon="plus" onClick={() => console.log("plus")}></DropdownItem>,
+			]}
 		/>
 	);
 }

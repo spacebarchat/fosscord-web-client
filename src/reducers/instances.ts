@@ -16,6 +16,7 @@ const DISCORD_INSTANCE = {
 	api: "discord.com/api/v8",
 	cdn: "cdn.discordapp.com",
 	host: "discord.com",
+	icon: "https://logopng.net/wp-content/uploads/2020/07/logo-discord-png-icon-6.png",
 	version: 8,
 };
 
@@ -32,4 +33,5 @@ export interface Instance {
 	cdn: string;
 	host: string;
 	version: number;
+	icon?: string;
 }

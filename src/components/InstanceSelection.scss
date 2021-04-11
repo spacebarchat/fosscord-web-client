@@ -1,6 +1,9 @@
 .instance-selection.dropdown {
-	> .item,
-	.menu > .item {
+	.item {
 		min-height: 30px;
+
+		.icon {
+			width: 30px;
+		}
 	}
 }
