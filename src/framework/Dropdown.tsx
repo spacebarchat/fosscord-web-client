@@ -1,7 +1,7 @@
 import { deleteProps } from "./Types";
 import "fosscord-css/scss/icons.scss";
 import "fosscord-css/scss/dropdown.scss";
-import React, { MouseEvent, MouseEventHandler, ReactElement, useState } from "react";
+import React, { MouseEvent, MouseEventHandler, ReactElement, useEffect, useRef, useState } from "react";
 
 export interface DropdownProps {
 	labelText?: string;
@@ -10,9 +10,15 @@ export interface DropdownProps {
 	onChange?: (index: number, element: ReactElement<DropdownItemProps>) => any;
 }
 
+window.addEventListener("mousedown", (event) => {
+	var element = document.getElementById("parent-node");
+});
+
 export function Dropdown(props: DropdownProps) {
+	const dropdownRef = useRef<HTMLDivElement>(null);
 	const [open, setOpen] = useState(false);
 	const [selected, setSelected] = useState(0);
+
 	const children = props.children.map((x, i) => {
 		const child = { ...x, props: { ...x.props } };
 		if (i === selected) child.props.selected = true;
@@ -29,10 +35,27 @@ export function Dropdown(props: DropdownProps) {
 		return child;
 	});
 
+	useEffect(() => {
+		// this will close the dropdown menu if the user clicks on anything else then the dropdown menu
+		function handleClick(this: HTMLElement, event: Event) {
+			var element = dropdownRef.current;
+			// @ts-ignore
+			if (event.target !== element && !element?.contains(event.target)) {
+				setOpen(false);
+			}
+		}
+
+		window.addEventListener("click", handleClick);
+
+		return () => {
+			window.removeEventListener("click", handleClick);
+		};
+	}, []);
+
 	return (
 		<React.Fragment>
 			<div className="text title">{props.labelText}</div>
-			<div className={`dropdown ${props.className || ""} ${open && "open"}`}>
+			<div ref={dropdownRef} className={`dropdown ${props.className || ""} ${open && "open"}`}>
 				<div className="control item" onClick={() => setOpen(!open)}>
 					<span className="left">
 						{{ ...children[selected], props: { ...children[selected].props, item: true } }}
