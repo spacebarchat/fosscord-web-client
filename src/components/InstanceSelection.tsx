@@ -30,7 +30,13 @@ export function InstanceSelection(props: InstanceSelectionProps) {
 						></DropdownItem>
 					);
 				}),
-				<DropdownItem name="Add Instance" id="" icon="plus" onClick={() => console.log("plus")}></DropdownItem>,
+				<DropdownItem
+					name="Add Instance"
+					id="add_instance"
+					key="add_instance"
+					icon="plus"
+					onClick={() => console.log("plus")}
+				></DropdownItem>,
 			]}
 		/>
 	);

@@ -25,6 +25,3 @@ export function Input(p: InputProps) {
 		</label>
 	);
 }
-
-// @ts-ignore
-globalThis.test = Input;

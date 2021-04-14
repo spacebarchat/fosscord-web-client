@@ -67,13 +67,16 @@ export function DropdownItem(props: DropdownItemProps) {
 					id: props.id,
 					className: `item ${props.className || ""} ${props.selected ? "selected" : ""}`,
 					onClick: props.onClick,
+					key: props.id,
 			  }
-			: null,
-		[
-			props.icon &&
-				(typeof props.icon === "string" ? <i className={"prefix icon " + props.icon}> </i> : props.icon),
-			<span className="name">{props.name}</span>,
-			<span className="category text title">{props.category}</span>,
-		]
+			: {
+					key: props.id,
+			  },
+		<>
+			{props.icon &&
+				(typeof props.icon === "string" ? <i className={"prefix icon " + props.icon}> </i> : props.icon)}
+			<span className="name">{props.name}</span>
+			<span className="category text title">{props.category}</span>{" "}
+		</>
 	);
 }
