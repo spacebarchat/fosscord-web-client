@@ -286,7 +286,18 @@ module.exports = function (webpackEnv) {
 			splitChunks: {
 				chunks: "all",
 				name: isEnvDevelopment,
+				// TODO: is this the best way of caching all vendor packages?
+				// https://webpack.js.org/guides/caching/
+				cacheGroups: {
+					vendor: {
+						test: /[\\/]node_modules[\\/]/,
+						name: "vendors",
+						chunks: "all",
+					},
+				},
 			},
+			// TODO moduleIds deterministic if we upgrade to webpack 5
+			// moduleIds: "deterministic",
 			// Keep the runtime chunk separated to enable long term caching
 			// https://twitter.com/wSokra/status/969679223278505985
 			// https://github.com/facebook/create-react-app/issues/5358
