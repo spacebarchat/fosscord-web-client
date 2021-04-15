@@ -16,7 +16,7 @@
 		overflow: auto;
 		max-height: 100%;
 
-		> *:not(.modal) {
+		> *:not(.modal):not(.error) {
 			margin: calc(var(--element-margin) * 2);
 			height: auto;
 		}

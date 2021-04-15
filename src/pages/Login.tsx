@@ -7,6 +7,7 @@ import { InstanceSelection } from "../components/InstanceSelection";
 import { Button } from "../framework/Button";
 import { Input } from "../framework/Input";
 import "./Login.scss";
+import { getFormError } from "../util/FormError";
 
 export default function LoginScreen() {
 	const { t } = useTranslation("login");
@@ -22,21 +23,20 @@ export default function LoginScreen() {
 
 				<InstanceSelection defaultValue={instance} onChange={(x) => setInstance(x)} />
 				{/* email or phone autocomplete */}
+				<p className="text danger error">{getFormError({ test: "error" }, "test")}</p>
 				<Input
 					onChange={(e) => setEmail(e.target.value)}
 					autoComplete="email"
 					type="text"
 					className="emailPhone"
-					labelText={t("emailTelephone")}
-				></Input>
+					labelText={t("emailTelephone")}></Input>
 
 				<Input
 					onChange={(e) => setPassword(e.target.value)}
 					className="password"
 					type="password"
 					labelText={t("password")}
-					autoComplete="current-password"
-				></Input>
+					autoComplete="current-password"></Input>
 
 				{/* // TODO instance selection */}
 

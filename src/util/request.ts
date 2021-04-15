@@ -4,6 +4,7 @@ export interface RequestOptions extends RequestInit {
 	errorToast?: boolean;
 	returnRequest?: boolean;
 	returnBuffer?: boolean;
+	throwErrors?: boolean;
 	throwNonJson?: boolean;
 	timeout?: number;
 	awaitRateLimit?: boolean;
@@ -11,9 +12,11 @@ export interface RequestOptions extends RequestInit {
 
 export type RequestResult =
 	| string
+	| object
 	| {
-			response: Response;
-			body: string;
+			response?: Response;
+			body?: string | any;
+			error?: any;
 	  };
 
 export var defaultTimeout = 5000;
@@ -23,31 +26,35 @@ const RateLimitBuckets = new Map();
 
 // TODO: make different rate limit buckets for different instances
 // TODO: optimistic/predict rate limits with instance config
-// TODO: decide what default value throwNonJson should have
 
 export async function request(url: string, opts?: RequestOptions): Promise<RequestResult> {
+	if (!opts) opts = {};
+	if (!opts.headers) opts.headers = {};
+
+	var result: any;
+	const controller = new AbortController();
+	var timeout;
+	var response: Response | undefined = undefined;
+
+	if (opts.timeout == null) opts.timeout = defaultTimeout;
+	if (opts.awaitRateLimit == null) opts.awaitRateLimit = true;
+	if (opts.throwNonJson == null) opts.throwNonJson = true;
+	if (opts.throwErrors == null) opts.throwErrors = false;
+	if (opts.timeout && opts.timeout > 0) {
+		opts.signal = controller.signal;
+
+		timeout = setTimeout(() => controller.abort(), opts.timeout);
+	}
+	if (opts.body) {
+		if (!opts.method) opts.method = "POST";
+		if (typeof opts.body === "object") {
+			opts.body = JSON.stringify(opts.body);
+			// @ts-ignore
+			opts.headers["content-type"] = "application/json";
+		}
+	}
+
 	try {
-		if (!opts) opts = {};
-		if (!opts.headers) opts.headers = {};
-		const controller = new AbortController();
-		var timeout;
-		var response: Response;
-		if (opts.timeout == null) opts.timeout = defaultTimeout;
-		if (opts.awaitRateLimit == null) opts.awaitRateLimit = true;
-		if (opts.timeout && opts.timeout > 0) {
-			opts.signal = controller.signal;
-
-			timeout = setTimeout(() => controller.abort(), opts.timeout);
-		}
-		if (opts.body) {
-			if (!opts.method) opts.method = "POST";
-			if (typeof opts.body === "object") {
-				opts.body = JSON.stringify(opts.body);
-				// @ts-ignore
-				opts.headers["content-type"] = "application/json";
-			}
-		}
-
 		try {
 			response = await fetch(url, opts);
 			if (timeout) clearTimeout(timeout);
@@ -74,7 +81,6 @@ export async function request(url: string, opts?: RequestOptions): Promise<Reque
 		// TODO: if 500 internal error or opts.errorToast => show error toast
 
 		var { ok } = response;
-		var result: any;
 		if (opts.returnBuffer) {
 			result = await response.arrayBuffer();
 		} else {
@@ -89,13 +95,14 @@ export async function request(url: string, opts?: RequestOptions): Promise<Reque
 		}
 
 		if (!ok) {
-			if (result) {
+			if (result && !(result instanceof ArrayBuffer)) {
 				if (typeof result === "object") {
 					if (result?.code === 50035) {
 						opts.errorToast = false;
 						throw result.errors;
 					}
-					throw result.message || result.error;
+					const message = result.message || result.error;
+					if (message) throw message;
 				}
 				throw result;
 			}
@@ -113,6 +120,10 @@ export async function request(url: string, opts?: RequestOptions): Promise<Reque
 		if (opts?.errorToast) {
 			// TODO: show error toast
 		}
-		throw error;
+		if (opts?.throwErrors) {
+			throw error;
+		}
+
+		return { error, response, body: result };
 	}
 }
