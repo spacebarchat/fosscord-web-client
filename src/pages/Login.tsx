@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { Instance } from "../reducers/instances";
 import { Branding } from "../components/Branding";
 import { InstanceSelection } from "../components/InstanceSelection";
 import { Button } from "../framework/Button";
@@ -8,6 +10,9 @@ import "./Login.scss";
 
 export default function LoginScreen() {
 	const { t } = useTranslation("login");
+	const [instance, setInstance] = useState({} as Instance);
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
 
 	return (
 		<div className="page login">
@@ -15,11 +20,18 @@ export default function LoginScreen() {
 				<Branding />
 				<h1 className="text headline">{t("login")}</h1>
 
-				<InstanceSelection />
+				<InstanceSelection defaultValue={instance} onChange={(x) => setInstance(x)} />
 				{/* email or phone autocomplete */}
-				<Input autoComplete="email" type="text" className="emailPhone" labelText={t("emailTelephone")}></Input>
+				<Input
+					onChange={(e) => setEmail(e.target.value)}
+					autoComplete="email"
+					type="text"
+					className="emailPhone"
+					labelText={t("emailTelephone")}
+				></Input>
 
 				<Input
+					onChange={(e) => setPassword(e.target.value)}
 					className="password"
 					type="password"
 					labelText={t("password")}

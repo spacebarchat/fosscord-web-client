@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, StrictMode } from "react";
 import { Provider } from "react-redux";
 import store from "../util/store";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -12,20 +12,22 @@ const NotFound = React.lazy(() => import("../pages/NotFound"));
 
 function App() {
 	return (
-		<Provider store={store}>
-			<ErrorBoundary>
-				<Suspense fallback={<div className="text">{/* Loading ... */}</div>}>
-					<Router>
-						<Switch>
-							<Route exact path="/register" component={Register}></Route>
-							<Route exact path="/login" component={Login}></Route>
-							<Route exact path="/" component={Home}></Route>
-							<Route component={NotFound}></Route>
-						</Switch>
-					</Router>
-				</Suspense>
-			</ErrorBoundary>
-		</Provider>
+		<StrictMode>
+			<Provider store={store}>
+				<ErrorBoundary>
+					<Suspense fallback={<div className="text">{/* Loading ... */}</div>}>
+						<Router>
+							<Switch>
+								<Route exact path="/register" component={Register}></Route>
+								<Route path="/login" component={Login}></Route>
+								<Route exact path="/" component={Home}></Route>
+								<Route component={NotFound}></Route>
+							</Switch>
+						</Router>
+					</Suspense>
+				</ErrorBoundary>
+			</Provider>
+		</StrictMode>
 	);
 }
 

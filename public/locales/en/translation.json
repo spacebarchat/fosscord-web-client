@@ -1,1 +1,5 @@
-{}
+{
+	"rateLimited": "Please wait {{seconds}} seconds",
+	"offline": "You are offline, please connect to the internet",
+	"serverOffline": "The server is not reachable, please try again after a minute"
+}
