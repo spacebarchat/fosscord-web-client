@@ -25,9 +25,7 @@ export default function Register() {
 	return (
 		<div className="page register">
 			<form className="form" onSubmit={submit}>
-				<Branding />
-
-				<h1 className="text headline">{t("register")}</h1>
+				<h1 className="text headline"><Branding />{t("register")}</h1>
 
 				<InstanceSelection defaultValue={instance} onChange={(x) => setInstance(x)} />
 
@@ -59,7 +57,7 @@ export default function Register() {
 				{/* // TODO: date of birth + instance selection */}
 				<Checkbox required onChange={(e) => setConsent(e.target.checked)} labelText={t("consent")}></Checkbox>
 
-				<Button className="submit small" primary>
+				<Button className="submit" primary>
 					{t("submit")}
 				</Button>
 

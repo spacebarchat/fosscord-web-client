@@ -18,8 +18,7 @@ export default function LoginScreen() {
 	return (
 		<div className="page login">
 			<form className="form">
-				<Branding />
-				<h1 className="text headline">{t("login")}</h1>
+				<h1 className="text headline"><Branding />{t("login")}</h1>
 
 				<InstanceSelection defaultValue={instance} onChange={(x) => setInstance(x)} />
 				{/* email or phone autocomplete */}
@@ -44,7 +43,7 @@ export default function LoginScreen() {
 					{t("forgotPassword")}
 				</Link>
 
-				<Button className="submit " primary>
+				<Button className="submit" primary>
 					{t("login")}
 				</Button>
 
