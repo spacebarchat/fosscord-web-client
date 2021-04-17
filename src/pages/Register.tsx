@@ -62,8 +62,7 @@ export default function Register() {
 				</Button>
 
 				<div className="text muted">
-					{t("loginNotice")}
-					<Link to="/login">{t("login")}</Link>
+					{t("loginNotice")} <Link to="/login">{t("login")}</Link>
 				</div>
 			</form>
 		</div>

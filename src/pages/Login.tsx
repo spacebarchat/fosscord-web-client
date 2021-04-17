@@ -48,8 +48,7 @@ export default function LoginScreen() {
 				</Button>
 
 				<div className="text muted">
-					{t("registerNotice")}
-					<Link to="/register">{t("register")}</Link>
+					{t("registerNotice")} <Link to="/register">{t("register")}</Link>
 				</div>
 			</form>
 		</div>
