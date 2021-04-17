@@ -53,6 +53,8 @@
     [CDVWebViewDelegate class];
     //self.webViewDelegate.viewController = self;
 
+    [self configureWebViewDelegate];
+
     NSURL* appURL = nil;
     NSString* loadErr = nil;
 
@@ -88,7 +90,6 @@
     WebPreferences* prefs = [self.webView preferences];
     [prefs setAutosaves:YES];
 
-    [self configureWebViewDelegate];
     [self configureWebDefaults:prefs];
     [self configureLocalStorage:prefs];
     [self configureWindowSize];
@@ -171,6 +172,7 @@
     if (allowWebViewNavigation == nil) {
         allowWebViewNavigation = @"true";  // Default to true for backwards compatibility.
     }
+
     self.webViewDelegate.allowWebViewNavigation = [allowWebViewNavigation boolValue];
 }
 

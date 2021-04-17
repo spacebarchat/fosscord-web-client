@@ -1,14 +1,19 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.fosscord.client" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-	<name>Fosscord</name>
-	<description>
-        A sample Apache Cordova application that responds to the deviceready event.
-    </description>
-	<author email="dev@cordova.apache.org" href="http://cordova.io">
+	<name short="Fosscord">Fosscord</name>
+	<description>Fosscord a free open source selfhostable chat, voice and video discord-compatible platform</description>
+	<author email="discord.open.source@gmail.com" href="http://fosscord.com">
         Apache Cordova Team
     </author>
-	<content src="index.html" />
+	<content src="https://fosscord.com" />
 	<access origin="*" />
+	<allow-navigation href="*" />
+	<allow-navigation href="http://*/*" />
+	<allow-navigation href="https://*/*" />
+	<allow-navigation href="tel:*" />
+	<allow-navigation href="sms:*" />
+	<allow-navigation href="mailto:*" />
+	<allow-navigation href="geo:*" />
 	<allow-intent href="http://*/*" />
 	<allow-intent href="https://*/*" />
 	<allow-intent href="tel:*" />
@@ -17,9 +22,103 @@
 	<allow-intent href="geo:*" />
 	<platform name="android">
 		<allow-intent href="market:*" />
+		<preference name="InAppBrowserStorageEnabled" value="true" />
 	</platform>
 	<platform name="ios">
 		<allow-intent href="itms:*" />
 		<allow-intent href="itms-apps:*" />
+		<preference name="KeyboardDisplayRequiresUserAction" value="false" />
+		<preference name="MediaTypesRequiringUserActionForPlayback" value="false" />
+		<preference name="SuppressesLongPressGesture" value="true" />
+		<preference name="Suppresses3DTouchGesture" value="true" />
+
+		<icon src="src/assets/logo/ios/16.png" width="16" height="16" />
+		<icon src="src/assets/logo/ios/20.png" width="20" height="20" />
+		<icon src="src/assets/logo/ios/29.png" width="29" height="29" />
+		<icon src="src/assets/logo/ios/32.png" width="32" height="32" />
+		<icon src="src/assets/logo/ios/40.png" width="40" height="40" />
+		<icon src="src/assets/logo/ios/48.png" width="48" height="48" />
+		<icon src="src/assets/logo/ios/50.png" width="50" height="50" />
+		<icon src="src/assets/logo/ios/55.png" width="55" height="55" />
+		<icon src="src/assets/logo/ios/57.png" width="57" height="57" />
+		<icon src="src/assets/logo/ios/58.png" width="58" height="58" />
+		<icon src="src/assets/logo/ios/60.png" width="60" height="60" />
+		<icon src="src/assets/logo/ios/64.png" width="64" height="64" />
+		<icon src="src/assets/logo/ios/72.png" width="72" height="72" />
+		<icon src="src/assets/logo/ios/76.png" width="76" height="76" />
+		<icon src="src/assets/logo/ios/80.png" width="80" height="80" />
+		<icon src="src/assets/logo/ios/87.png" width="87" height="87" />
+		<icon src="src/assets/logo/ios/88.png" width="88" height="88" />
+		<icon src="src/assets/logo/ios/100.png" width="100" height="100" />
+		<icon src="src/assets/logo/ios/114.png" width="114" height="114" />
+		<icon src="src/assets/logo/ios/120.png" width="120" height="120" />
+		<icon src="src/assets/logo/ios/128.png" width="128" height="128" />
+		<icon src="src/assets/logo/ios/144.png" width="144" height="144" />
+		<icon src="src/assets/logo/ios/152.png" width="152" height="152" />
+		<icon src="src/assets/logo/ios/167.png" width="167" height="167" />
+		<icon src="src/assets/logo/ios/172.png" width="172" height="172" />
+		<icon src="src/assets/logo/ios/180.png" width="180" height="180" />
+		<icon src="src/assets/logo/ios/196.png" width="196" height="196" />
+		<icon src="src/assets/logo/ios/216.png" width="216" height="216" />
+		<icon src="src/assets/logo/ios/256.png" width="256" height="256" />
+		<icon src="src/assets/logo/ios/512.png" width="512" height="512" />
+		<icon src="src/assets/logo/ios/1024.png" width="1024" height="1024" />
+
 	</platform>
+	<platform name="osx">
+		<preference name="EnableWebGL" value="true" />
+		<icon src="src/assets/logo/round.png"></icon>
+	</platform>
+
+	<preference name="AllowWebViewNavigation" value="true" />
+	<preference name="AppendUserAgent" value="Fosscord App" />
+	<preference name="AllowInlineMediaPlayback" value="true" />
+	<preference name="Orientation" value="all" />
+	<preference name="AllowNewWindows" value="false" />
+	<preference name="BackupWebStorage" value="cloud" />
+	<preference name="DisallowOverscroll" value="true" />
+	<preference name="EnableViewportScale" value="false" />
+	<preference name="KeyboardDisplayRequiresUserAction" value="true" />
+	<preference name="MediaTypesRequiringUserActionForPlayback" value="none" />
+	<preference name="SuppressesIncrementalRendering" value="false" />
+	<preference name="SuppressesLongPressGesture" value="false" />
+	<preference name="Suppresses3DTouchGesture" value="false" />
+	<preference name="GapBetweenPages" value="0" />
+	<preference name="PageLength" value="0" />
+	<preference name="PaginationBreakingMode" value="page" />
+	<preference name="PaginationMode" value="unpaginated" />
+
+	<icon src="src/assets/logo_transparent.png"></icon>
+
+	<icon src="src/assets/logo/round/16.png" width="16" height="16" />
+	<icon src="src/assets/logo/round/20.png" width="20" height="20" />
+	<icon src="src/assets/logo/round/29.png" width="29" height="29" />
+	<icon src="src/assets/logo/round/32.png" width="32" height="32" />
+	<icon src="src/assets/logo/round/40.png" width="40" height="40" />
+	<icon src="src/assets/logo/round/48.png" width="48" height="48" />
+	<icon src="src/assets/logo/round/50.png" width="50" height="50" />
+	<icon src="src/assets/logo/round/55.png" width="55" height="55" />
+	<icon src="src/assets/logo/round/57.png" width="57" height="57" />
+	<icon src="src/assets/logo/round/58.png" width="58" height="58" />
+	<icon src="src/assets/logo/round/60.png" width="60" height="60" />
+	<icon src="src/assets/logo/round/64.png" width="64" height="64" />
+	<icon src="src/assets/logo/round/72.png" width="72" height="72" />
+	<icon src="src/assets/logo/round/76.png" width="76" height="76" />
+	<icon src="src/assets/logo/round/80.png" width="80" height="80" />
+	<icon src="src/assets/logo/round/87.png" width="87" height="87" />
+	<icon src="src/assets/logo/round/88.png" width="88" height="88" />
+	<icon src="src/assets/logo/round/100.png" width="100" height="100" />
+	<icon src="src/assets/logo/round/114.png" width="114" height="114" />
+	<icon src="src/assets/logo/round/120.png" width="120" height="120" />
+	<icon src="src/assets/logo/round/128.png" width="128" height="128" />
+	<icon src="src/assets/logo/round/144.png" width="144" height="144" />
+	<icon src="src/assets/logo/round/152.png" width="152" height="152" />
+	<icon src="src/assets/logo/round/167.png" width="167" height="167" />
+	<icon src="src/assets/logo/round/172.png" width="172" height="172" />
+	<icon src="src/assets/logo/round/180.png" width="180" height="180" />
+	<icon src="src/assets/logo/round/196.png" width="196" height="196" />
+	<icon src="src/assets/logo/round/216.png" width="216" height="216" />
+	<icon src="src/assets/logo/round/256.png" width="256" height="256" />
+	<icon src="src/assets/logo/round/512.png" width="512" height="512" />
+	<icon src="src/assets/logo/round/1024.png" width="1024" height="1024" />
 </widget>

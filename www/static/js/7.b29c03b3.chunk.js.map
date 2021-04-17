@@ -1,1 +1,0 @@
-{"version":3,"sources":["pages/NotFound.tsx"],"names":["NotFound","className"],"mappings":"2LAAe,SAASA,IACvB,OAAO,oBAAIC,UAAU,gBAAd","file":"static/js/7.b29c03b3.chunk.js","sourcesContent":["export default function NotFound() {\n\treturn <h1 className=\"text headlien\"> 404 Not Found</h1>;\n}\n"],"sourceRoot":""}

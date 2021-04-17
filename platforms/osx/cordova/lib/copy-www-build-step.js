@@ -29,50 +29,45 @@ var FULL_PRODUCT_NAME = process.env.FULL_PRODUCT_NAME;
 var COPY_HIDDEN = process.env.COPY_HIDDEN;
 var PROJECT_FILE_PATH = process.env.PROJECT_FILE_PATH;
 
-var path = require("path");
-var fs = require("fs");
-var shell = require("shelljs");
-var srcDir = path.join("..", "..", "www");
-var dstDir = path.join(BUILT_PRODUCTS_DIR, FULL_PRODUCT_NAME, "Contents", "Resources");
-var dstWwwDir = path.join(dstDir, "www");
+var path = require('path');
+var fs = require('fs');
+var shell = require('shelljs');
+var srcDir = 'www';
+var dstDir = path.join(BUILT_PRODUCTS_DIR, FULL_PRODUCT_NAME, 'Contents', 'Resources');
+var dstWwwDir = path.join(dstDir, 'www');
 
 if (!BUILT_PRODUCTS_DIR) {
-	console.error(
-		"The script is meant to be run as an Xcode build step and relies on env variables set by Xcode."
-	);
-	process.exit(1);
+    console.error('The script is meant to be run as an Xcode build step and relies on env variables set by Xcode.');
+    process.exit(1);
 }
 
 try {
-	fs.statSync(srcDir);
+    fs.statSync(srcDir);
 } catch (e) {
-	console.error("Path does not exist: " + srcDir);
-	process.exit(2);
+    console.error('Path does not exist: ' + srcDir);
+    process.exit(2);
 }
 
 // Code signing files must be removed or else there are
 // resource signing errors.
-shell.rm("-rf", dstWwwDir);
-shell.rm("-rf", path.join(dstDir, "_CodeSignature"));
-shell.rm("-rf", path.join(dstDir, "PkgInfo"));
-shell.rm("-rf", path.join(dstDir, "embedded.mobileprovision"));
+shell.rm('-rf', dstWwwDir);
+shell.rm('-rf', path.join(dstDir, '_CodeSignature'));
+shell.rm('-rf', path.join(dstDir, 'PkgInfo'));
+shell.rm('-rf', path.join(dstDir, 'embedded.mobileprovision'));
 
 // Copy www dir recursively
 var code;
 if (COPY_HIDDEN) {
-	code = shell.exec('rsync -Lra "' + srcDir + '" "' + dstDir + '"').code;
+    code = shell.exec('rsync -Lra "' + srcDir + '" "' + dstDir + '"').code;
 } else {
-	code = shell.exec('rsync -Lra --exclude="- .*" "' + srcDir + '" "' + dstDir + '"').code;
+    code = shell.exec('rsync -Lra --exclude="- .*" "' + srcDir + '" "' + dstDir + '"').code;
 }
 
 if (code !== 0) {
-	console.error("Error occurred on copying www. Code: " + code);
-	process.exit(3);
+    console.error('Error occurred on copying www. Code: ' + code);
+    process.exit(3);
 }
 
 // Copy the config.xml file.
-shell.cp(
-	"-f",
-	path.join(path.dirname(PROJECT_FILE_PATH), path.basename(PROJECT_FILE_PATH, ".xcodeproj"), "config.xml"),
-	dstDir
-);
+shell.cp('-f', path.join(path.dirname(PROJECT_FILE_PATH), path.basename(PROJECT_FILE_PATH, '.xcodeproj'), 'config.xml'),
+    dstDir);

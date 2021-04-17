@@ -1,18 +1,75 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.fosscord.client" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Fosscord</name>
-    <description>
+	<description>
         A sample Apache Cordova application that responds to the deviceready event.
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
+	<name short="Fosscord">Fosscord</name>
+	<description>Fosscord a free open source selfhostable chat, voice and video discord-compatible platform</description>
+	<author email="discord.open.source@gmail.com" href="http://fosscord.com">
         Apache Cordova Team
     </author>
-    <content src="index.html" />
-    <access origin="*" />
-    <allow-intent href="http://*/*" />
-    <allow-intent href="https://*/*" />
-    <allow-intent href="tel:*" />
-    <allow-intent href="sms:*" />
-    <allow-intent href="mailto:*" />
-    <allow-intent href="geo:*" />
+	<content src="https://fosscord.com" />
+	<access origin="*" />
+	<allow-navigation href="*" />
+	<allow-navigation href="http://*/*" />
+	<allow-navigation href="https://*/*" />
+	<allow-navigation href="tel:*" />
+	<allow-navigation href="sms:*" />
+	<allow-navigation href="mailto:*" />
+	<allow-navigation href="geo:*" />
+	<allow-intent href="http://*/*" />
+	<allow-intent href="https://*/*" />
+	<allow-intent href="tel:*" />
+	<allow-intent href="sms:*" />
+	<allow-intent href="mailto:*" />
+	<allow-intent href="geo:*" />
+	<icon src="src/assets/logo_transparent.png" />
+	<icon height="16" src="src/assets/logo/round/16.png" width="16" />
+	<icon height="20" src="src/assets/logo/round/20.png" width="20" />
+	<icon height="29" src="src/assets/logo/round/29.png" width="29" />
+	<icon height="32" src="src/assets/logo/round/32.png" width="32" />
+	<icon height="40" src="src/assets/logo/round/40.png" width="40" />
+	<icon height="48" src="src/assets/logo/round/48.png" width="48" />
+	<icon height="50" src="src/assets/logo/round/50.png" width="50" />
+	<icon height="55" src="src/assets/logo/round/55.png" width="55" />
+	<icon height="57" src="src/assets/logo/round/57.png" width="57" />
+	<icon height="58" src="src/assets/logo/round/58.png" width="58" />
+	<icon height="60" src="src/assets/logo/round/60.png" width="60" />
+	<icon height="64" src="src/assets/logo/round/64.png" width="64" />
+	<icon height="72" src="src/assets/logo/round/72.png" width="72" />
+	<icon height="76" src="src/assets/logo/round/76.png" width="76" />
+	<icon height="80" src="src/assets/logo/round/80.png" width="80" />
+	<icon height="87" src="src/assets/logo/round/87.png" width="87" />
+	<icon height="88" src="src/assets/logo/round/88.png" width="88" />
+	<icon height="100" src="src/assets/logo/round/100.png" width="100" />
+	<icon height="114" src="src/assets/logo/round/114.png" width="114" />
+	<icon height="120" src="src/assets/logo/round/120.png" width="120" />
+	<icon height="128" src="src/assets/logo/round/128.png" width="128" />
+	<icon height="144" src="src/assets/logo/round/144.png" width="144" />
+	<icon height="152" src="src/assets/logo/round/152.png" width="152" />
+	<icon height="167" src="src/assets/logo/round/167.png" width="167" />
+	<icon height="172" src="src/assets/logo/round/172.png" width="172" />
+	<icon height="180" src="src/assets/logo/round/180.png" width="180" />
+	<icon height="196" src="src/assets/logo/round/196.png" width="196" />
+	<icon height="216" src="src/assets/logo/round/216.png" width="216" />
+	<icon height="256" src="src/assets/logo/round/256.png" width="256" />
+	<icon height="512" src="src/assets/logo/round/512.png" width="512" />
+	<icon height="1024" src="src/assets/logo/round/1024.png" width="1024" />
+	<preference name="AllowWebViewNavigation" value="true" />
+	<preference name="AppendUserAgent" value="Fosscord App" />
+	<preference name="AllowInlineMediaPlayback" value="true" />
+	<preference name="Orientation" value="all" />
+	<preference name="AllowNewWindows" value="false" />
+	<preference name="BackupWebStorage" value="cloud" />
+	<preference name="DisallowOverscroll" value="true" />
+	<preference name="EnableViewportScale" value="false" />
+	<preference name="KeyboardDisplayRequiresUserAction" value="true" />
+	<preference name="MediaTypesRequiringUserActionForPlayback" value="none" />
+	<preference name="SuppressesIncrementalRendering" value="false" />
+	<preference name="SuppressesLongPressGesture" value="false" />
+	<preference name="Suppresses3DTouchGesture" value="false" />
+	<preference name="GapBetweenPages" value="0" />
+	<preference name="PageLength" value="0" />
+	<preference name="PaginationBreakingMode" value="page" />
+	<preference name="PaginationMode" value="unpaginated" />
 </widget>

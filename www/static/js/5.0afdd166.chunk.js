@@ -1,2 +1,0 @@
-(this["webpackJsonpcom.fosscord.client"]=this["webpackJsonpcom.fosscord.client"]||[]).push([[5],{95:function(e,n,c){"use strict";c.r(n),c.d(n,"default",(function(){return i}));var t=c(34),s=c(35),o=c(3);function i(e){Object(s.b)((function(e){return e.accounts}));return Object(o.jsxs)("div",{children:[Object(o.jsx)(t.b,{to:"/login",children:"Login"}),Object(o.jsx)("p",{className:"text",children:"Homescreen"})]})}Promise.all([c.e(0),c.e(8)]).then(c.bind(null,94))}}]);
-//# sourceMappingURL=5.0afdd166.chunk.js.map
