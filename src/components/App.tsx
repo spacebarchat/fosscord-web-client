@@ -15,10 +15,10 @@ function App() {
 		<StrictMode>
 			<Provider store={store}>
 				<ErrorBoundary>
-					<Suspense fallback={<div className="text">{/* Loading ... */}</div>}>
+					<Suspense fallback={<div className="text page-center headline"> Loading ...</div>}>
 						<Router>
 							<Switch>
-								<Route exact path="/register" component={Register}></Route>
+								<Route path="/register" component={Register}></Route>
 								<Route path="/login" component={Login}></Route>
 								<Route exact path="/" component={Home}></Route>
 								<Route component={NotFound}></Route>

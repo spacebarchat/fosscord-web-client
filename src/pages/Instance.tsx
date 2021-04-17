@@ -1,12 +1,34 @@
-import { useHistory } from "react-router";
-import { Modal } from "../framework/Modal";
+import { Icon } from "../framework/Icon";
+import { Input } from "../framework/Input";
+import { List, ListItem } from "../framework/List";
+import { Text } from "../framework/Text";
+import "./Instance.scss";
 
 export default function Instance(props: any) {
-	const history = useHistory();
-
 	return (
-		<Modal open={true} onClose={() => history.replace(history.location.pathname.replaceAll("/instance", ""))}>
-			<h1>not finished yet</h1>
-		</Modal>
+		<>
+			<div className="sidebar">
+				<List>
+					<Text headline>Discover</Text>
+					<ListItem active primary>
+						<Icon className="left" icon="compass"></Icon>
+						<div className="content">Explore</div>
+					</ListItem>
+					<ListItem>
+						<Icon className="left" icon="settings"></Icon>
+						<div className="content">Settings</div>
+					</ListItem>
+					<ListItem>
+						<Icon className="left" icon="plus"></Icon>
+						<div className="content">Add</div>
+					</ListItem>
+				</List>
+			</div>
+
+			<div className="content">
+				<Text headline>Find Instances</Text>
+				<Input placeholder="Explore communities" labelText="Search"></Input>
+			</div>
+		</>
 	);
 }

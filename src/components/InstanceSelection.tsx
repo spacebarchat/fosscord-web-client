@@ -18,6 +18,8 @@ export function InstanceSelection(props: InstanceSelectionProps) {
 	const instances = useSelector((s: RootState) => s.instances);
 	if (!props.defaultValue) props.onChange?.(instances[0]);
 
+	const urlWithoutInstance = history.location.pathname.replaceAll("/instance", "");
+
 	return (
 		<>
 			<Dropdown
@@ -33,8 +35,7 @@ export function InstanceSelection(props: InstanceSelectionProps) {
 								name={instance.host}
 								key={instance.id}
 								id={instance.id}
-								icon={icon}
-							></DropdownItem>
+								icon={icon}></DropdownItem>
 						);
 					}),
 					<DropdownItem
@@ -42,14 +43,17 @@ export function InstanceSelection(props: InstanceSelectionProps) {
 						id="add_instance"
 						key="add_instance"
 						icon="plus"
-						onClick={() => history.push(`${history.location.pathname}/instance`)}
-					></DropdownItem>,
+						onClick={() => history.push(`${history.location.pathname}/instance`)}></DropdownItem>,
 				]}
 			/>
-			<Route
-				path={`${history.location.pathname.replaceAll("/instance", "")}/instance`}
-				component={InstancePage}
-			></Route>
+			<Modal
+				className="instance page"
+				open={history.location.pathname.includes("/instance")}
+				onClose={() => history.replace(urlWithoutInstance)}>
+				<Route path={`${urlWithoutInstance}/instance`}>
+					<InstancePage></InstancePage>
+				</Route>
+			</Modal>
 		</>
 	);
 }

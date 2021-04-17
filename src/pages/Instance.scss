@@ -1,0 +1,25 @@
+.instance.page {
+	.sidebar {
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: flex-end;
+
+		.list {
+			max-width: 300px;
+			width: 100%;
+
+			.item {
+				padding: 15px;
+				margin-bottom: 7px;
+
+				.icon {
+					--size: 25px;
+
+					&.left {
+						margin-right: 1rem;
+					}
+				}
+			}
+		}
+	}
+}

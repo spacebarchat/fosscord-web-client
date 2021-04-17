@@ -6,6 +6,7 @@ export interface ModalProps {
 	children?: React.ReactNode;
 	open?: boolean;
 	onClose?: () => any;
+	className?: string;
 }
 
 export function Modal(props: ModalProps) {
@@ -23,9 +24,12 @@ export function Modal(props: ModalProps) {
 		};
 	}, []);
 
+	if (props.open) document.querySelector(".modal-background")?.classList.add("modal-open");
+	if (!props.open) document.querySelector(".modal-background")?.classList.remove("modal-open");
+
 	return (
 		<Route>
-			<div className={`modal ${props.open ? "open" : ""}`}>
+			<div className={`modal ${props.open ? "open" : ""} ${props.className || ""}`}>
 				<span className="close-wrapper">
 					<span className="close" onClick={props.onClose}>
 						<i className="icon times"></i>
