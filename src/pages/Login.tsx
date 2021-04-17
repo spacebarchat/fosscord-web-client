@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { Instance } from "../reducers/instances";
+import { Network } from "../reducers/networks";
 import { Branding } from "../components/Branding";
-import { InstanceSelection } from "../components/InstanceSelection";
+import { NetworkSelection } from "../components/NetworkSelection";
 import { Button } from "../framework/Button";
 import { Input } from "../framework/Input";
 import "./Login.scss";
@@ -11,16 +11,19 @@ import { getFormError } from "../util/FormError";
 
 export default function LoginScreen() {
 	const { t } = useTranslation("login");
-	const [instance, setInstance] = useState({} as Instance);
+	const [network, setNetwork] = useState({} as Network);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
 	return (
 		<div className="page login">
 			<form className="form">
-				<h1 className="text headline"><Branding />{t("login")}</h1>
+				<h1 className="text headline">
+					<Branding />
+					{t("login")}
+				</h1>
 
-				<InstanceSelection defaultValue={instance} onChange={(x) => setInstance(x)} />
+				<NetworkSelection defaultValue={network} onChange={(x) => setNetwork(x)} />
 				{/* email or phone autocomplete */}
 				<p className="text danger error">{getFormError({ test: "error" }, "test")}</p>
 				<Input
@@ -28,16 +31,18 @@ export default function LoginScreen() {
 					autoComplete="email"
 					type="text"
 					className="emailPhone"
-					labelText={t("emailTelephone")}></Input>
+					labelText={t("emailTelephone")}
+				></Input>
 
 				<Input
 					onChange={(e) => setPassword(e.target.value)}
 					className="password"
 					type="password"
 					labelText={t("password")}
-					autoComplete="current-password"></Input>
+					autoComplete="current-password"
+				></Input>
 
-				{/* // TODO instance selection */}
+				{/* // TODO network selection */}
 
 				<Link className="small" to="/resetPassword">
 					{t("forgotPassword")}

@@ -24,8 +24,8 @@ export var defaultTimeout = 5000;
 // TODO: rate limit buckets (but aren't high priority for normal user clients)
 const RateLimitBuckets = new Map();
 
-// TODO: make different rate limit buckets for different instances
-// TODO: optimistic/predict rate limits with instance config
+// TODO: make different rate limit buckets for different networks
+// TODO: optimistic/predict rate limits with network config
 
 export async function request(url: string, opts?: RequestOptions): Promise<RequestResult> {
 	if (!opts) opts = {};

@@ -5,7 +5,7 @@
 	"username": "Username",
 	"password": "Password",
 	"dateOfBirth": "Date of birth",
-	"consent": "I agree to this instance's terms",
+	"consent": "I agree the terms of service of this network",
 	"submit": "Continue",
 	"loginNotice": "Already have an account?"
 }

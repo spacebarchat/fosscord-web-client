@@ -2,11 +2,11 @@ import React, { FormEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { Branding } from "../components/Branding";
-import { InstanceSelection } from "../components/InstanceSelection";
+import { NetworkSelection } from "../components/NetworkSelection";
 import { Button } from "../framework/Button";
 import { Checkbox } from "../framework/Checkbox";
 import { Input } from "../framework/Input";
-import { Instance } from "../reducers/instances";
+import { Network } from "../reducers/networks";
 import "./Login.scss";
 
 export default function Register() {
@@ -15,19 +15,22 @@ export default function Register() {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [consent, setConsent] = useState(false);
-	const [instance, setInstance] = useState({} as Instance);
+	const [network, setNetwork] = useState({} as Network);
 
 	function submit(event: FormEvent) {
 		event.preventDefault();
-		console.log({ email, username, password, consent, instance });
+		console.log({ email, username, password, consent, network });
 	}
 
 	return (
 		<div className="page register">
 			<form className="form" onSubmit={submit}>
-				<h1 className="text headline"><Branding />{t("register")}</h1>
+				<h1 className="text headline">
+					<Branding />
+					{t("register")}
+				</h1>
 
-				<InstanceSelection defaultValue={instance} onChange={(x) => setInstance(x)} />
+				<NetworkSelection defaultValue={network} onChange={(x) => setNetwork(x)} />
 
 				<Input
 					required
@@ -54,8 +57,12 @@ export default function Register() {
 					autoComplete="new-password"
 				></Input>
 
-				{/* // TODO: date of birth + instance selection */}
-				<Checkbox required onChange={(e) => setConsent(e.target.checked)} labelText={t("consent")}></Checkbox>
+				{/* // TODO: date of birth + network selection */}
+				<Checkbox
+					required
+					onChange={(e) => setConsent(e.target.checked)}
+					labelText={t("consent")}
+				></Checkbox>
 
 				<Button className="submit" primary>
 					{t("submit")}

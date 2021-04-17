@@ -1,5 +1,5 @@
 import "fosscord-css/scss/card.scss";
-import { ReactNode } from "react";
+import { MouseEventHandler, ReactNode } from "react";
 import { Icon } from "./Icon";
 
 export interface CardProps {
@@ -10,11 +10,12 @@ export interface CardProps {
 	description?: string;
 	verified?: boolean;
 	partnered?: boolean;
+	onClick?: MouseEventHandler<HTMLDivElement>;
 }
 
 export function Card(props: CardProps) {
 	return (
-		<div className="card">
+		<div className="card" onClick={props.onClick}>
 			<span className="header" style={{ backgroundImage: `url(${props.header})` }}></span>
 			<span className="logo">
 				<img src={props.icon} alt="" />

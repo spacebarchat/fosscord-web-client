@@ -14,7 +14,7 @@ export interface AccountAction {
 }
 
 export interface Account {
-	instance_id: string;
+	network_id: string;
 	user_id: string;
 }
 
