@@ -8,20 +8,20 @@ export interface InputProps
 }
 
 export function Input(p: InputProps) {
-	var props = { ...p };
+	const props = { ...p };
 	props.className = `input ${props.className || ""}`;
 
 	const [value, setValue] = useState("");
 
 	if (!props.onChange && !props.value) {
-		// props.value = value;
-		props.onChange = console.log;
+		props.value = value;
+		props.onChange = (e) => setValue(e.target.value);
 	}
 
 	return (
 		<label className="input-wrapper">
 			<p className="label title text">{props.labelText}</p>
-			<input {...deleteProps(props, "labelText")} />
+			<input value={props.value} {...deleteProps(props, "labelText")} />
 		</label>
 	);
 }
