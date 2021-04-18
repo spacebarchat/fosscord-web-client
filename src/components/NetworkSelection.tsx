@@ -18,28 +18,29 @@ export function NetworkSelection(props: NetworkSelectionProps) {
 	const { t } = useTranslation("network");
 	const history = useHistory();
 	const networks = useSelector((s: RootState) => s.networks);
-	if (!props.defaultValue) props.onChange?.(networks[0]);
+	const [network, setNetwork] = useState(networks[0]);
+	if (!props.defaultValue) props.onChange?.(network);
+
+	function changeNetwork(network: Network) {
+		setNetwork(network);
+		props.onChange?.(network);
+	}
 
 	const urlWithoutNetwork = history.location.pathname.replaceAll("/network", "");
+	console.log("render", network);
 
 	return (
 		<>
 			<Dropdown
 				className="network-selection"
 				labelText="Network"
-				onChange={(index) => props.onChange?.(networks[index])}
+				selected={networks.findIndex((x) => x === network)}
+				onChange={(index) => changeNetwork(networks[index])}
 				children={[
-					...networks.map((network) => {
-						const icon = network.icon && <img className="icon" alt="" src={network.icon}></img>;
+					...networks.map((x) => {
+						const icon = x.icon && <img className="icon" alt="" src={x.icon}></img>;
 
-						return (
-							<DropdownItem
-								name={network.host}
-								key={network.id}
-								id={network.id}
-								icon={icon}
-							></DropdownItem>
-						);
+						return <DropdownItem name={x.host} key={x.id} id={x.id} icon={icon}></DropdownItem>;
 					}),
 					<DropdownItem
 						name={t("addNetwork")}
@@ -56,9 +57,7 @@ export function NetworkSelection(props: NetworkSelectionProps) {
 				onClose={() => history.replace(urlWithoutNetwork)}
 			>
 				<Route path={`${urlWithoutNetwork}/network`}>
-					<NetworkPage
-						onSelect={(id) => props.onChange?.(networks.find((x) => x.id === id) as Network)}
-					></NetworkPage>
+					<NetworkPage selected={network} onSelect={changeNetwork}></NetworkPage>
 				</Route>
 			</Modal>
 		</>
