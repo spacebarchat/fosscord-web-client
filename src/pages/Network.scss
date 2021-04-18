@@ -23,4 +23,28 @@
 			}
 		}
 	}
+
+	.content {
+		.addNetwork {
+			display: flex;
+			flex-direction: column;
+
+			> * {
+				margin: 0.5rem;
+			}
+
+			.inputButton {
+				display: flex;
+				align-items: flex-end;
+
+				.input-wrapper {
+					flex-grow: 1;
+				}
+
+				.button {
+					height: 40px;
+				}
+			}
+		}
+	}
 }
