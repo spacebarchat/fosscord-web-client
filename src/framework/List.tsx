@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { MouseEventHandler, ReactNode } from "react";
 import { ColorProps, getColor } from "./Types";
 import "fosscord-css/scss/list.scss";
 
@@ -30,6 +30,10 @@ export interface ListItemProps extends ColorProps {
 	className?: string;
 	children?: ReactNode;
 	active?: boolean;
+	onClick?: MouseEventHandler<HTMLLIElement>;
+	state?: string;
+	setState?: React.Dispatch<React.SetStateAction<string>>;
+	name?: string;
 }
 
 export function ListItem(p: ListItemProps) {
@@ -37,9 +41,14 @@ export function ListItem(p: ListItemProps) {
 	if (!props.className) props.className = "";
 	if (props.seperator) props.className += " seperator";
 	else props.className += " item";
-	if (props.active) props.className += " active";
+	if (props.active || props.name === props.state) props.className += " active";
+	if (!props.onClick && props.name) props.onClick = () => props.setState?.(props.name as string);
 
 	props.className += getColor(props);
 
-	return <li className={props.className}>{props.children}</li>;
+	return (
+		<li onClick={props.onClick} className={props.className}>
+			{props.children}
+		</li>
+	);
 }

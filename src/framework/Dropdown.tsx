@@ -7,6 +7,7 @@ export interface DropdownProps {
 	labelText?: string;
 	className?: string;
 	children: ReactElement<DropdownItemProps>[];
+	selected: number;
 	onChange?: (index: number, element: ReactElement<DropdownItemProps>) => any;
 }
 
@@ -17,7 +18,8 @@ window.addEventListener("mousedown", (event) => {
 export function Dropdown(props: DropdownProps) {
 	const dropdownRef = useRef<HTMLDivElement>(null);
 	const [open, setOpen] = useState(false);
-	const [selected, setSelected] = useState(0);
+	const { selected } = props;
+	console.log("selected", selected, props.selected);
 
 	const children = props.children.map((x, i) => {
 		const child = { ...x, props: { ...x.props } };
@@ -26,7 +28,6 @@ export function Dropdown(props: DropdownProps) {
 		if (!child.props.onClick) {
 			child.props.onClick = (event: MouseEvent<HTMLDivElement>) => {
 				const index = props.children.findIndex((y) => y.props.id === child.props.id);
-				setSelected(index);
 				setOpen(false);
 				props.onChange?.(index, props.children[index]);
 			};
@@ -97,7 +98,11 @@ export function DropdownItem(props: DropdownItemProps) {
 			  },
 		<>
 			{props.icon &&
-				(typeof props.icon === "string" ? <i className={"prefix icon " + props.icon}> </i> : props.icon)}
+				(typeof props.icon === "string" ? (
+					<i className={"prefix icon " + props.icon}> </i>
+				) : (
+					props.icon
+				))}
 			<span className="name">{props.name}</span>
 			<span className="category text title">{props.category}</span>{" "}
 		</>

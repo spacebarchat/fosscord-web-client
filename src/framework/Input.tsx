@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import { deleteProps } from "./Types";
 import "fosscord-css/scss/input-fields.scss";
 
 export interface InputProps
 	extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
 	labelText?: string;
+	children?: ReactNode;
 }
 
 export function Input(p: InputProps) {
@@ -21,7 +22,8 @@ export function Input(p: InputProps) {
 	return (
 		<label className="input-wrapper">
 			<p className="label title text">{props.labelText}</p>
-			<input value={props.value} {...deleteProps(props, "labelText")} />
+			<input value={props.value} {...deleteProps({ ...props }, "labelText", "children")} />
+			{props.children}
 		</label>
 	);
 }

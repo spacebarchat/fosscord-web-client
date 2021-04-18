@@ -12,7 +12,6 @@ export interface ModalProps {
 export function Modal(props: ModalProps) {
 	useEffect(() => {
 		function handleKeyDown(event: Event) {
-			console.log(event);
 			if ((event as KeyboardEvent).keyCode !== 27) return; // matches Escape
 			props.onClose?.();
 		}
