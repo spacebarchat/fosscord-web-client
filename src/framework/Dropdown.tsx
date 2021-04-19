@@ -19,7 +19,6 @@ export function Dropdown(props: DropdownProps) {
 	const dropdownRef = useRef<HTMLDivElement>(null);
 	const [open, setOpen] = useState(false);
 	const { selected } = props;
-	console.log("selected", selected, props.selected);
 
 	const children = props.children.map((x, i) => {
 		const child = { ...x, props: { ...x.props } };

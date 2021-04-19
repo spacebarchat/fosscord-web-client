@@ -3,7 +3,7 @@ import { Modal } from "../framework/Modal";
 import { Dropdown, DropdownItem } from "../framework/Dropdown";
 import { Network } from "../reducers/networks";
 import "./NetworkSelection.scss";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, useHistory } from "react-router";
 import { useTranslation } from "react-i18next";
 
@@ -21,7 +21,9 @@ export function NetworkSelection(props: NetworkSelectionProps) {
 	const history = useHistory();
 	const networks = useSelector((s: RootState) => s.networks);
 	const [network, setNetwork] = useState(networks[0]);
-	if (!props.defaultValue) props.onChange?.(network);
+	useEffect(() => {
+		if (!props.defaultValue) props.onChange?.(network);
+	}, []);
 
 	function changeNetwork(network: Network) {
 		setNetwork(network);
@@ -29,7 +31,6 @@ export function NetworkSelection(props: NetworkSelectionProps) {
 	}
 
 	const urlWithoutNetwork = history.location.pathname.replaceAll("/network", "");
-	console.log("render", network);
 
 	return (
 		<>

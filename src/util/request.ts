@@ -1,23 +1,22 @@
+import { Network } from "../reducers/networks";
 import i18n from "./i18n";
 
 export interface RequestOptions extends RequestInit {
 	errorToast?: boolean;
-	returnRequest?: boolean;
 	returnBuffer?: boolean;
 	throwErrors?: boolean;
 	throwNonJson?: boolean;
 	timeout?: number;
 	awaitRateLimit?: boolean;
+	network?: Network;
+	body?: any;
 }
 
-export type RequestResult =
-	| string
-	| object
-	| {
-			response?: Response;
-			body?: string | any;
-			error?: any;
-	  };
+export type RequestResult = {
+	response?: any;
+	body?: string | any;
+	error?: any;
+};
 
 export var defaultTimeout = 5000;
 
@@ -29,7 +28,13 @@ const RateLimitBuckets = new Map();
 
 export async function request(url: string, opts?: RequestOptions): Promise<RequestResult> {
 	if (!opts) opts = {};
+	if (!url.startsWith("http") && opts.network) {
+		if (url.startsWith("/")) url = url.slice(1);
+		url = `${opts.network.api}/${opts.network.version}/${url}`;
+	}
 	if (!opts.headers) opts.headers = {};
+	if (!opts.mode) opts.mode = "no-cors";
+	if (!opts.referrerPolicy) opts.referrerPolicy = "no-referrer";
 
 	var result: any;
 	const controller = new AbortController();
@@ -109,13 +114,11 @@ export async function request(url: string, opts?: RequestOptions): Promise<Reque
 			throw response.statusText;
 		}
 
-		if (opts.returnRequest)
-			return {
-				response,
-				body: result,
-			};
-
-		return result;
+		return {
+			response,
+			body: result,
+			error: null,
+		};
 	} catch (error) {
 		if (opts?.errorToast) {
 			// TODO: show error toast

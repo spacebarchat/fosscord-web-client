@@ -8,11 +8,11 @@ export function networks(
 			verified: true,
 			name: "Fosscord",
 			invite: "fosscord.com",
-			api: "fosscord.com/api/",
+			api: "https://fosscord.com/api",
 			version: 8,
 			description: "Offical fosscord.com network",
-			cdn: "cdn.fosscord.com",
-			gateway: "fosscord.com",
+			cdn: "https://cdn.fosscord.com",
+			gateway: "wss://fosscord.com",
 			host: "fosscord.com",
 			icon: FosscordLogo,
 			splash: "https://images.opencollective.com/discordhooks/1f8f486/background.png",
@@ -24,25 +24,26 @@ export function networks(
 			name: "Discord",
 			description: "Offical discord.com network",
 			invite: "discord.gg",
-			api: "discord.com/api/",
-			cdn: "cdn.discordapp.com",
-			gateway: "gateway.discord.gg",
+			api: "https://discord.com/api",
+			cdn: "https://cdn.discordapp.com",
+			gateway: "wss://gateway.discord.gg",
 			host: "discord.com",
 			version: 8,
 			icon: "https://logopng.net/wp-content/uploads/2020/07/logo-discord-png-icon-6.png",
 			splash:
 				"https://preview.redd.it/4zh2hgl46cp51.png?width=3325&format=png&auto=webp&s=b9123bff12e1d5b86248d27a059104b4c92e05b5",
+			termsOfService: "https://discord.com/terms",
 		},
 		{
 			id: "-1",
 			verified: false,
 			name: "Localhost",
 			invite: "localhost",
-			api: "localhost:3000/api/",
-			gateway: "localhost:8080",
+			api: "http://localhost:1000/api",
+			gateway: "ws://localhost:2000",
 			version: 8,
 			description: "Only for testing purposes",
-			cdn: "localhost",
+			cdn: "http://localhost",
 			host: "localhost",
 		},
 	],
@@ -76,4 +77,5 @@ export interface Network {
 	description?: string;
 	splash?: string;
 	icon?: string;
+	termsOfService?: string;
 }
