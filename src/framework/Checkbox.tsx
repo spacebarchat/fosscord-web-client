@@ -1,10 +1,12 @@
 import { deleteProps } from "./Types";
 import "fosscord-css/scss/icons.scss";
 import "fosscord-css/scss/checkbox.scss";
+import { ReactNode } from "react";
 
 export interface CheckboxProps
 	extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
-	labelText?: string;
+	labelText?: ReactNode;
+	error?: ReactNode;
 }
 
 export function Checkbox(p: CheckboxProps) {
@@ -12,7 +14,10 @@ export function Checkbox(p: CheckboxProps) {
 
 	return (
 		<label className="checkbox">
-			<p className="label">{props.labelText}</p>
+			<p className={`label text ${props.error ? "danger" : ""}`}>
+				{props.labelText}
+				{props.error && `- ${props.error}`}
+			</p>
 
 			<input {...deleteProps(props, "labelText")} type="checkbox" />
 			<span className="checkmark">

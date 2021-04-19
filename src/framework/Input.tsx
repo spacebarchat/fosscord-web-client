@@ -6,6 +6,7 @@ export interface InputProps
 	extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
 	labelText?: string;
 	children?: ReactNode;
+	error?: ReactNode;
 }
 
 export function Input(p: InputProps) {
@@ -21,7 +22,10 @@ export function Input(p: InputProps) {
 
 	return (
 		<label className="input-wrapper">
-			<p className="label title text">{props.labelText}</p>
+			<p className={`label title text ${props.error ? "danger" : ""}`}>
+				{props.labelText}
+				{props.error && `- ${props.error}`}
+			</p>
 			<input value={props.value} {...deleteProps({ ...props }, "labelText", "children")} />
 			{props.children}
 		</label>
