@@ -1,0 +1,173 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "Fosscord",
+  "short_name": "Fosscord",
+  "version": "com.fosscord.client",
+  "description": "Fosscord a free open source selfhostable chat, voice and video discord-compatible platform",
+  "author": "Apache Cordova Team",
+  "icons": [
+    {
+      "src": "src/assets/logo_transparent.png",
+      "type": "image/png",
+      "sizes": "undefinedxundefined"
+    },
+    {
+      "src": "src/assets/logo/round/16.png",
+      "type": "image/png",
+      "sizes": "16x16"
+    },
+    {
+      "src": "src/assets/logo/round/20.png",
+      "type": "image/png",
+      "sizes": "20x20"
+    },
+    {
+      "src": "src/assets/logo/round/29.png",
+      "type": "image/png",
+      "sizes": "29x29"
+    },
+    {
+      "src": "src/assets/logo/round/32.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
+      "src": "src/assets/logo/round/40.png",
+      "type": "image/png",
+      "sizes": "40x40"
+    },
+    {
+      "src": "src/assets/logo/round/48.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "src/assets/logo/round/50.png",
+      "type": "image/png",
+      "sizes": "50x50"
+    },
+    {
+      "src": "src/assets/logo/round/55.png",
+      "type": "image/png",
+      "sizes": "55x55"
+    },
+    {
+      "src": "src/assets/logo/round/57.png",
+      "type": "image/png",
+      "sizes": "57x57"
+    },
+    {
+      "src": "src/assets/logo/round/58.png",
+      "type": "image/png",
+      "sizes": "58x58"
+    },
+    {
+      "src": "src/assets/logo/round/60.png",
+      "type": "image/png",
+      "sizes": "60x60"
+    },
+    {
+      "src": "src/assets/logo/round/64.png",
+      "type": "image/png",
+      "sizes": "64x64"
+    },
+    {
+      "src": "src/assets/logo/round/72.png",
+      "type": "image/png",
+      "sizes": "72x72"
+    },
+    {
+      "src": "src/assets/logo/round/76.png",
+      "type": "image/png",
+      "sizes": "76x76"
+    },
+    {
+      "src": "src/assets/logo/round/80.png",
+      "type": "image/png",
+      "sizes": "80x80"
+    },
+    {
+      "src": "src/assets/logo/round/87.png",
+      "type": "image/png",
+      "sizes": "87x87"
+    },
+    {
+      "src": "src/assets/logo/round/88.png",
+      "type": "image/png",
+      "sizes": "88x88"
+    },
+    {
+      "src": "src/assets/logo/round/100.png",
+      "type": "image/png",
+      "sizes": "100x100"
+    },
+    {
+      "src": "src/assets/logo/round/114.png",
+      "type": "image/png",
+      "sizes": "114x114"
+    },
+    {
+      "src": "src/assets/logo/round/120.png",
+      "type": "image/png",
+      "sizes": "120x120"
+    },
+    {
+      "src": "src/assets/logo/round/128.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "src/assets/logo/round/144.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "src/assets/logo/round/152.png",
+      "type": "image/png",
+      "sizes": "152x152"
+    },
+    {
+      "src": "src/assets/logo/round/167.png",
+      "type": "image/png",
+      "sizes": "167x167"
+    },
+    {
+      "src": "src/assets/logo/round/172.png",
+      "type": "image/png",
+      "sizes": "172x172"
+    },
+    {
+      "src": "src/assets/logo/round/180.png",
+      "type": "image/png",
+      "sizes": "180x180"
+    },
+    {
+      "src": "src/assets/logo/round/196.png",
+      "type": "image/png",
+      "sizes": "196x196"
+    },
+    {
+      "src": "src/assets/logo/round/216.png",
+      "type": "image/png",
+      "sizes": "216x216"
+    },
+    {
+      "src": "src/assets/logo/round/256.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "src/assets/logo/round/512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "src/assets/logo/round/1024.png",
+      "type": "image/png",
+      "sizes": "1024x1024"
+    }
+  ],
+  "orientation": "any",
+  "start_url": "https://fosscord.com"
+}

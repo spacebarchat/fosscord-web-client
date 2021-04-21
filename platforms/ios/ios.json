@@ -6,8 +6,14 @@
   "config_munge": {
     "files": {}
   },
-  "installed_plugins": {},
+  "installed_plugins": {
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.fosscord.client"
+    }
+  },
   "dependent_plugins": {},
   "modules": [],
-  "plugin_metadata": {}
+  "plugin_metadata": {
+    "cordova-plugin-whitelist": "1.3.4"
+  }
 }

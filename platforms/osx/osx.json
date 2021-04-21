@@ -6,6 +6,12 @@
   "config_munge": {
     "files": {}
   },
-  "installed_plugins": {},
-  "dependent_plugins": {}
+  "installed_plugins": {
+    "cordova-plugin-whitelist": {}
+  },
+  "dependent_plugins": {},
+  "modules": [],
+  "plugin_metadata": {
+    "cordova-plugin-whitelist": "1.3.4"
+  }
 }

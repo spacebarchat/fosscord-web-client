@@ -217,7 +217,7 @@
 		70BD681B18FFB02D00A1EFCF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 510;
 				ORGANIZATIONNAME = __CDV_ORGANIZATION_NAME__;
 				TargetAttributes = {
 					70BD682218FFB02D00A1EFCF = {

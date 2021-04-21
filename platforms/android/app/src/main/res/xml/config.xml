@@ -1,5 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.fosscord.client" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
     <name short="Fosscord">Fosscord</name>
     <description>Fosscord a free open source selfhostable chat, voice and video discord-compatible platform</description>
     <author email="discord.open.source@gmail.com" href="http://fosscord.com">
@@ -61,7 +65,7 @@
     <preference name="loglevel" value="DEBUG" />
     <preference name="AllowWebViewNavigation" value="true" />
     <preference name="AllowInlineMediaPlayback" value="true" />
-    <preference name="Orientation" value="all" />
+    <preference name="Orientation" value="default" />
     <preference name="AllowNewWindows" value="false" />
     <preference name="BackupWebStorage" value="cloud" />
     <preference name="DisallowOverscroll" value="true" />
