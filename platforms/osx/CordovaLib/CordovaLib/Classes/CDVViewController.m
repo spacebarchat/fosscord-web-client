@@ -77,7 +77,6 @@
     if (!loadErr) {
         NSURLRequest* appReq = [NSURLRequest requestWithURL:appURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:20.0];
         [[self.webView mainFrame] loadRequest:appReq];
-
     } else {
         NSString* html = [NSString stringWithFormat:@"<html><body> %@ </body></html>", loadErr];
         [[self.webView mainFrame] loadHTMLString:html baseURL:nil];
@@ -89,6 +88,8 @@
 
     WebPreferences* prefs = [self.webView preferences];
     [prefs setAutosaves:YES];
+    
+    self.webView.customUserAgent = @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Fosscord/1.0.0 osx/1.0.0";
 
     [self configureWebDefaults:prefs];
     [self configureLocalStorage:prefs];

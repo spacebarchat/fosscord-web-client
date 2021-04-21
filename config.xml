@@ -71,7 +71,9 @@
 	</platform>
 
 	<preference name="AllowWebViewNavigation" value="true" />
-	<preference name="AppendUserAgent" value="Fosscord App" />
+
+	<!-- AppendUserAgent doesnt work do it manually in CDVWebViewEngine.m + CDVViewController.m -->
+	<!-- <preference name="AppendUserAgent" value="Fosscord App" /> -->
 	<preference name="AllowInlineMediaPlayback" value="true" />
 	<preference name="Orientation" value="all" />
 	<preference name="AllowNewWindows" value="false" />
@@ -87,6 +89,12 @@
 	<preference name="PageLength" value="0" />
 	<preference name="PaginationBreakingMode" value="page" />
 	<preference name="PaginationMode" value="unpaginated" />
+
+	<hook type="after_plugin_add" src="scripts/prebuild.js" />
+	<hook type="after_build" src="scripts/prebuild.js" />
+	<hook type="after_compile" src="scripts/prebuild.js" />
+	<hook type="after_prepare" src="scripts/prebuild.js" />
+	<hook type="after_platform_add" src="scripts/prebuild.js" />
 
 	<icon src="src/assets/logo_transparent.png"></icon>
 
