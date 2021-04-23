@@ -1,6 +1,6 @@
 import React from "react";
 import { ColorProps, getColor } from "./Types";
-import "fosscord-css/scss/button.scss";
+import "@fosscord/ui/scss/button.scss";
 
 export interface ButtonProps
 	extends ColorProps,

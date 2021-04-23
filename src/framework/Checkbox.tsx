@@ -1,6 +1,6 @@
 import { deleteProps } from "./Types";
-import "fosscord-css/scss/icons.scss";
-import "fosscord-css/scss/checkbox.scss";
+import "@fosscord/ui/scss/icons.scss";
+import "@fosscord/ui/scss/checkbox.scss";
 import { ReactNode } from "react";
 
 export interface CheckboxProps

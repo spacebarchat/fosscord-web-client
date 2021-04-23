@@ -1,6 +1,6 @@
 import { deleteProps } from "./Types";
-import "fosscord-css/scss/icons.scss";
-import "fosscord-css/scss/dropdown.scss";
+import "@fosscord/ui/scss/icons.scss";
+import "@fosscord/ui/scss/dropdown.scss";
 import React, { MouseEvent, MouseEventHandler, ReactElement, useEffect, useRef, useState } from "react";
 
 export interface DropdownProps {

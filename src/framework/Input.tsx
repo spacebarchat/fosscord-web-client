@@ -1,6 +1,6 @@
 import { ReactNode, useState } from "react";
 import { deleteProps } from "./Types";
-import "fosscord-css/scss/input-fields.scss";
+import "@fosscord/ui/scss/input-fields.scss";
 
 export interface InputProps
 	extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {

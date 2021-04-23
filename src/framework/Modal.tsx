@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "fosscord-css/scss/modal.scss";
+import "@fosscord/ui/scss/modal.scss";
 import { Route } from "react-router";
 
 export interface ModalProps {

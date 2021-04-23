@@ -7,11 +7,11 @@
 	"scripts": {
 		"start": "node scripts/start.js",
 		"build": "node scripts/build.js",
-		"test": "node scripts/test.js",
-		"postinstall": "npm un fosscord-css && npm i github:fosscord/fosscord-css"
+		"test": "node scripts/test.js"
 	},
 	"dependencies": {
 		"@babel/core": "7.12.3",
+		"@fosscord/ui": "^1.0.0",
 		"@pmmmwh/react-refresh-webpack-plugin": "0.4.3",
 		"@svgr/webpack": "5.5.0",
 		"@testing-library/jest-dom": "^5.11.10",
@@ -45,7 +45,6 @@
 		"eslint-plugin-testing-library": "^3.9.2",
 		"eslint-webpack-plugin": "^2.5.2",
 		"file-loader": "6.1.1",
-		"fosscord-css": "github:fosscord/fosscord-css",
 		"fs-extra": "^9.0.1",
 		"html-webpack-plugin": "4.5.0",
 		"i18next": "^20.2.1",

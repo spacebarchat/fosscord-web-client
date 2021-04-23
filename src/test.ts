@@ -1,1 +1,1 @@
-import "../node_modules/fosscord-css/scss/general.scss";
+import "../node_modules/@fosscord/ui/scss/general.scss";

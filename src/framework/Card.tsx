@@ -1,4 +1,4 @@
-import "fosscord-css/scss/card.scss";
+import "@fosscord/ui/scss/card.scss";
 import { MouseEventHandler, ReactNode } from "react";
 import { Icon } from "./Icon";
 
