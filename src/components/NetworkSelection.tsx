@@ -14,8 +14,6 @@ export interface NetworkSelectionProps {
 	defaultValue?: Network;
 }
 
-// TODO: network delete button
-
 export function NetworkSelection(props: NetworkSelectionProps) {
 	const { t } = useTranslation("network");
 	const history = useHistory();

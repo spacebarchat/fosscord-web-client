@@ -43,6 +43,10 @@ export default function NetworkPage(props: NetworkPageProps) {
 		// TODO: show success toast
 	}
 
+	function removeNetwork(network: Network) {
+		dispatch({ type: "REMOVE_NETWORK", payload: network });
+	}
+
 	return (
 		<>
 			<div className="sidebar">
@@ -81,7 +85,20 @@ export default function NetworkPage(props: NetworkPageProps) {
 												header={x.splash}
 												icon={x.icon}
 												verified={x.verified}
-											></Card>
+											>
+												{!x.verified ? (
+													<Icon
+														style={{
+															position: "absolute",
+															right: "1rem",
+															top: "1rem",
+														}}
+														icon="trash-alt"
+														color="red"
+														onClick={() => removeNetwork(x)}
+													/>
+												) : null}
+											</Card>
 										))}
 									</div>
 								</>
