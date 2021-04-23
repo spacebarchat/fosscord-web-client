@@ -53,7 +53,10 @@ export function Dropdown(props: DropdownProps) {
 			<div ref={dropdownRef} className={`dropdown ${props.className || ""} ${open && "open"}`}>
 				<div className="control item" onClick={() => setOpen(!open)}>
 					<span className="left">
-						{children[selected]}
+						{children[selected] && {
+							...children[selected],
+							props: { ...children[selected]?.props, item: true },
+						}}
 					</span>
 					<span className="right">
 						<i className="icon chevron-down"></i>
