@@ -1,4 +1,4 @@
-import { Dispatch, FormEvent, SetStateAction, useState } from "react";
+import { FormEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { Network } from "../reducers/networks";
@@ -18,7 +18,8 @@ export default function LoginScreen() {
 	const [network, setNetwork] = useState<Network>();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const [captchaKey, setCaptchaKey] = useState(null);
+	//TODO: captchaKey
+	// const [captchaKey, setCaptchaKey] = useState(null);
 	const [err, setErr] = useState(null);
 
 	async function submit(event: FormEvent) {

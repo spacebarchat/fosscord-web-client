@@ -1,4 +1,3 @@
-import { deleteProps } from "./Types";
 import "@fosscord/ui/scss/icons.scss";
 import "@fosscord/ui/scss/dropdown.scss";
 import React, { MouseEvent, MouseEventHandler, ReactElement, useEffect, useRef, useState } from "react";
@@ -10,10 +9,6 @@ export interface DropdownProps {
 	selected: number;
 	onChange?: (index: number, element: ReactElement<DropdownItemProps>) => any;
 }
-
-window.addEventListener("mousedown", (event) => {
-	var element = document.getElementById("parent-node");
-});
 
 export function Dropdown(props: DropdownProps) {
 	const dropdownRef = useRef<HTMLDivElement>(null);

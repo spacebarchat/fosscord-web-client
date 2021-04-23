@@ -17,6 +17,7 @@ export default function Register() {
 	const [password, setPassword] = useState("");
 	const [consent, setConsent] = useState(false);
 	const [network, setNetwork] = useState<Network>();
+	//TODO: use setErr
 	const [err, setErr] = useState(null);
 
 	function submit(event: FormEvent) {
