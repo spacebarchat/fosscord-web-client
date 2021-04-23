@@ -23,7 +23,7 @@ export function NetworkSelection(props: NetworkSelectionProps) {
 	const [network, setNetwork] = useState(networks[0]);
 	useEffect(() => {
 		if (!props.defaultValue) props.onChange?.(network);
-	}, []);
+	});
 
 	function changeNetwork(network: Network) {
 		setNetwork(network);

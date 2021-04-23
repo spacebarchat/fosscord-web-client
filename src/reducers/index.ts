@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { accounts, AccountState, AccountAction } from "./accounts";
+import { accounts, AccountState} from "./accounts";
 import { users } from "./users";
 import { networks, NetworkState } from "./networks";
 
