@@ -1,5 +1,5 @@
 {
-	"name": "com.fosscord.client",
+	"name": "@fosscord/client",
 	"displayName": "Fosscord",
 	"version": "0.1.0",
 	"private": true,
