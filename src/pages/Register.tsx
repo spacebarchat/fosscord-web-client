@@ -15,6 +15,7 @@ export default function Register() {
 	const [email, setEmail] = useState("");
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
+	const [birthday, setBirthday] = useState("");
 	const [consent, setConsent] = useState(false);
 	const [network, setNetwork] = useState<Network>();
 	//TODO: use setErr
@@ -22,7 +23,7 @@ export default function Register() {
 
 	function submit(event: FormEvent) {
 		event.preventDefault();
-		console.log({ email, username, password, consent, network });
+		console.log({ email, username, password, birthday, consent, network });
 	}
 
 	return (
@@ -62,8 +63,14 @@ export default function Register() {
 					labelText={t("password")}
 					autoComplete="new-password"
 				></Input>
-
-				{/* // TODO: date of birth + network selection */}
+				<Input
+					error={getFormError(err, "date_of_birth")}
+					required
+					onChange={(e) => setBirthday(e.target.value)}
+					type="date"
+					labelText={t("dateOfBirth")}
+					autoComplete="bday"
+				></Input>
 				<Checkbox
 					error={getFormError(err, "consent")}
 					required
