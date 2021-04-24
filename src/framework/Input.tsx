@@ -24,7 +24,7 @@ export function Input(p: InputProps) {
 		<label className="input-wrapper">
 			<p className={`label title text ${props.error ? "danger" : ""}`}>
 				{props.labelText}
-				{props.error && `- ${props.error}`}
+				{props.error && <> - {props.error}</>}
 			</p>
 			<input value={props.value} {...deleteProps({ ...props }, "labelText", "children")} />
 			{props.children}
