@@ -1,5 +1,6 @@
 import "missing-native-js-functions";
 import { ReactNode } from "react";
+import { Text } from "../framework/Text";
 
 export function getFormError(error: any, keys: string): string | ReactNode {
 	if (!error) return "";
@@ -24,6 +25,18 @@ export function getFormError(error: any, keys: string): string | ReactNode {
 	}
 
 	return getFormError(value, keysArr.slice(1).join("."));
+}
+
+export function FormError({ error, key, children }: { error: any; key: string; children?: ReactNode }) {
+	const err = getFormError(error, key);
+	if (err)
+		return (
+			<Text danger>
+				{err}
+				{children}
+			</Text>
+		);
+	return <></>;
 }
 
 export interface PlainTextErrorProps

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch, RootState } from "react-redux";
+import { useSelector, RootState } from "react-redux";
+import { Text } from "../framework/Text";
 import("../test");
 
 export default function HomeScreen(props: any) {
@@ -8,7 +9,8 @@ export default function HomeScreen(props: any) {
 	return (
 		<div>
 			<Link to="/login">Login</Link>
-			<p className="text">Homescreen</p>
+			<Text>Homescreen</Text>
+			<Text>{count}</Text>
 		</div>
 	);
 }

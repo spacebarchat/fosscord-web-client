@@ -30,16 +30,17 @@ export async function request(url: string, opts?: RequestOptions): Promise<Reque
 	if (!opts) opts = {};
 	if (!url.startsWith("http") && opts.network) {
 		if (url.startsWith("/")) url = url.slice(1);
-		url = `${opts.network.api}/${opts.network.version}/${url}`;
+		url = `${opts.network.api}/v${opts.network.version}/${url}`;
 	}
 	if (!opts.headers) opts.headers = {};
-	if (!opts.mode) opts.mode = "no-cors";
+	if (!opts.mode) opts.mode = "cors";
 	if (!opts.referrerPolicy) opts.referrerPolicy = "no-referrer";
 
 	var result: any;
 	const controller = new AbortController();
 	var timeout;
 	var response: Response | undefined = undefined;
+	var timeoutHit = false;
 
 	if (opts.timeout == null) opts.timeout = defaultTimeout;
 	if (opts.awaitRateLimit == null) opts.awaitRateLimit = true;
@@ -47,8 +48,11 @@ export async function request(url: string, opts?: RequestOptions): Promise<Reque
 	if (opts.throwErrors == null) opts.throwErrors = false;
 	if (opts.timeout && opts.timeout > 0) {
 		opts.signal = controller.signal;
-
-		timeout = setTimeout(() => controller.abort(), opts.timeout);
+		timeout = setTimeout(() => {
+			timeoutHit = true;
+			controller.abort();
+			console.log("abort");
+		}, opts.timeout);
 	}
 	if (opts.body) {
 		if (!opts.method) opts.method = "POST";
@@ -75,11 +79,13 @@ export async function request(url: string, opts?: RequestOptions): Promise<Reque
 				throw i18n.t("rateLimit", { seconds: rateLimit });
 			}
 		} catch (error) {
-			if (!window.navigator?.onLine) {
-				defaultTimeout += 3000; // for poor connections make timeout higher
+			if (timeoutHit) {
+				console.log("increase timeout", defaultTimeout);
+				defaultTimeout += 2000; // for poor connections make timeout higher
 				if (defaultTimeout > 30000) defaultTimeout = 30000;
-				throw i18n.t("offline");
 			}
+
+			if (!window.navigator?.onLine) throw i18n.t("offline");
 			throw i18n.t("serverOffline");
 		}
 
