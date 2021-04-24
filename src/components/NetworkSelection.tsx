@@ -14,8 +14,6 @@ export interface NetworkSelectionProps {
 	defaultValue?: Network;
 }
 
-// TODO: network delete button
-
 export function NetworkSelection(props: NetworkSelectionProps) {
 	const { t } = useTranslation("network");
 	const history = useHistory();
@@ -23,7 +21,7 @@ export function NetworkSelection(props: NetworkSelectionProps) {
 	const [network, setNetwork] = useState(networks[0]);
 	useEffect(() => {
 		if (!props.defaultValue) props.onChange?.(network);
-	}, []);
+	});
 
 	function changeNetwork(network: Network) {
 		setNetwork(network);

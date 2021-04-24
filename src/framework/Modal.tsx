@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "fosscord-css/scss/modal.scss";
+import "@fosscord/ui/scss/modal.scss";
 import { Route } from "react-router";
 
 export interface ModalProps {
@@ -21,7 +21,7 @@ export function Modal(props: ModalProps) {
 		return () => {
 			document.removeEventListener("keydown", handleKeyDown);
 		};
-	}, []);
+	});
 
 	if (props.open) document.querySelector(".modal-background")?.classList.add("modal-open");
 	if (!props.open) document.querySelector(".modal-background")?.classList.remove("modal-open");

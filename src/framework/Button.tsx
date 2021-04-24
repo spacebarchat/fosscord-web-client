@@ -1,7 +1,7 @@
 import React from "react";
 import { ColorProps, deleteProps, getColor } from "./Types";
-import "fosscord-css/scss/button.scss";
 import { Spinner } from "./Spinner";
+import "@fosscord/ui/scss/button.scss";
 
 export interface ButtonProps
 	extends ColorProps,

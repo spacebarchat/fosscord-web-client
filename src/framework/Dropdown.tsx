@@ -1,6 +1,5 @@
-import { deleteProps } from "./Types";
-import "fosscord-css/scss/icons.scss";
-import "fosscord-css/scss/dropdown.scss";
+import "@fosscord/ui/scss/icons.scss";
+import "@fosscord/ui/scss/dropdown.scss";
 import React, { MouseEvent, MouseEventHandler, ReactElement, useEffect, useRef, useState } from "react";
 
 export interface DropdownProps {
@@ -10,10 +9,6 @@ export interface DropdownProps {
 	selected: number;
 	onChange?: (index: number, element: ReactElement<DropdownItemProps>) => any;
 }
-
-window.addEventListener("mousedown", (event) => {
-	var element = document.getElementById("parent-node");
-});
 
 export function Dropdown(props: DropdownProps) {
 	const dropdownRef = useRef<HTMLDivElement>(null);
@@ -58,7 +53,10 @@ export function Dropdown(props: DropdownProps) {
 			<div ref={dropdownRef} className={`dropdown ${props.className || ""} ${open && "open"}`}>
 				<div className="control item" onClick={() => setOpen(!open)}>
 					<span className="left">
-						{{ ...children[selected], props: { ...children[selected].props, item: true } }}
+						{children[selected] && {
+							...children[selected],
+							props: { ...children[selected]?.props, item: true },
+						}}
 					</span>
 					<span className="right">
 						<i className="icon chevron-down"></i>

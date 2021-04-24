@@ -4,7 +4,7 @@ import "./Branding.scss";
 export function Branding() {
 	return (
 		<div className="branding">
-			<img src={Logo} />
+			<img src={Logo} alt="Logo" />
 			<h2 className="text headline">Fosscord</h2>
 		</div>
 	);

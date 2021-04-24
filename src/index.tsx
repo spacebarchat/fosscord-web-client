@@ -2,7 +2,7 @@ import "./util/lazy";
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.scss";
-// import "../node_modules/fosscord-css/scss/general.scss";
+// import "../node_modules/@fosscord/ui/scss/general.scss";
 // import "fossord-css/css/index.css";
 import App from "./components/App";
 import reportWebVitals from "./reportWebVitals";

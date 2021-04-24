@@ -1,6 +1,6 @@
 import { MouseEventHandler, ReactNode } from "react";
 import { ColorProps, getColor } from "./Types";
-import "fosscord-css/scss/list.scss";
+import "@fosscord/ui/scss/list.scss";
 
 export interface ListProps {
 	children?: ReactNode;

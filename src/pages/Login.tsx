@@ -18,9 +18,9 @@ export default function LoginScreen() {
 	const [network, setNetwork] = useState<Network>();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	// TODO: captcha
-	const [captchaKey, setCaptchaKey] = useState(null);
 	const [loading, setLoading] = useState(false);
+	//TODO: captchaKey
+	// const [captchaKey, setCaptchaKey] = useState(null);
 	const [err, setErr] = useState(null);
 
 	async function submit(event: FormEvent) {
