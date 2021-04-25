@@ -7,7 +7,7 @@ import { NetworkSelection } from "../components/NetworkSelection";
 import { Button } from "../framework/Button";
 import { Input } from "../framework/Input";
 import "./Login.scss";
-import { getFormError, PlainTextError } from "../util/FormError";
+import { FormError, getFormError, PlainTextError } from "../util/FormError";
 import { request } from "../util/request";
 
 // TODO: 2fa code
@@ -19,6 +19,7 @@ export default function LoginScreen() {
 	const [network, setNetwork] = useState<Network>();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [loading, setLoading] = useState(false);
 	//TODO: captchaKey
 	const [captchaKey, setCaptchaKey] = useState(null);
 	const [err, setErr] = useState(null);
@@ -26,7 +27,7 @@ export default function LoginScreen() {
 	async function submit(event: FormEvent) {
 		event.preventDefault();
 		console.log({ email, password, network });
-		const { body, error } = await request(`/auth/login`, {
+		var { body, error } = await request(`/auth/login`, {
 			network,
 			body: {
 				login: email,
@@ -38,7 +39,15 @@ export default function LoginScreen() {
 			},
 		});
 		console.log(body, error);
+		if (error?.captcha_key) {
+			error = {
+				captcha: {
+					_errors: [{ message: "Captcha required" }],
+				},
+			};
+		}
 		setErr(error);
+		setLoading(false);
 	}
 
 	return (
@@ -51,6 +60,7 @@ export default function LoginScreen() {
 
 				<NetworkSelection defaultValue={network} onChange={(x) => setNetwork(x)} />
 				{/* email or phone autocomplete */}
+				<FormError error={err} key="captcha"></FormError>
 
 				<Input
 					onChange={(e) => setEmail(e.target.value)}
@@ -78,7 +88,7 @@ export default function LoginScreen() {
 
 				<PlainTextError error={err} style={{ marginBottom: 0 }}></PlainTextError>
 
-				<Button className="submit" primary>
+				<Button loading={loading} className="submit" primary>
 					{t("login")}
 				</Button>
 

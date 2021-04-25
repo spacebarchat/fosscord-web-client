@@ -9,20 +9,35 @@ import { Input } from "../framework/Input";
 import { Network } from "../reducers/networks";
 import "./Login.scss";
 import { getFormError, PlainTextError } from "../util/FormError";
+import { request } from "../util/request";
 
 export default function Register() {
 	const { t } = useTranslation("register");
 	const [email, setEmail] = useState("");
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
+	const [birthday, setBirthday] = useState("");
 	const [consent, setConsent] = useState(false);
 	const [network, setNetwork] = useState<Network>();
 	//TODO: use setErr
 	const [err, setErr] = useState(null);
+	const [loading, setLoading] = useState(false);
 
-	function submit(event: FormEvent) {
+	async function submit(event: FormEvent) {
 		event.preventDefault();
-		console.log({ email, username, password, consent, network });
+		console.log({ email, username, password, birthday, consent, network });
+
+		setLoading(true);
+
+		// TODO: make response body complete
+		const { response, error } = await request(`/auth/register`, {
+			network,
+			body: { login: email, password, undelete: false, login_source: null, gift_code_sku_id: null },
+		});
+		console.log(response, error);
+
+		setErr(error);
+		setLoading(false);
 	}
 
 	return (
@@ -62,8 +77,14 @@ export default function Register() {
 					labelText={t("password")}
 					autoComplete="new-password"
 				></Input>
-
-				{/* // TODO: date of birth + network selection */}
+				<Input
+					error={getFormError(err, "date_of_birth")}
+					required
+					onChange={(e) => setBirthday(e.target.value)}
+					type="date"
+					labelText={t("dateOfBirth")}
+					autoComplete="bday"
+				></Input>
 				<Checkbox
 					error={getFormError(err, "consent")}
 					required
@@ -80,7 +101,7 @@ export default function Register() {
 
 				<PlainTextError error={err} style={{ marginBottom: 0 }}></PlainTextError>
 
-				<Button className="submit" primary>
+				<Button loading={loading} className="submit" primary>
 					{t("submit")}
 				</Button>
 

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { RootState, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
+import { Text } from "../framework/Text";
 
 export default function HomeScreen(props: any) {
 	const history = useHistory();
@@ -17,7 +18,7 @@ export default function HomeScreen(props: any) {
 	return (
 		<div>
 			<Link to="/login">Login</Link>
-			<p className="text">Homescreen</p>
+			<Text>Homescreen</Text>
 		</div>
 	);
 }
