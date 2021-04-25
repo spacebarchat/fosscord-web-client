@@ -12,6 +12,7 @@ import { request } from "../util/request";
 
 // TODO: 2fa code
 // TODO: no discord warning for cordova apps
+// TODO: add x-super-properties + x-fingerprint to request headers
 
 export default function LoginScreen() {
 	const { t } = useTranslation("login");
@@ -19,17 +20,24 @@ export default function LoginScreen() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	//TODO: captchaKey
-	// const [captchaKey, setCaptchaKey] = useState(null);
+	const [captchaKey, setCaptchaKey] = useState(null);
 	const [err, setErr] = useState(null);
 
 	async function submit(event: FormEvent) {
 		event.preventDefault();
 		console.log({ email, password, network });
-		const { response, error } = await request(`/auth/login`, {
+		const { body, error } = await request(`/auth/login`, {
 			network,
-			body: { login: email, password, undelete: false, login_source: null, gift_code_sku_id: null },
+			body: {
+				login: email,
+				password,
+				undelete: false,
+				login_source: null,
+				gift_code_sku_id: null,
+				captcha_key: captchaKey,
+			},
 		});
-		console.log(response, error);
+		console.log(body, error);
 		setErr(error);
 	}
 

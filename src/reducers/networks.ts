@@ -3,6 +3,24 @@ import FosscordLogo from "../assets/logo_big_transparent.png";
 export function networks(
 	state = [
 		{
+			id: "1",
+			config: {},
+			verified: true,
+			discord: true,
+			name: "Discord",
+			description: "Offical discord.com network",
+			invite: "discord.gg",
+			api: "https://discord.com/api",
+			cdn: "https://cdn.discordapp.com",
+			gateway: "wss://gateway.discord.gg",
+			host: "discord.com",
+			version: 9,
+			icon: "https://logopng.net/wp-content/uploads/2020/07/logo-discord-png-icon-6.png",
+			splash:
+				"https://preview.redd.it/4zh2hgl46cp51.png?width=3325&format=png&auto=webp&s=b9123bff12e1d5b86248d27a059104b4c92e05b5",
+			termsOfService: "https://discord.com/terms",
+		},
+		{
 			id: "0",
 			config: {},
 			verified: true,
@@ -16,23 +34,6 @@ export function networks(
 			host: "fosscord.com",
 			icon: FosscordLogo,
 			splash: "https://images.opencollective.com/discordhooks/1f8f486/background.png",
-		},
-		{
-			id: "1",
-			config: {},
-			verified: true,
-			name: "Discord",
-			description: "Offical discord.com network",
-			invite: "discord.gg",
-			api: "https://discord.com/api",
-			cdn: "https://cdn.discordapp.com",
-			gateway: "wss://gateway.discord.gg",
-			host: "discord.com",
-			version: 8,
-			icon: "https://logopng.net/wp-content/uploads/2020/07/logo-discord-png-icon-6.png",
-			splash:
-				"https://preview.redd.it/4zh2hgl46cp51.png?width=3325&format=png&auto=webp&s=b9123bff12e1d5b86248d27a059104b4c92e05b5",
-			termsOfService: "https://discord.com/terms",
 		},
 		{
 			id: "-1",
@@ -68,6 +69,7 @@ export interface Network {
 	config: any; // TODO
 	invite: string;
 	gateway: string;
+	discord: boolean; // if it is the offical disocrd instance, used for backwards compatibility
 	api: string;
 	cdn: string;
 	host: string;

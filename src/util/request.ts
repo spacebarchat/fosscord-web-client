@@ -30,10 +30,10 @@ export async function request(url: string, opts?: RequestOptions): Promise<Reque
 	if (!opts) opts = {};
 	if (!url.startsWith("http") && opts.network) {
 		if (url.startsWith("/")) url = url.slice(1);
-		url = `${opts.network.api}/${opts.network.version}/${url}`;
+		url = `${opts.network.api}/v${opts.network.version}/${url}`;
 	}
 	if (!opts.headers) opts.headers = {};
-	if (!opts.mode) opts.mode = "no-cors";
+	if (!opts.mode) opts.mode = "cors";
 	if (!opts.referrerPolicy) opts.referrerPolicy = "no-referrer";
 
 	var result: any;
@@ -80,6 +80,7 @@ export async function request(url: string, opts?: RequestOptions): Promise<Reque
 				if (defaultTimeout > 30000) defaultTimeout = 30000;
 				throw i18n.t("offline");
 			}
+			if (opts.network?.discord) throw i18n.t("discordCORSIssue");
 			throw i18n.t("serverOffline");
 		}
 
@@ -100,6 +101,7 @@ export async function request(url: string, opts?: RequestOptions): Promise<Reque
 		}
 
 		if (!ok) {
+			if (typeof result === "string" && result.length === 0) result = null;
 			if (result && !(result instanceof ArrayBuffer)) {
 				if (typeof result === "object") {
 					if (result?.code === 50035) {
@@ -111,7 +113,7 @@ export async function request(url: string, opts?: RequestOptions): Promise<Reque
 				}
 				throw result;
 			}
-			throw response.statusText;
+			throw response.statusText || response.status;
 		}
 
 		return {
