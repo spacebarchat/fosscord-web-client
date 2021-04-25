@@ -23,6 +23,7 @@ const renderReactDom = () => {
 reportWebVitals(console.log);
 
 if (window.cordova) {
+	console.log("wait for cordova to initialize");
 	document.addEventListener(
 		"deviceready",
 		() => {
