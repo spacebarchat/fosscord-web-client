@@ -3,6 +3,21 @@ import FosscordLogo from "../assets/logo_big_transparent.png";
 export function networks(
 	state = [
 		{
+			id: "0",
+			config: {},
+			verified: true,
+			name: "Fosscord",
+			invite: "fosscord.com",
+			api: "https://fosscord.com/api",
+			version: 8,
+			description: "Offical fosscord.com network",
+			cdn: "https://cdn.fosscord.com",
+			gateway: "wss://fosscord.com",
+			host: "fosscord.com",
+			icon: FosscordLogo,
+			splash: "https://images.opencollective.com/discordhooks/1f8f486/background.png",
+		},
+		{
 			id: "1",
 			config: {},
 			verified: true,
@@ -19,21 +34,6 @@ export function networks(
 			splash:
 				"https://preview.redd.it/4zh2hgl46cp51.png?width=3325&format=png&auto=webp&s=b9123bff12e1d5b86248d27a059104b4c92e05b5",
 			termsOfService: "https://discord.com/terms",
-		},
-		{
-			id: "0",
-			config: {},
-			verified: true,
-			name: "Fosscord",
-			invite: "fosscord.com",
-			api: "https://fosscord.com/api",
-			version: 8,
-			description: "Offical fosscord.com network",
-			cdn: "https://cdn.fosscord.com",
-			gateway: "wss://fosscord.com",
-			host: "fosscord.com",
-			icon: FosscordLogo,
-			splash: "https://images.opencollective.com/discordhooks/1f8f486/background.png",
 		},
 		{
 			id: "-1",

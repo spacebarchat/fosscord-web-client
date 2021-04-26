@@ -40,6 +40,16 @@ export default function Register() {
 		setLoading(false);
 	}
 
+	async function changeNetwork(network: Network) {
+		setErr(null);
+		setNetwork(network);
+		console.log("change network", network);
+		if (network.discord) {
+			const { error, response } = await request("/", { network });
+			if (response?.status !== 404) setErr(error);
+		}
+	}
+
 	return (
 		<div className="page register">
 			<form className="form" onSubmit={submit}>
@@ -48,7 +58,7 @@ export default function Register() {
 					{t("register")}
 				</h1>
 
-				<NetworkSelection defaultValue={network} onChange={(x) => setNetwork(x)} />
+				<NetworkSelection defaultValue={network} onChange={changeNetwork} />
 
 				<Input
 					error={getFormError(err, "email")}

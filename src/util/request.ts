@@ -13,7 +13,7 @@ export interface RequestOptions extends RequestInit {
 }
 
 export type RequestResult = {
-	response?: any;
+	response?: Response;
 	body?: string | any;
 	error?: any;
 };
@@ -72,7 +72,16 @@ export async function request(url: string, opts?: RequestOptions): Promise<Reque
 				var rateLimit = Number(
 					response.headers.get("X-RateLimit-Reset-After") || response.headers.get("Retry-After")
 				);
-				if (isNaN(rateLimit)) rateLimit = 5;
+				if (isNaN(rateLimit) || !rateLimit) rateLimit = 5;
+				// @ts-ignore
+				window.test = response;
+				console.log(
+					"got rate limited for " + rateLimit,
+					response.headers,
+					Array.from(response.headers.entries()),
+					response.headers.get("Retry-After"),
+					response.headers.get("X-RateLimit-Reset-After")
+				);
 				if (opts.awaitRateLimit)
 					return new Promise((res) => setTimeout(() => res(request(url, opts)), rateLimit * 1000));
 
