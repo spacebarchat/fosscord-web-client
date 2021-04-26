@@ -50,6 +50,15 @@ export default function LoginScreen() {
 		setLoading(false);
 	}
 
+	async function changeNetwork(network: Network) {
+		setErr(null);
+		setNetwork(network);
+		if (network.discord) {
+			const { error, response } = await request("/", { network });
+			if (response?.status !== 404) setErr(error);
+		}
+	}
+
 	return (
 		<div className="page login">
 			<form className="form" onSubmit={submit}>
@@ -58,7 +67,7 @@ export default function LoginScreen() {
 					{t("login")}
 				</h1>
 
-				<NetworkSelection defaultValue={network} onChange={(x) => setNetwork(x)} />
+				<NetworkSelection defaultValue={network} onChange={changeNetwork} />
 				{/* email or phone autocomplete */}
 				<FormError error={err} key="captcha"></FormError>
 
