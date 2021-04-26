@@ -112,6 +112,8 @@ export async function request(url: string, opts?: RequestOptions): Promise<Reque
 					if (result?.code === 50035) {
 						opts.errorToast = false;
 						throw result.errors;
+					} else if (result?.code === 50067) {
+						throw i18n.t("discordCORSIssue");
 					}
 					const message = result.message || result.error;
 					if (message) throw message;
