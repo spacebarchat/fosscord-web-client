@@ -4,5 +4,6 @@
 	"forgotPassword": "Forgot your password?",
 	"login": "Login",
 	"registerNotice": "Don't have an account?",
-	"register": "Register"
+	"register": "Register",
+	"captchaRequired": "Please solve the captcha first"
 }

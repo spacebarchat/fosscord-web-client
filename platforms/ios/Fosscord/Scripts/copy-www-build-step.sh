@@ -23,7 +23,7 @@
 #   This script should not be called directly.
 #   It is called as a build step from Xcode.
 
-SRC_DIR="../../www"
+SRC_DIR="www"
 DST_DIR="$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME"
 DST_DIR_WWW="$DST_DIR/www"
 COPY_HIDDEN=

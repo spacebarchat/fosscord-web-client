@@ -10,6 +10,7 @@ import { Network } from "../reducers/networks";
 import "./Login.scss";
 import { getFormError, PlainTextError } from "../util/FormError";
 import { request } from "../util/request";
+import { Captcha } from "../util/Captcha";
 
 export default function Register() {
 	const { t } = useTranslation("register");
@@ -19,9 +20,11 @@ export default function Register() {
 	const [birthday, setBirthday] = useState("");
 	const [consent, setConsent] = useState(false);
 	const [network, setNetwork] = useState<Network>();
+	const [captchaKey, setCaptchaKey] = useState(null);
 	//TODO: use setErr
-	const [err, setErr] = useState(null);
+	const [err, setErr] = useState<any>(null);
 	const [loading, setLoading] = useState(false);
+	const captchaRequired = !!err?.captcha_service && !captchaKey;
 
 	async function submit(event: FormEvent) {
 		event.preventDefault();
@@ -109,6 +112,8 @@ export default function Register() {
 				></Checkbox>
 
 				<PlainTextError error={err} style={{ marginBottom: 0 }}></PlainTextError>
+
+				<Captcha onVerify={setCaptchaKey} {...err}></Captcha>
 
 				<Button loading={loading} className="submit" primary>
 					{t("submit")}

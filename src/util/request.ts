@@ -70,7 +70,7 @@ export async function request(url: string, opts?: RequestOptions): Promise<Reque
 			if (response.status === 429) {
 				// rate limit is given in seconds: https://discord.com/developers/docs/topics/rate-limits
 				var rateLimit = Number(
-					response.headers.get("X-RateLimit-Reset-After") || response.headers.get("Retry-After")
+					response.headers.get("x-ratelimit-reset-after") || response.headers.get("retry-after")
 				);
 				if (isNaN(rateLimit) || !rateLimit) rateLimit = 5;
 				// @ts-ignore

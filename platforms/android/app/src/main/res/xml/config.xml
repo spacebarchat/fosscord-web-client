@@ -4,31 +4,6 @@
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
-    <name short="Fosscord">Fosscord</name>
-    <description>Fosscord a free open source selfhostable chat, voice and video discord-compatible platform</description>
-    <author email="discord.open.source@gmail.com" href="http://fosscord.com">
-        Apache Cordova Team
-    </author>
-    <content src="https://fosscord.com" />
-    <access origin="*" />
-    <allow-navigation href="*" />
-    <allow-navigation href="http://*/*" />
-    <allow-navigation href="https://*/*" />
-    <allow-navigation href="tel:*" />
-    <allow-navigation href="sms:*" />
-    <allow-navigation href="mailto:*" />
-    <allow-navigation href="geo:*" />
-    <allow-intent href="http://*/*" />
-    <allow-intent href="https://*/*" />
-    <allow-intent href="tel:*" />
-    <allow-intent href="sms:*" />
-    <allow-intent href="mailto:*" />
-    <allow-intent href="geo:*" />
-    <hook src="scripts/prebuild.js" type="after_plugin_add" />
-    <hook src="scripts/prebuild.js" type="after_build" />
-    <hook src="scripts/prebuild.js" type="after_compile" />
-    <hook src="scripts/prebuild.js" type="after_prepare" />
-    <hook src="scripts/prebuild.js" type="after_platform_add" />
     <icon src="src/assets/logo_transparent.png" />
     <icon height="16" src="src/assets/logo/round/16.png" width="16" />
     <icon height="20" src="src/assets/logo/round/20.png" width="20" />
@@ -61,6 +36,31 @@
     <icon height="256" src="src/assets/logo/round/256.png" width="256" />
     <icon height="512" src="src/assets/logo/round/512.png" width="512" />
     <icon height="1024" src="src/assets/logo/round/1024.png" width="1024" />
+    <name short="Fosscord">Fosscord</name>
+    <description>Fosscord a free open source selfhostable chat, voice and video discord-compatible platform</description>
+    <author email="discord.open.source@gmail.com" href="http://fosscord.com">
+        Apache Cordova Team
+    </author>
+    <content src="https://fosscord.com" />
+    <access origin="*" />
+    <allow-navigation href="*" />
+    <allow-navigation href="http://*/*" />
+    <allow-navigation href="https://*/*" />
+    <allow-navigation href="tel:*" />
+    <allow-navigation href="sms:*" />
+    <allow-navigation href="mailto:*" />
+    <allow-navigation href="geo:*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <hook src="scripts/prebuild.js" type="after_plugin_add" />
+    <hook src="scripts/prebuild.js" type="after_build" />
+    <hook src="scripts/prebuild.js" type="after_compile" />
+    <hook src="scripts/prebuild.js" type="after_prepare" />
+    <hook src="scripts/prebuild.js" type="after_platform_add" />
     <allow-intent href="market:*" />
     <preference name="loglevel" value="DEBUG" />
     <preference name="AllowWebViewNavigation" value="true" />

@@ -12,6 +12,7 @@
 	"dependencies": {
 		"@babel/core": "7.12.3",
 		"@fosscord/ui": "^1.0.1",
+		"@hcaptcha/react-hcaptcha": "^0.3.6",
 		"@pmmmwh/react-refresh-webpack-plugin": "0.4.3",
 		"@svgr/webpack": "5.5.0",
 		"@testing-library/jest-dom": "^5.11.10",
@@ -110,11 +111,11 @@
 			"cordova-plugin-whitelist": {}
 		},
 		"platforms": [
-			"ios",
 			"browser",
 			"windows",
 			"osx",
-			"android"
+			"android",
+			"ios"
 		]
 	},
 	"eslintConfig": {

@@ -1,5 +1,5 @@
 import "missing-native-js-functions";
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { Text } from "../framework/Text";
 
 export function getFormError(error: any, keys: string): string | ReactNode {
@@ -15,10 +15,10 @@ export function getFormError(error: any, keys: string): string | ReactNode {
 		return (
 			<span className="">
 				{value._errors.map((x: any) => (
-					<>
+					<React.Fragment key={x}>
 						{x.message}
 						<br />
-					</>
+					</React.Fragment>
 				))}
 			</span>
 		);

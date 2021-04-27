@@ -133,7 +133,6 @@
         ) {
         userAgent = [NSString stringWithFormat:@"%@ %@", userAgent, [settings cordovaSettingForKey:@"AppendUserAgent"]];
     }
-    userAgent = [NSString stringWithFormat:@"%@ %@", userAgent, @"Fosscord/1.0.0 ios/1.0.0"];
     configuration.applicationNameForUserAgent = userAgent;
 
     if (@available(iOS 13.0, *)) {

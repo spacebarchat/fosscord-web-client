@@ -14,11 +14,13 @@
 		padding: 10px;
 		background: var(--background-primary);
 		max-height: 100%;
-		overflow: hidden auto;
+		overflow-x: hidden;
+		overflow-y: auto;
 
 		> *:not(.modal):not(.error) {
 			margin: calc(var(--element-margin) * 2);
 			height: auto;
+			width: calc(100% - calc(var(--element-margin) * 4));
 		}
 
 		.checkbox {

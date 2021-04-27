@@ -9,6 +9,7 @@ import { Input } from "../framework/Input";
 import "./Login.scss";
 import { FormError, getFormError, PlainTextError } from "../util/FormError";
 import { request } from "../util/request";
+import { Captcha, CaptchaProps } from "../util/Captcha";
 
 // TODO: 2fa code
 // TODO: no discord warning for cordova apps
@@ -20,13 +21,13 @@ export default function LoginScreen() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [loading, setLoading] = useState(false);
-	//TODO: captchaKey
 	const [captchaKey, setCaptchaKey] = useState(null);
-	const [err, setErr] = useState(null);
+	const [err, setErr] = useState<any>(null);
+	const captchaRequired = !!err?.captcha_service && !captchaKey;
 
 	async function submit(event: FormEvent) {
 		event.preventDefault();
-		console.log({ email, password, network });
+		// setErr(null);
 		var { body, error } = await request(`/auth/login`, {
 			network,
 			body: {
@@ -38,14 +39,6 @@ export default function LoginScreen() {
 				captcha_key: captchaKey,
 			},
 		});
-		console.log(body, error);
-		if (error?.captcha_key) {
-			error = {
-				captcha: {
-					_errors: [{ message: "Captcha required" }],
-				},
-			};
-		}
 		setErr(error);
 		setLoading(false);
 	}
@@ -68,8 +61,6 @@ export default function LoginScreen() {
 				</h1>
 
 				<NetworkSelection defaultValue={network} onChange={changeNetwork} />
-				{/* email or phone autocomplete */}
-				<FormError error={err} key="captcha"></FormError>
 
 				<Input
 					onChange={(e) => setEmail(e.target.value)}
@@ -89,16 +80,16 @@ export default function LoginScreen() {
 					autoComplete="current-password"
 				></Input>
 
-				{/* // TODO network selection */}
-
 				<Link className="small" to="/resetPassword">
 					{t("forgotPassword")}
 				</Link>
 
 				<PlainTextError error={err} style={{ marginBottom: 0 }}></PlainTextError>
 
-				<Button loading={loading} className="submit" primary>
-					{t("login")}
+				<Captcha onVerify={setCaptchaKey} {...err}></Captcha>
+
+				<Button loading={loading} className="submit" primary disabled={captchaRequired || loading}>
+					{captchaRequired ? t("captchaRequired") : t("login")}
 				</Button>
 
 				<div className="text muted">
