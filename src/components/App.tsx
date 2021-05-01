@@ -4,11 +4,10 @@ import store from "../util/store";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ErrorBoundary } from "./ErrorBoundary";
 import "../util/i18n";
+import Home from "../pages/Home";
 
-const Home = React.lazy(() => import("../pages/Home"));
 const Login = React.lazy(() => import("../pages/Login"));
 const Register = React.lazy(() => import("../pages/Register"));
-const NotFound = React.lazy(() => import("../pages/NotFound"));
 
 function App() {
 	return (
@@ -20,8 +19,7 @@ function App() {
 							<Switch>
 								<Route path="/register" component={Register}></Route>
 								<Route path="/login" component={Login}></Route>
-								<Route exact path="/" component={Home}></Route>
-								<Route component={NotFound}></Route>
+								<Route component={Home}></Route>
 							</Switch>
 						</Router>
 					</Suspense>

@@ -28,16 +28,25 @@ export default function Register() {
 
 	async function submit(event: FormEvent) {
 		event.preventDefault();
-		console.log({ email, username, password, birthday, consent, network });
 
 		setLoading(true);
 
 		// TODO: make response body complete
 		const { response, error } = await request(`/auth/register`, {
 			network,
-			body: { login: email, password, undelete: false, login_source: null, gift_code_sku_id: null },
+			// TODO: fingerprint
+			body: {
+				email,
+				password,
+				captcha_key: captchaKey,
+				consent,
+				fingerprint: null,
+				gift_code_sku_id: null,
+				invite: null,
+				username,
+				date_of_birth: birthday,
+			},
 		});
-		console.log(response, error);
 
 		setErr(error);
 		setLoading(false);
@@ -115,8 +124,8 @@ export default function Register() {
 
 				<Captcha onVerify={setCaptchaKey} {...err}></Captcha>
 
-				<Button loading={loading} className="submit" primary>
-					{t("submit")}
+				<Button loading={loading} className="submit" primary disabled={captchaRequired || loading}>
+					{captchaRequired ? t("captchaRequired") : t("register")}
 				</Button>
 
 				<div className="text muted">

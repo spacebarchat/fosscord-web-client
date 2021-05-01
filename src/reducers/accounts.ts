@@ -1,3 +1,5 @@
+import { Client } from "../util/Client";
+
 export function accounts(state = [], action: any) {
 	switch (action.type) {
 		case "ADD_ACCOUNT":
@@ -16,6 +18,9 @@ export interface AccountAction {
 export interface Account {
 	network_id: string;
 	user_id: string;
+	token: string;
+	client: Client;
+	user_settings: any;
 }
 
 export interface AccountState {

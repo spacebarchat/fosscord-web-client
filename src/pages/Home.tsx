@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { RootState, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
-import { Text } from "../framework/Text";
+import { Route, Switch, useHistory } from "react-router-dom";
+import { connectAccount } from "../actions";
+const NotFound = React.lazy(() => import("../pages/NotFound"));
 
 export default function HomeScreen(props: any) {
 	const history = useHistory();
@@ -12,13 +13,15 @@ export default function HomeScreen(props: any) {
 	});
 
 	if (!accounts.length) {
-		return <div></div>;
+		return <></>;
 	}
 
+	// @ts-ignore
+	accounts.forEach(connectAccount);
+
 	return (
-		<div>
-			<Link to="/login">Login</Link>
-			<Text>Homescreen</Text>
-		</div>
+		<Switch>
+			<Route component={NotFound}></Route>
+		</Switch>
 	);
 }

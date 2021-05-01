@@ -14,8 +14,14 @@ export const loadState = () => {
 	}
 };
 
-export const saveState = (state: any) => {
+export const saveState = (s: any) => {
 	try {
+		let state = { ...s };
+		state.accounts = state.accounts.map((x: any) => {
+			x = { ...x };
+			delete x.client;
+			return x;
+		});
 		const serializedState = JSON.stringify(state);
 		localStorage.setItem("state", serializedState);
 	} catch {

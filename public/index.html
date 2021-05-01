@@ -19,6 +19,9 @@
 		<div id="root" class="modal-background"></div>
 
 		<script>
+			window.startTime = performance.now();
+			console.log("[App] startime", startTime);
+
 			const { userAgent } = navigator;
 			let cordovaSrc = "%PUBLIC_URL%/cordova";
 

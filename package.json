@@ -11,7 +11,7 @@
 	},
 	"dependencies": {
 		"@babel/core": "7.12.3",
-		"@fosscord/ui": "^1.0.1",
+		"@fosscord/ui": "^1.0.3",
 		"@hcaptcha/react-hcaptcha": "^0.3.6",
 		"@pmmmwh/react-refresh-webpack-plugin": "0.4.3",
 		"@svgr/webpack": "5.5.0",
@@ -84,6 +84,7 @@
 		"terser-webpack-plugin": "4.2.3",
 		"ts-pnp": "1.2.0",
 		"typescript": "^4.2.3",
+		"ua-parser-js": "^0.7.28",
 		"url-loader": "4.1.1",
 		"web-vitals": "^1.1.1",
 		"webpack": "4.44.2",
@@ -93,6 +94,7 @@
 	},
 	"devDependencies": {
 		"@types/react-router-dom": "^5.1.7",
+		"@types/ua-parser-js": "^0.7.35",
 		"autoprefixer": "^9.8.6",
 		"cordova-android": "^9.1.0",
 		"cordova-browser": "^6.0.0",

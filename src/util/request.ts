@@ -38,7 +38,7 @@ export async function request(url: string, opts?: RequestOptions): Promise<Reque
 
 	var result: any;
 	const controller = new AbortController();
-	var timeout;
+	var timeout: any;
 	var response: Response | undefined = undefined;
 	var timeoutHit = false;
 
@@ -51,7 +51,7 @@ export async function request(url: string, opts?: RequestOptions): Promise<Reque
 		timeout = setTimeout(() => {
 			timeoutHit = true;
 			controller.abort();
-			console.log("abort");
+			console.log("[Request] timeout");
 		}, opts.timeout);
 	}
 	if (opts.body) {
@@ -66,7 +66,6 @@ export async function request(url: string, opts?: RequestOptions): Promise<Reque
 	try {
 		try {
 			response = await fetch(url, opts);
-			if (timeout) clearTimeout(timeout);
 			if (response.status === 429) {
 				// rate limit is given in seconds: https://discord.com/developers/docs/topics/rate-limits
 				var rateLimit = Number(
@@ -76,7 +75,7 @@ export async function request(url: string, opts?: RequestOptions): Promise<Reque
 				// @ts-ignore
 				window.test = response;
 				console.log(
-					"got rate limited for " + rateLimit,
+					"[Request] Rate Limit for " + rateLimit,
 					response.headers,
 					Array.from(response.headers.entries()),
 					response.headers.get("Retry-After"),
@@ -89,13 +88,15 @@ export async function request(url: string, opts?: RequestOptions): Promise<Reque
 			}
 		} catch (error) {
 			if (timeoutHit) {
-				console.log("increase timeout", defaultTimeout);
+				console.log("[Request] timeout increase to: " + defaultTimeout);
 				defaultTimeout += 2000; // for poor connections make timeout higher
 				if (defaultTimeout > 30000) defaultTimeout = 30000;
 			}
 			if (opts.network?.discord) throw i18n.t("discordCORSIssue");
 			if (!window.navigator?.onLine) throw i18n.t("offline");
 			throw i18n.t("serverOffline");
+		} finally {
+			clearTimeout(timeout);
 		}
 
 		// TODO: if 500 internal error or opts.errorToast => show error toast

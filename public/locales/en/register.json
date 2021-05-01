@@ -8,5 +8,6 @@
 	"network": "network",
 	"consent": "I agree to the terms of service of this {{link}}",
 	"submit": "Continue",
-	"loginNotice": "Already have an account?"
+	"loginNotice": "Already have an account?",
+	"captchaRequired": "Please solve the captcha first"
 }
