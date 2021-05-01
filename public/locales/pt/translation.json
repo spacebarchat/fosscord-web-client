@@ -1,6 +1,6 @@
 {
-	"rateLimited": "Please wait {{seconds}} seconds",
-	"offline": "You are offline, please connect to the internet",
-	"serverOffline": "The server is not reachable, please try again after a minute",
-	"discordCORSIssue": "It isn't possible to access Discord.com from a third party website, please download the application instead (coming soon)"
+	"rateLimited": "Por favor, aguarde {{seconds}} segundos",
+	"offline": "Você está offline. Por favor, conecte-se à internet",
+	"serverOffline": "O servidor não está acessível, por favor, tente novamente após um minuto",
+	"discordCORSIssue": "Não é possível acessar o Discord.com de um site de terceiros, faça o download do aplicativo em vez disso (em breve)"
 }
