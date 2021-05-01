@@ -3,7 +3,7 @@
 	"password": "Passwort",
 	"forgotPassword": "Passwort vergessen?",
 	"login": "Anmelden",
-	"registerNotice": "Neues Konto anlegen",
+	"registerNotice": "Du hast noch kein Konto?",
 	"register": "Registrieren",
 	"captchaRequired": "Bitte löse zuerst das Captcha",
 	"captchaTitle": "Überprüfe, ob du ein Roboter bist",
