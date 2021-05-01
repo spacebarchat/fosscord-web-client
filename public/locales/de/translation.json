@@ -1,6 +1,6 @@
 {
-	"rateLimited": "Bitte warten Sie {{seconds}} Sekunden",
+	"rateLimited": "Bitte warte {{seconds}} Sekunden",
 	"offline": "Du bist offline, bitte verbinde dich mit dem Internet",
-	"serverOffline": "Der Server ist nicht erreichbar, bitte versuche nach ein paar Minuten erneut",
-	"discordCORSIssue": "Es ist nicht möglich auf Discord.com von einer Drittanbieter-Website zuzugreifen. Bitte lade die Anwendung stattdessen herunter (bald verfügbar)"
+	"serverOffline": "Der Server ist nicht erreichbar, bitte versuche es nach ein paar Minuten erneut",
+	"discordCORSIssue": "Es ist nicht möglich auf Discord.com von einer Drittanbieter-Website zuzugreifen. Bitte lade stattdessen die Anwendung herunter (bald verfügbar)"
 }

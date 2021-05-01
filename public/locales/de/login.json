@@ -8,5 +8,5 @@
 	"captchaRequired": "Bitte löse zuerst das Captcha",
 	"captchaTitle": "Überprüfe, ob du ein Roboter bist",
 	"mfa": "Zwei Faktor code/Backup-Code eingeben",
-	"mfaPlaceholder": "6-stelliger Authentifizierungscode/8-stelliger Sicherungscode"
+	"mfaPlaceholder": "6-stelliger Authentifizierungscode/8-stelliger Backupcode"
 }
