@@ -1,13 +1,13 @@
 {
-	"discover": "Discover",
-	"explore": "Explore",
-	"add": "Add",
-	"search": "Search",
-	"chooseNetwork": "Choose Network",
-	"findNetwork": "Find Networks",
-	"findPlaceholder": "Explore communities",
-	"addNetwork": "Add Network",
-	"addNotice": "You can add new networks here",
-	"setupNotice": "To setup a new network have a look at our setup guide: coming soon",
-	"addPlaceholder": "For example https://fosscord.com"
+	"discover": "发现",
+	"explore": "浏览",
+	"add": "添加",
+	"search": "搜索",
+	"chooseNetwork": "选择网络",
+	"findNetwork": "查找网络",
+	"findPlaceholder": "探索社区",
+	"addNetwork": "添加网络",
+	"addNotice": "您可以在此添加新实例",
+	"setupNotice": "要设置一个新的实例可以看看我们的设置指南：即将推出",
+	"addPlaceholder": "例如：https://fosscord.com"
 }
