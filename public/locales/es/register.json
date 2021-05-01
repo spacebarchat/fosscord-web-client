@@ -1,0 +1,13 @@
+{
+	"register": "Registrarse",
+	"login": "Ingresar",
+	"email": "E-mail",
+	"username": "Usuario",
+	"password": "Contraseña",
+	"dateOfBirth": "Fecha de nacimiento",
+	"network": "red",
+	"consent": "Estoy de acuerdo con los términos del servicio de este {{link}}",
+	"submit": "Continuar",
+	"loginNotice": "¿Ya tienes una cuenta?",
+	"captchaRequired": "Por favor resuelve primero el captcha"
+}
