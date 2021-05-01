@@ -1,0 +1,12 @@
+{
+	"emailTelephone": "Email o número de teléfono",
+	"password": "Contraseña",
+	"forgotPassword": "¿Olvidaste tu contraseña?",
+	"login": "Ingresar",
+	"registerNotice": "¿No tienes una cuenta?",
+	"register": "Registrarse",
+	"captchaRequired": "Por favor resuelve primero el captcha",
+	"captchaTitle": "Comprobando si eres un robot",
+	"mfa": "Introduzca el código de Autorización/Copia de Seguridad",
+	"mfaPlaceholder": "Código de seguridad de 6 dígitos / 8 dígitos"
+}
