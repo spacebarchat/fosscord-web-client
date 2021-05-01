@@ -1,12 +1,12 @@
 {
-	"emailTelephone": "E-mail ou número de telefone",
-	"password": "Palavra-passe",
-	"forgotPassword": "Esqueceu-se da sua senha?",
-	"login": "Conectar-se",
-	"registerNotice": "Não possui uma conta?",
-	"register": "Cadastrar",
-	"captchaRequired": "Por favor, resolva o captcha primeiro",
-	"captchaTitle": "Verificando se você é um robô",
-	"mfa": "Digitar Código de Autor/Backup",
-	"mfaPlaceholder": "Código de autenticação de 6 dígitos/8 dígitos do backup"
+	"emailTelephone": "Email or phone number",
+	"password": "Password",
+	"forgotPassword": "Forgot your password?",
+	"login": "Login",
+	"registerNotice": "Don't have an account?",
+	"register": "Register",
+	"captchaRequired": "Please solve the captcha first",
+	"captchaTitle": "Checking if you are a robot",
+	"mfa": "Enter Auth/Backup Code",
+	"mfaPlaceholder": "6-digit authentication code/8-digit backup code"
 }
