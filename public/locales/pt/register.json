@@ -1,13 +1,13 @@
 {
-	"register": "Cadastrar",
-	"login": "Conectar-se",
-	"email": "e-mail",
-	"username": "Usuário:",
-	"password": "Palavra-passe",
-	"dateOfBirth": "Data Nascimento",
-	"network": "Rede",
-	"consent": "Eu concordo com os termos de serviço deste {{link}}",
-	"submit": "Continuar",
-	"loginNotice": "Já possui uma conta?",
-	"captchaRequired": "Por favor, resolva o captcha primeiro"
+	"register": "Register",
+	"login": "Login",
+	"email": "Email",
+	"username": "Username",
+	"password": "Password",
+	"dateOfBirth": "Date of birth",
+	"network": "network",
+	"consent": "I agree to the terms of service of this network",
+	"submit": "Continue",
+	"loginNotice": "Already have an account?",
+	"captchaRequired": "Please solve the captcha first"
 }
