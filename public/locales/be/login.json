@@ -4,9 +4,9 @@
 	"forgotPassword": "Забыліся свой пароль?",
 	"login": "Увайсці",
 	"registerNotice": "Не маеце ўліковага запісу?",
-	"register": "Register",
-	"captchaRequired": "Please solve the captcha first",
-	"captchaTitle": "Checking if you are a robot",
-	"mfa": "Enter Auth/Backup Code",
-	"mfaPlaceholder": "6-digit authentication code/8-digit backup code"
+	"register": "Рэгістрацыя",
+	"captchaRequired": "Калі ласка, спачатку вырашыце капчу",
+	"captchaTitle": "Праверка, з'яўляецеся ці вы робатам",
+	"mfa": "Увядзіце Аўтарызацыйны/Рэзервовы код",
+	"mfaPlaceholder": "6-значны аўтарызацыйны код/8-значны рэзервовы код"
 }
