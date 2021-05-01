@@ -9,9 +9,10 @@ export function users(state = [], action: any) {
 		case "REMOVE_USERS":
 			return state.filter((x) => x !== action.payload);
 		case "UPDATE_USER":
-			let s = [...state];
-			s.find((x) => x === action.payload);
-			return s;
+			return [...state].map((x: User) => {
+				if (x.id !== action.payload.id) return x;
+				return action.payload;
+			});
 		default:
 			return state;
 	}
