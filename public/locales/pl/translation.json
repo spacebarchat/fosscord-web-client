@@ -1,0 +1,6 @@
+{
+	"rateLimited": "Proszę czekać {{seconds}} sekund",
+	"offline": "Jesteś offline, połącz się z Internetem",
+	"serverOffline": "Serwer jest niedostępny, spróbuj ponownie za minutę",
+	"discordCORSIssue": "Nie można uzyskać dostępu do Discord.com ze strony innej firmy, pobierz aplikację (już wkrótce)"
+}

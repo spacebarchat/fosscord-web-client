@@ -1,0 +1,6 @@
+{
+	"rateLimited": "Vă rugăm așteptați {{seconds}} secunde",
+	"offline": "Ești offline, te rugăm să te conectezi la internet",
+	"serverOffline": "Serverul nu este accesibil, încercați din nou după un minut",
+	"discordCORSIssue": "Nu este posibil să accesezi Discord.com de pe un site terț, te rugăm să descarci aplicația (în curând)"
+}
