@@ -6,7 +6,7 @@
 	"password": "密码",
 	"dateOfBirth": "出生日期",
 	"network": "网络",
-	"consent": "我同意此网络的服务条款",
+	"consent": "我同意此 {{link}} 的服务条款",
 	"submit": "继续",
 	"loginNotice": "已经有一个帐户？",
 	"captchaRequired": "请先解决验证码"
