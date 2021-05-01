@@ -1,13 +1,13 @@
 {
-	"register": "Register",
-	"login": "Login",
-	"email": "Email",
-	"username": "Username",
-	"password": "Password",
-	"dateOfBirth": "Date of birth",
-	"network": "network",
-	"consent": "I agree to the terms of service of this {{link}}",
-	"submit": "Continue",
-	"loginNotice": "Already have an account?",
-	"captchaRequired": "Please solve the captcha first"
+	"discover": "Discover",
+	"explore": "Explore",
+	"add": "Add",
+	"search": "Search",
+	"chooseNetwork": "Choose Network",
+	"findNetwork": "Find Networks",
+	"findPlaceholder": "Explore communities",
+	"addNetwork": "Add Network",
+	"addNotice": "You can add new instances here",
+	"setupNotice": "To setup a new instance have a look at our setup guide: coming soon",
+	"addPlaceholder": "For example https://fosscord.com"
 }
