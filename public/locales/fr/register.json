@@ -1,7 +1,7 @@
 {
 	"register": "Inscription",
 	"login": "Se connecter",
-	"email": "Courriel",
+	"email": "E-Mail",
 	"username": "Nom d'utilisateur",
 	"password": "Mot de passe",
 	"dateOfBirth": "Date de naissance",
