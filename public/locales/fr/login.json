@@ -6,7 +6,7 @@
 	"registerNotice": "Vous n'avez pas de compte ?",
 	"register": "Inscription",
 	"captchaRequired": "Veuillez d'abord résoudre le captcha",
-	"captchaTitle": "Vérification si vous êtes un robot",
-	"mfa": "Entrez le code d'auteur/de sauvegarde",
+	"captchaTitle": "Vérification de si vous êtes un robot",
+	"mfa": "Entrez le code d'authentification/de sauvegarde",
 	"mfaPlaceholder": "Code d'authentification à 6 chiffres/code de sauvegarde à 8 chiffres"
 }
