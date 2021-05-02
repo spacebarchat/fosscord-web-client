@@ -34,7 +34,7 @@ export function NetworkSelection(props: NetworkSelectionProps) {
 		<>
 			<Dropdown
 				className="network-selection"
-				labelText="Network"
+				labelText={t("network")}
 				selected={networks.findIndex((x) => x === network)}
 				onChange={(index) => changeNetwork(networks[index])}
 				children={[
