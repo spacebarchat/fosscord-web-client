@@ -6,7 +6,7 @@
 	"password": "Palavra-passe",
 	"dateOfBirth": "Data Nascimento",
 	"network": "Rede",
-	"consent": "Concordo com os termos de serviço desta rede",
+	"consent": "Eu concordo com os termos de serviço deste {{link}}",
 	"submit": "Continuar",
 	"loginNotice": "Já possui uma conta?",
 	"captchaRequired": "Por favor, resolva o captcha primeiro"
