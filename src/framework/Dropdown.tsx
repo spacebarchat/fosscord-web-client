@@ -40,10 +40,17 @@ export function Dropdown(props: DropdownProps) {
 			}
 		}
 
+		function handleKeypress(event: KeyboardEvent) {
+			if (event.keyCode !== 27) return
+			setOpen(false)
+		}
+
+		window.addEventListener("keypress", handleKeypress);
 		window.addEventListener("click", handleClick);
 
 		return () => {
 			window.removeEventListener("click", handleClick);
+			window.removeEventListener("keypress", handleKeypress);
 		};
 	}, []);
 

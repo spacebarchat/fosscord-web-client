@@ -112,9 +112,8 @@ export default function Register() {
 					onChange={(e) => setConsent(e.target.checked)}
 					labelText={
 						<>
-							{t("consent")}
 							<Link external to={network?.termsOfService}>
-								{t("network")}
+								{t("consent")}
 							</Link>
 						</>
 					}
