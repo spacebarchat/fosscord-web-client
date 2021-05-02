@@ -1,7 +1,7 @@
 {
 	"emailTelephone": "E-mail ou número de telefone",
-	"password": "Palavra-passe",
-	"forgotPassword": "Esqueceu-se da sua senha?",
+	"password": "Senha",
+	"forgotPassword": "Esqueceu a senha?",
 	"login": "Conectar-se",
 	"registerNotice": "Não possui uma conta?",
 	"register": "Cadastrar",
