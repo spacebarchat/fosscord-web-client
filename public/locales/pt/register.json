@@ -1,10 +1,10 @@
 {
 	"register": "Cadastrar",
 	"login": "Conectar-se",
-	"email": "e-mail",
+	"email": "E-mail",
 	"username": "Usuário:",
-	"password": "Palavra-passe",
-	"dateOfBirth": "Data Nascimento",
+	"password": "Senha",
+	"dateOfBirth": "Data de nascimento",
 	"network": "Rede",
 	"consent": "Eu concordo com os termos de serviço deste {{link}}",
 	"submit": "Continuar",
