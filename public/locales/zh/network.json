@@ -8,7 +8,7 @@
 	"findNetwork": "查找网络",
 	"findPlaceholder": "探索社区",
 	"addNetwork": "添加网络",
-	"addNotice": "您可以在此添加新实例",
-	"setupNotice": "要设置一个新的实例可以看看我们的设置指南：即将推出",
+	"addNotice": "您可以在此添加新网络",
+	"setupNotice": "要设置一个新的网络，请查看我们的设置指南：即将到来的",
 	"addPlaceholder": "例如：https://fosscord.com"
 }
