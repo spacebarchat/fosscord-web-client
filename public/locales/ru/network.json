@@ -4,11 +4,11 @@
 	"add": "Добавить",
 	"search": "Поиск",
 	"network": "Сеть",
-	"chooseNetwork": "Выберите Cеть",
-	"findNetwork": "Найти Cети",
-	"findPlaceholder": "Найти сообщества",
-	"addNetwork": "Добавить Cеть",
-	"addNotice": "Вы можете добавить новые сети здесь",
+	"chooseNetwork": "Выберите сеть",
+	"findNetwork": "Найти сети",
+	"findPlaceholder": "Исследовать сообщества",
+	"addNetwork": "Добавить сеть",
+	"addNotice": "Здесь вы можете добавить новые сети",
 	"setupNotice": "Чтобы настроить новую сеть, ознакомьтесь с нашим руководством по настройке: появится в ближайшее время",
 	"addPlaceholder": "Например, https://fosscord.com"
 }
