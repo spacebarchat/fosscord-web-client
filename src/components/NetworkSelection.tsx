@@ -18,7 +18,7 @@ export function NetworkSelection(props: NetworkSelectionProps) {
 	const { t } = useTranslation("network");
 	const history = useHistory();
 	const networks = useSelector((s: RootState) => s.networks);
-	const [network, setNetwork] = useState(networks[0]);
+	const [network, setNetwork] = useState(networks?.[0]);
 	useEffect(() => {
 		if (!props.defaultValue) props.onChange?.(network);
 	});
