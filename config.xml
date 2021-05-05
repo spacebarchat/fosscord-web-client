@@ -60,7 +60,7 @@
 		<allow-intent href="market:*" />
 		<preference name="InAppBrowserStorageEnabled" value="true" />
 		<preference name="Orientation" value="default" />
-
+		<preference name="AppendUserAgent" value="Fosscord/1.0.0 android/1.0.0" />
 	</platform>
 	<platform name="ios">
 		<allow-intent href="itms:*" />
@@ -111,7 +111,6 @@
 	<preference name="AllowWebViewNavigation" value="true" />
 
 	<!-- AppendUserAgent doesnt work do it manually in CDVWebViewEngine.m + CDVViewController.m -->
-	<!-- <preference name="AppendUserAgent" value="Fosscord App" /> -->
 	<preference name="AllowInlineMediaPlayback" value="true" />
 	<preference name="Orientation" value="all" />
 	<preference name="AllowNewWindows" value="false" />

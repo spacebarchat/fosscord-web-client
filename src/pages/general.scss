@@ -6,3 +6,9 @@
 .sidebar {
 	flex: 1 0 218px;
 }
+
+.page {
+	&.root {
+		display: flex;
+	}
+}

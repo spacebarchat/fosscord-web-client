@@ -1,7 +1,7 @@
 import { RootState, useSelector } from "react-redux";
 import { Modal } from "../framework/Modal";
 import { Dropdown, DropdownItem } from "../framework/Dropdown";
-import { Network } from "../reducers/networks";
+import { Network } from "../models/networks";
 import "./NetworkSelection.scss";
 import React, { useEffect, useState } from "react";
 import { Route, useHistory } from "react-router";

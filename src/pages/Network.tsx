@@ -6,7 +6,7 @@ import { Text } from "../framework/Text";
 import { useTranslation } from "react-i18next";
 import "./Network.scss";
 import { RootState, useDispatch, useSelector } from "react-redux";
-import { Network } from "../reducers/networks";
+import { Network } from "../models/networks";
 import { useState } from "react";
 import { Button } from "../framework/Button";
 import "missing-native-js-functions";

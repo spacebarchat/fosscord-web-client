@@ -28,9 +28,9 @@ export class Client {
 	async connect() {
 		const last_connect = Date.now() - this.last_connect;
 		console.log("[WebSocket] last_connect: ", last_connect);
-		if (last_connect <= 1000) {
+		if (last_connect <= 5000) {
 			console.log("[WebSocket] Delaying connect: prevent rate limit");
-			await window.sleep(1000 - last_connect);
+			await window.sleep(5000 - last_connect);
 		}
 		this.connection = new WebSocket(this.url);
 
@@ -124,7 +124,7 @@ export class Client {
 	};
 
 	onOpen = () => {
-		console.log(`[WebSocket] Connected`);
+		console.log(`[WebSocket] Connected to: ${this.url}`);
 	};
 
 	onError = (error: Event) => {

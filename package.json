@@ -75,6 +75,7 @@
 		"react-refresh": "^0.8.3",
 		"react-router-dom": "^5.2.0",
 		"react-scripts": "^4.0.3",
+		"redux-orm": "^0.16.2",
 		"redux-thunk": "^2.3.0",
 		"resolve": "1.18.1",
 		"resolve-url-loader": "^3.1.2",
@@ -94,6 +95,7 @@
 	},
 	"devDependencies": {
 		"@types/react-router-dom": "^5.1.7",
+		"@types/redux-orm": "^0.16.0",
 		"@types/ua-parser-js": "^0.7.35",
 		"autoprefixer": "^9.8.6",
 		"cordova-android": "^9.1.0",
@@ -116,8 +118,8 @@
 			"browser",
 			"windows",
 			"osx",
-			"android",
-			"ios"
+			"ios",
+			"android"
 		]
 	},
 	"eslintConfig": {

@@ -6,7 +6,7 @@ import { Button } from "../framework/Button";
 import { Checkbox } from "../framework/Checkbox";
 import { Link } from "../framework/Link";
 import { Input } from "../framework/Input";
-import { Network } from "../reducers/networks";
+import { Network } from "../models/networks";
 import "./Login.scss";
 import { getFormError, PlainTextError } from "../util/FormError";
 import { request } from "../util/request";

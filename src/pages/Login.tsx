@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useHistory } from "react-router-dom";
-import { Network } from "../reducers/networks";
+import { Network } from "../models/networks";
 import { Branding } from "../components/Branding";
 import { NetworkSelection } from "../components/NetworkSelection";
 import { Button } from "../framework/Button";

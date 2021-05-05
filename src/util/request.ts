@@ -1,4 +1,4 @@
-import { Network } from "../reducers/networks";
+import { Network } from "../models/networks";
 import i18n from "./i18n";
 
 export interface RequestOptions extends RequestInit {
