@@ -1,6 +1,8 @@
-import { applyMiddleware, compose, createStore } from "redux";
-import reducers from "../reducers/";
+import { applyMiddleware, compose, createStore, combineReducers } from "redux";
+import { orm } from "../models";
 import thunk from "redux-thunk";
+import "missing-native-js-functions";
+import { createReducer } from "redux-orm";
 
 export const loadState = () => {
 	try {
@@ -8,6 +10,7 @@ export const loadState = () => {
 		if (serializedState === null) {
 			return undefined;
 		}
+
 		return JSON.parse(serializedState);
 	} catch (err) {
 		return undefined;
@@ -34,8 +37,15 @@ const devTools = global.__REDUX_DEVTOOLS_EXTENSION__ ? global.__REDUX_DEVTOOLS_E
 const middlewares = [devTools, applyMiddleware(thunk)].filter((x) => x !== undefined);
 const persistedState = loadState();
 
-const store = createStore(reducers, persistedState, compose(...middlewares));
+const rootReducer = combineReducers({
+	orm: createReducer(orm), // This will be the Redux-ORM state.
+	// … potentially other reducers
+});
+
+const store = createStore(rootReducer, persistedState, compose(...middlewares));
 export default store;
+// @ts-ignore
+window.store = store;
 
 store.subscribe(() => {
 	saveState(store.getState());
