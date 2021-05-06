@@ -3,12 +3,12 @@
 	"explore": "Esplora",
 	"add": "Aggiungi",
 	"search": "Cerca",
-	"network": "Network",
+	"network": "Rete",
 	"chooseNetwork": "Scegli Rete",
 	"findNetwork": "Trova Reti",
-	"findPlaceholder": "Esplora comunità",
+	"findPlaceholder": "Esplora server",
 	"addNetwork": "Aggiungi Rete",
-	"addNotice": "Puoi aggiungere nuove istanze qui",
-	"setupNotice": "Per configurare una nuova istanza dai un'occhiata alla nostra guida di installazione: in arrivo",
+	"addNotice": "Puoi aggiungere nuove reti qui",
+	"setupNotice": "Per configurare una nuova rete dai un'occhiata alla nostra guida di installazione: in arrivo",
 	"addPlaceholder": "Per esempio https://fosscord.com"
 }
