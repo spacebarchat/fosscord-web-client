@@ -5,7 +5,7 @@
 	"username": "Username",
 	"password": "Password",
 	"dateOfBirth": "Data di nascita",
-	"network": "rete",
+	"network": "Server",
 	"consent": "Accetto i termini di servizio di questo {{link}}",
 	"submit": "Continua",
 	"loginNotice": "Hai già un account?",

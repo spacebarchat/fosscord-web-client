@@ -1,13 +1,13 @@
 {
 	"register": "Registrarse",
-	"login": "Ingresar",
+	"login": "Iniciar sesión",
 	"email": "E-mail",
-	"username": "Usuario",
+	"username": "Nombre de usuario",
 	"password": "Contraseña",
-	"dateOfBirth": "Fecha de nacimiento",
-	"network": "red",
+	"dateOfBirth": "Nacido el",
+	"network": "rede",
 	"consent": "Estoy de acuerdo con los términos del servicio de este {{link}}",
-	"submit": "Continuar",
+	"submit": "Seguir",
 	"loginNotice": "¿Ya tienes una cuenta?",
-	"captchaRequired": "Por favor resuelve primero el captcha"
+	"captchaRequired": "Por favor, resuelve el captcha primero"
 }
