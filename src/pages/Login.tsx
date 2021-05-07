@@ -74,7 +74,7 @@ export default function LoginScreen() {
 	async function changeNetwork(network: Network) {
 		setErr(null);
 		setNetwork(network);
-		if (network.discord) {
+		if (network?.discord) {
 			const { error, response } = await request("/", { network });
 			if (response?.status !== 404) setErr(error);
 		}

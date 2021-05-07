@@ -9,7 +9,7 @@ const NotFound = React.lazy(() => import("../pages/NotFound"));
 export default function HomeScreen(props: any) {
 	const history = useHistory();
 
-	const accounts = useSelector((state: RootState) => state.accounts);
+	const accounts = useSelector((state: RootState) => state.accounts || []);
 	useEffect(() => {
 		if (!accounts.length) history.push("/login");
 	});

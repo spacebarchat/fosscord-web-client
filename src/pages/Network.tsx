@@ -19,7 +19,7 @@ export interface NetworkPageProps {
 export default function NetworkPage(props: NetworkPageProps) {
 	const { t } = useTranslation("network");
 	const dispatch = useDispatch();
-	const networks = useSelector((s: RootState) => s.networks);
+	const networks = useSelector((s: RootState) => s.networks || []);
 	const [list, setList] = useState("explore");
 	const [url, setURL] = useState("");
 
