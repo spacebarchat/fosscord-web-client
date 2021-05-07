@@ -1,14 +1,14 @@
 {
 	"discover": "Descubrir",
 	"explore": "Explorar",
-	"add": "Añadir",
+	"add": "Agrega",
 	"search": "Buscar",
-	"network": "Network",
-	"chooseNetwork": "Elegir red",
+	"network": "Rede",
+	"chooseNetwork": "Elegir rede",
 	"findNetwork": "Encontrar redes",
-	"findPlaceholder": "Explorar comunidades",
-	"addNetwork": "Añadir red",
-	"addNotice": "Puedes añadir nuevas instancias aquí",
-	"setupNotice": "Para configurar una nueva instancia eche un vistazo a nuestra guía de configuración: próximamente",
+	"findPlaceholder": "Explorar redes",
+	"addNetwork": "Agregar rede",
+	"addNotice": "Puedes agregar nuevas redes aquí",
+	"setupNotice": "Para configurar una nueva rede eche un vistazo a nuestra guía de configuración: próximamente",
 	"addPlaceholder": "Por ejemplo https://fosscord.com"
 }

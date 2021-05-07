@@ -1,11 +1,11 @@
 {
 	"emailTelephone": "E-mail ou numéro de téléphone",
 	"password": "Mot de passe",
-	"forgotPassword": "Mot de passe oublié ?",
+	"forgotPassword": "Vous avez oublié votre mot de passe ?",
 	"login": "Se connecter",
 	"registerNotice": "Vous n'avez pas de compte ?",
-	"register": "Inscription",
-	"captchaRequired": "Veuillez d'abord résoudre le captcha",
+	"register": "S’inscrire",
+	"captchaRequired": "Résoudre le captcha en premier",
 	"captchaTitle": "Vérification de si vous êtes un robot",
 	"mfa": "Entrez le code d'authentification/de sauvegarde",
 	"mfaPlaceholder": "Code d'authentification à 6 chiffres/code de sauvegarde à 8 chiffres"
