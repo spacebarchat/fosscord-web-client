@@ -1,12 +1,12 @@
 {
-	"emailTelephone": "Email or phone number",
-	"password": "Password",
-	"forgotPassword": "Forgot your password?",
-	"login": "Login",
-	"registerNotice": "Don't have an account?",
-	"register": "Register",
-	"captchaRequired": "Please solve the captcha first",
-	"captchaTitle": "Checking if you are a robot",
-	"mfa": "Enter Auth/Backup Code",
-	"mfaPlaceholder": "6-digit authentication code/8-digit backup code"
+	"emailTelephone": "Retpoŝto aŭ telefona numbero",
+	"password": "Pasvorto",
+	"forgotPassword": "Ĉu forgesis vian pasvorton?",
+	"login": "Ensaluti",
+	"registerNotice": "Ne havas konton?",
+	"register": "Registriĝo",
+	"captchaRequired": "Bonvolu solvi la kaptĉon",
+	"captchaTitle": "Kontrolas se vi estas roboto",
+	"mfa": "Eniri Aŭte-a/Sekurkopia kodo",
+	"mfaPlaceholder": "Ses-cifera aŭtentikiga kodo/Okcifera Sekurkopia kodo"
 }
