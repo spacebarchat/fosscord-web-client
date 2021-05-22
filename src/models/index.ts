@@ -1,12 +1,12 @@
 import { Reducer } from "redux";
 import { AccountState } from "./accounts";
 import { UserState } from "./users";
-import { Guild, GuildState } from "./guilds";
-import { NetworkState } from "./networks";
+import { GuildModel, GuildState } from "./guilds";
+import { NetworkModel, NetworkState } from "./networks";
 import { ORM } from "redux-orm";
 
 export const orm = new ORM();
-orm.register(Guild);
+orm.register(GuildModel, NetworkModel);
 
 export const session = orm.session();
 

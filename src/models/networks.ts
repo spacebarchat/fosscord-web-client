@@ -1,5 +1,10 @@
+import Model from "redux-orm";
 import { arrayReducer } from ".";
 import FosscordLogo from "../assets/logo_big_transparent.png";
+
+export class NetworkModel extends Model {
+	static modelName = "Network";
+}
 
 export const networks = arrayReducer<Network>("NETWORK", [
 	{
@@ -32,8 +37,7 @@ export const networks = arrayReducer<Network>("NETWORK", [
 		host: "discord.com",
 		version: 9,
 		icon: "https://logopng.net/wp-content/uploads/2020/07/logo-discord-png-icon-6.png",
-		splash:
-			"https://preview.redd.it/4zh2hgl46cp51.png?width=3325&format=png&auto=webp&s=b9123bff12e1d5b86248d27a059104b4c92e05b5",
+		splash: "https://preview.redd.it/4zh2hgl46cp51.png?width=3325&format=png&auto=webp&s=b9123bff12e1d5b86248d27a059104b4c92e05b5",
 		termsOfService: "https://discord.com/terms",
 	},
 	{

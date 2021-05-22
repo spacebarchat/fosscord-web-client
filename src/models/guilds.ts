@@ -2,7 +2,7 @@ import { arrayReducer } from ".";
 import { Network } from "./networks";
 import { Model } from "redux-orm";
 
-export class Guild extends Model {
+export class GuildModel extends Model {
 	static modelName = "Guild";
 }
 
