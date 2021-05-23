@@ -31,7 +31,7 @@ logo by [@nwlandas](https://twitter.com/nwlandas)
 
 ## Installation
 
-_it is in development and not yet finished_
+_it is in development and currently does not build._
 
 ## Support
 
