@@ -1,6 +1,6 @@
 {
-	"emailTelephone": "Email or phone number",
-	"password": "Password",
+	"emailTelephone": "Eposta adresi veya telefon numarası",
+	"password": "Şifre",
 	"forgotPassword": "Forgot your password?",
 	"login": "Login",
 	"registerNotice": "Don't have an account?",
