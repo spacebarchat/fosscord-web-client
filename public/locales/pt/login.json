@@ -1,12 +1,12 @@
 {
 	"emailTelephone": "E-mail ou número de telefone",
-	"password": "Palavra-passe",
-	"forgotPassword": "Esqueceu-se da sua senha?",
+	"password": "Senha",
+	"forgotPassword": "Esqueceu a senha?",
 	"login": "Conectar-se",
 	"registerNotice": "Não possui uma conta?",
 	"register": "Cadastrar",
 	"captchaRequired": "Por favor, resolva o captcha primeiro",
 	"captchaTitle": "Verificando se você é um robô",
-	"mfa": "Digitar Código de Autor/Backup",
+	"mfa": "Digitar Código de Autorização/Backup",
 	"mfaPlaceholder": "Código de autenticação de 6 dígitos/8 dígitos do backup"
 }
