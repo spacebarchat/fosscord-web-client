@@ -9,9 +9,13 @@ export class GuildModel extends Model {
 	};
 }
 
-// export interface Guild {
-// 	id: string;
-// 	name: string;
-// 	icon?: string;
-// 	network: Network;
-// }
+export interface Guild {
+	id: string;
+	name: string;
+	icon?: string;
+	network: Network;
+}
+
+export interface GuildState {
+	guilds: Guild[];
+}

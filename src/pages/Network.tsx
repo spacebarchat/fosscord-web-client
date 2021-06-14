@@ -6,7 +6,7 @@ import { Text } from "../framework/Text";
 import { useTranslation } from "react-i18next";
 import "./Network.scss";
 import { RootState, useDispatch, useSelector } from "react-redux";
-import { Network } from "../models/networks";
+import { Network, networks } from "../models/networks";
 import { useState } from "react";
 import { Button } from "../framework/Button";
 import "missing-native-js-functions";
@@ -19,7 +19,6 @@ export interface NetworkPageProps {
 export default function NetworkPage(props: NetworkPageProps) {
 	const { t } = useTranslation("network");
 	const dispatch = useDispatch();
-	const networks = useSelector((s: RootState) => s.networks || []);
 	const [list, setList] = useState("explore");
 	const [url, setURL] = useState("");
 
