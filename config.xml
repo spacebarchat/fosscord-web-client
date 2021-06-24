@@ -60,7 +60,7 @@
 		<allow-intent href="market:*" />
 		<preference name="InAppBrowserStorageEnabled" value="true" />
 		<preference name="Orientation" value="default" />
-
+		<preference name="AppendUserAgent" value="Fosscord/1.0.0 android/1.0.0" />
 	</platform>
 	<platform name="ios">
 		<allow-intent href="itms:*" />
