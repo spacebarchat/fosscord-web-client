@@ -80,5 +80,4 @@
     <preference name="PaginationBreakingMode" value="page" />
     <preference name="PaginationMode" value="unpaginated" />
     <preference name="InAppBrowserStorageEnabled" value="true" />
-    <preference name="AppendUserAgent" value="Fosscord/1.0.0 android/1.0.0" />
 </widget>

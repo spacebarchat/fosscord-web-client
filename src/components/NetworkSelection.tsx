@@ -1,8 +1,7 @@
-// @ts-nocheck
 import { RootState, useSelector } from "react-redux";
 import { Modal } from "../framework/Modal";
 import { Dropdown, DropdownItem } from "../framework/Dropdown";
-import { Network, networks } from "../models/networks";
+import { Network } from "../models/networks";
 import "./NetworkSelection.scss";
 import React, { useEffect, useState } from "react";
 import { Route, useHistory } from "react-router";
@@ -18,7 +17,8 @@ export interface NetworkSelectionProps {
 export function NetworkSelection(props: NetworkSelectionProps) {
 	const { t } = useTranslation("network");
 	const history = useHistory();
-	const [network, setNetwork] = useState(networks?.[0]);
+	const networks = useSelector((s: RootState) => s.networks);
+	const [network, setNetwork] = useState(networks[0]);
 	useEffect(() => {
 		if (!props.defaultValue) props.onChange?.(network);
 	});

@@ -1,16 +1,29 @@
+import Model from "redux-orm";
 import { Client } from "../util/Client";
-import { Network } from "./networks";
+import { Guild, GuildState } from "./guilds";
 
-export interface AccountAction {
-	type: "ADD_ACCOUNT";
+export class NetworkModel extends Model {
+	static modelName = "Network";
+}
+
+export function accounts(state = [], action: any) {
+	switch (action.type) {
+		case "ADD_ACCOUNT":
+			return [...state, action.payload];
+		case "REMOVE_ACCOUNT":
+			return state.filter((x) => x !== action.payload);
+		default:
+			return state;
+	}
 }
 
 export interface Account {
-	network: Network;
+	network_id?: string;
 	user_id: string;
 	token: string;
 	client: Client;
 	user_settings: any;
+	guilds: Guild[];
 }
 
 export interface AccountState {

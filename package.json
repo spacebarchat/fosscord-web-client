@@ -49,7 +49,7 @@
 		"fs-extra": "^9.0.1",
 		"html-webpack-plugin": "4.5.0",
 		"i18next": "^20.2.1",
-		"i18next-browser-languagedetector": "^6.1.0",
+		"i18next-browser-languagedetector": "^6.1.1",
 		"i18next-http-backend": "^1.2.1",
 		"identity-obj-proxy": "3.0.0",
 		"jest": "26.6.0",
@@ -57,7 +57,7 @@
 		"jest-resolve": "26.6.0",
 		"jest-watch-typeahead": "0.6.1",
 		"mini-css-extract-plugin": "0.11.3",
-		"missing-native-js-functions": "^1.2.7",
+		"missing-native-js-functions": "^1.2.6",
 		"optimize-css-assets-webpack-plugin": "5.0.4",
 		"pnp-webpack-plugin": "1.6.4",
 		"postcss-flexbugs-fixes": "4.2.1",
@@ -118,8 +118,8 @@
 			"browser",
 			"windows",
 			"osx",
-			"ios",
-			"android"
+			"android",
+			"ios"
 		]
 	},
 	"eslintConfig": {

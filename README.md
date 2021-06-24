@@ -9,9 +9,6 @@
   </a>
   <img src="https://img.shields.io/static/v1?label=Status&message=Development&color=blue">
   <a title="Crowdin" target="_blank" href="https://translate.fosscord.com/"><img src="https://badges.crowdin.net/fosscord/localized.svg"></a>
-  <a href="https://opencollective.com/fosscord">
-    <img src="https://opencollective.com/fosscord/tiers/badge.svg">
-  </a>
 </p>
 
 ## [About](https://github.com/fosscord/fosscord-client/wiki)
@@ -31,7 +28,7 @@ logo by [@nwlandas](https://twitter.com/nwlandas)
 
 ## Installation
 
-_it is in development and currently does not build._
+_it is in development and not yet finished_
 
 ## Support
 

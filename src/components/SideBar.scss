@@ -1,0 +1,19 @@
+.sidebar {
+	width: 240px;
+	background-color: var(--background-secondary);
+	.container {
+		display: flex;
+		flex-direction: column;
+		flex: 1 1 auto;
+		header {
+			display: flex;
+			align-items: center;
+			padding: 0 16px;
+			height: 48px;
+			box-shadow: var(--elevation-low);
+		}
+		.list {
+			width: 232px;
+		}
+	}
+}

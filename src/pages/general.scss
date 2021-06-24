@@ -1,14 +1,6 @@
-// .content {
-// 	padding: 60px 40px 80px;
-// 	flex: 1 1 800px;
-// }
-
-.sidebar {
-	flex: 1 0 218px;
-}
-
 .page {
 	&.root {
 		display: flex;
+		flex-wrap: wrap;
 	}
 }
