@@ -1,13 +1,13 @@
 {
-	"register": "Register",
+	"register": "Registruotis",
 	"login": "Login",
-	"email": "Email",
+	"email": "El. paštas",
 	"username": "Username",
-	"password": "Password",
-	"dateOfBirth": "Date of birth",
-	"network": "network",
-	"consent": "I agree to the terms of service of this network",
-	"submit": "Continue",
-	"loginNotice": "Already have an account?",
-	"captchaRequired": "Please solve the captcha first"
+	"password": "Slaptažodis",
+	"dateOfBirth": "Gimimo data",
+	"network": "tinklas",
+	"consent": "Sutinku su šio tinklo paslaugų teikimo sąlygomis",
+	"submit": "Tęsti",
+	"loginNotice": "Jau turite paskyrą?",
+	"captchaRequired": "Prašome pirma išspręsti captcha"
 }

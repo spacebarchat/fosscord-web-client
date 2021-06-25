@@ -1,14 +1,14 @@
 {
-	"discover": "Discover",
-	"explore": "Explore",
-	"add": "Add",
-	"search": "Search",
-	"network": "Network",
-	"chooseNetwork": "Choose Network",
-	"findNetwork": "Find Networks",
-	"findPlaceholder": "Explore communities",
-	"addNetwork": "Add Network",
-	"addNotice": "You can add new networks here",
+	"discover": "Atrasti",
+	"explore": "Naršyti",
+	"add": "Pridėti",
+	"search": "Ieškoti",
+	"network": "Tinklas",
+	"chooseNetwork": "Pasirinkti Tinklą",
+	"findNetwork": "Rasti Tinklų",
+	"findPlaceholder": "Naršykite bendruomenes",
+	"addNetwork": "Pridėti Tinklą",
+	"addNotice": "Čia galite pridėti naujų tinklų",
 	"setupNotice": "To setup a new network have a look at our setup guide: coming soon",
-	"addPlaceholder": "For example https://fosscord.com"
+	"addPlaceholder": "Pavyzdžiui https://fosscord.com"
 }
