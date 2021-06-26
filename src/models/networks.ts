@@ -13,7 +13,7 @@ export function networks(
 			verified: true,
 			name: "Fosscord",
 			invite: "fosscord.com",
-			api: "https://fosscord.com/api",
+			api: "https://api.fosscord.com/api",
 			version: 8,
 			description: "Offical fosscord.com network",
 			cdn: "https://cdn.fosscord.com",
