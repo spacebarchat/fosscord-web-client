@@ -1,9 +1,15 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { RootState, useSelector } from "react-redux";
-import { useParams, useRouteMatch } from "react-router";
+import { useRouteMatch } from "react-router";
 import { useHistory } from "react-router-dom";
-import { Guild } from "../models/guilds";
 import "@fosscord/ui/scss/list.scss";
 import "./SideBar.scss";
+import { FriendList } from "./FriendList";
+import { Network } from "../models/networks";
+import store from "../util/store";
+import { getMessages, sendMessages } from "../util/Messages";
+import { useEffect, useState } from "react";
+import i18n from "../util/i18n";
 
 export interface Params {
 	id: string;
@@ -17,7 +23,11 @@ export interface Channel {
 }
 
 const SideBar = () => {
+	const [key, setKey] = useState<any>(Math.random());
 	const guilds = useSelector((select: RootState) => select.guilds || []);
+	const account: any = useSelector((select: RootState) => select.accounts || [])[0];
+	const network: Network = store.getState().networks.find((x) => x.id === account.network_id);
+
 	if (guilds.length < 0) return <div></div>;
 
 	// eslint-disable-next-line react-hooks/rules-of-hooks
@@ -29,43 +39,134 @@ const SideBar = () => {
 		exact: false,
 	});
 
+	if (match?.params.id === "@me") return <FriendList></FriendList>;
+
 	const guild = guilds.find((i) => i.id === match?.params.id);
 
+	const channelChange = (x: any) => {
+		if (x.type === 0) history.push("/channels/" + match?.params.id + "/" + x.id);
+	};
+
+	console.log(guild);
+
 	return (
-		<div className="sidebar">
-			<div className="container">
-				<header>
-					<h1 className="text headline">{guild?.name}</h1>
-				</header>
-				<div className="scrolled-container scrollbar">
-					<div style={{ height: "16px" }}></div>
-					<ul className="list">
-						{guild?.channels.map((x: Channel) => (
-							<li
-								className="item"
-								onClick={() => history.push("/channels/" + match?.params.id + "/" + x.id)}
-							>
-								{x.type === 0 && <i className="icon hashtag left"> </i>}
-								{x.type === 2 && <i className="icon voice-chat left"> </i>}
-								<div className="content">{x.name}</div>
-								{x.type === 0 ||
-									(x.type === 2 && <i className="icon settings right visibleOnHover"> </i>)}
-							</li>
-						))}
-					</ul>
+		<div className="content">
+			<div className="sidebar">
+				<div className="container">
+					<header>
+						<h1 className="text headline">{guild?.name}</h1>
+					</header>
+					<div className="scrolled-container scrollbar">
+						<div style={{ height: "16px" }}></div>
+						<ul className="list">
+							{guild?.channels.map((x: Channel) => (
+								<li key={x.id} className="item" onClick={() => channelChange(x)}>
+									{x.type === 0 && <i className="icon hashtag left"> </i>}
+									{x.type === 2 && <i className="icon voice-chat left"> </i>}
+									<div className="content">{x.name}</div>
+									<i className="icon settings right visibleOnHover"> </i>
+								</li>
+							))}
+						</ul>
+					</div>
 				</div>
+			</div>
+			<div className="chatContent">
+				<div className="scrolled-container scrollbar">
+					<Messages message={key}></Messages>
+				</div>
+				<input
+					type="text"
+					className="text secondary"
+					placeholder="Message #test"
+					defaultValue=""
+					onKeyPress={(event) => {
+						if (event.key === "Enter" && match?.params.channel) {
+							sendMessages(account, network, match?.params.channel, event);
+							(event.target as HTMLInputElement).value = "";
+							setKey(Math.random());
+						}
+					}}
+				/>
 			</div>
 		</div>
 	);
 };
 
-export function getAcronym(str: string) {
-	return str
-		.replace(/'s /g, " ")
-		.replace(/\w+/g, function (e) {
-			return e[0];
-		})
-		.replace(/\s/g, "");
-}
+const Messages = (message: any) => {
+	const [messages, setMessages] = useState<any>(null);
+	const account: any = useSelector((select: RootState) => select.accounts || [])[0];
+	const network: Network = store.getState().networks.find((x) => x.id === account.network_id);
+
+	// eslint-disable-next-line react-hooks/rules-of-hooks
+	const match = useRouteMatch<Params>({
+		path: "/channels/:id/:channel?",
+		exact: false,
+	});
+
+	useEffect(() => {
+		if (match?.params.channel) {
+			getMessages(account, network, match?.params.channel).then((value: any) => {
+				if (value.code) return;
+				else {
+					setMessages(value);
+				}
+			});
+		}
+	}, [message]);
+
+	const formatter = new Intl.RelativeTimeFormat(i18n.language, {
+		numeric: "auto",
+	});
+
+	const DIVISIONS: any = [
+		{ amount: 60, name: "seconds" },
+		{ amount: 60, name: "minutes" },
+		{ amount: 24, name: "hours" },
+		{ amount: 7, name: "days" },
+		{ amount: 4.34524, name: "weeks" },
+		{ amount: 12, name: "months" },
+		{ amount: Number.POSITIVE_INFINITY, name: "years" },
+	];
+
+	function formatTimeAgo(date: any) {
+		let duration = (date - +new Date()) / 1000;
+
+		for (let i = 0; i <= DIVISIONS.length; i++) {
+			const division = DIVISIONS[i];
+			if (Math.abs(duration) < division.amount) {
+				return formatter.format(Math.round(duration), division.name);
+			}
+			duration /= division.amount;
+		}
+	}
+
+	if (!match?.params.channel || !messages) return <div></div>;
+
+	return (
+		<div>
+			{messages?.map((x: any) => (
+				<div key={x.id} className="message">
+					<img
+						src={network.cdn + "/avatars/" + x.author.id + "/" + x.author.avatar + ".png"}
+						alt=""
+					/>
+					<div className="contentMessage">
+						<div className="messageHeader">
+							<a className="text default" style={{ color: "rgb(0, 69, 255)" }}>
+								{x.author.username}
+							</a>
+							<span className="text muted">
+								{" "}
+								{formatTimeAgo(new Date(x.created_at).setMonth(+new Date().getMonth()))}
+							</span>
+						</div>
+						<span className="text secondary">{x.content}</span>
+					</div>
+				</div>
+			))}
+		</div>
+	);
+};
 
 export default SideBar;

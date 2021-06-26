@@ -66,7 +66,6 @@ export async function request(url: string, opts?: RequestOptions): Promise<Reque
 	try {
 		try {
 			response = await fetch(url, opts);
-			console.log(response);
 			if (response.status === 429) {
 				// rate limit is given in seconds: https://discord.com/developers/docs/topics/rate-limits
 				var rateLimit = Number(

@@ -48,7 +48,7 @@ export function networks(
 			gateway: "ws://localhost:3002",
 			version: 8,
 			description: "Only for testing purposes",
-			cdn: "http://localhost",
+			cdn: "//localhost:3003",
 			host: "localhost",
 			icon: "https://logopng.net/wp-content/uploads/2020/07/logo-discord-png-icon-6.png",
 			splash: "https://preview.redd.it/4zh2hgl46cp51.png?width=3325&format=png&auto=webp&s=b9123bff12e1d5b86248d27a059104b4c92e05b5",

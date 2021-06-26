@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ErrorBoundary } from "./ErrorBoundary";
 import "../util/i18n";
 import Home from "../pages/Home";
-import Channel from "../pages/Channels";
 
 const Login = React.lazy(() => import("../pages/Login"));
 const Register = React.lazy(() => import("../pages/Register"));
@@ -20,7 +19,6 @@ function App() {
 							<Switch>
 								<Route path="/register" component={Register}></Route>
 								<Route path="/login" component={Login}></Route>
-								<Route path="/channels/:id?/:channel?" component={Channel}></Route>
 								<Route component={Home}></Route>
 							</Switch>
 						</Router>

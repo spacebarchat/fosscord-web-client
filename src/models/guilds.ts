@@ -17,10 +17,6 @@ export function guilds(state = [], action: any) {
 
 export class GuildModel extends Model {
 	static modelName = "Guild";
-	static fields = {
-		id: attr(),
-		name: attr(),
-	};
 }
 
 export interface Guild {

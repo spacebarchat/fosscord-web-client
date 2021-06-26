@@ -5,24 +5,22 @@ import "@fosscord/ui/scss/guild.scss";
 
 export default function GuildSidebar() {
 	const guilds = useSelector((select: RootState) => select.guilds || []);
-	if (guilds.length < 0) return <div></div>;
+	if (guilds.length <= 0) return <div></div>;
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const history = useHistory();
-	const navigateTo = (channel: number) => history.push("/channels/" + channel);
-
-	console.log(guilds);
+	const navigateTo = (channel: string) => history.push("/channels/" + channel);
 
 	return (
 		<div className="guild-container">
-			<div className="guild home">
+			<div className="guild home" onClick={() => history.push("/channels/@me")}>
 				<span className="pill"></span>
-				<a href=""></a>
+				<a></a>
 			</div>
 			<div className="guild seperator">
 				<hr />
 			</div>
 			{guilds.map((x: Guild) => (
-				<div className="guild" onClick={() => navigateTo(Number(x.id))}>
+				<div className="guild" key={x.id} onClick={() => navigateTo(x.id.toString())}>
 					<span className="pill"></span>
 					{x.icon ? (
 						<img src={x.icon} alt="" className="img" />
