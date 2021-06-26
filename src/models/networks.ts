@@ -17,7 +17,7 @@ export function networks(
 			version: 8,
 			description: "Offical fosscord.com network",
 			cdn: "https://cdn.fosscord.com",
-			gateway: "wss://fosscord.com",
+			gateway: "wss://gateway.fosscord.com",
 			host: "fosscord.com",
 			icon: FosscordLogo,
 			splash: "https://images.opencollective.com/discordhooks/1f8f486/background.png",
