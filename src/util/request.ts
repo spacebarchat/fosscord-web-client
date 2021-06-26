@@ -59,7 +59,7 @@ export async function request(url: string, opts?: RequestOptions): Promise<Reque
 		if (typeof opts.body === "object") {
 			opts.body = JSON.stringify(opts.body);
 			// @ts-ignore
-			opts.headers["content-type"] = "application/json";
+			opts.headers["content-type"] = "application/json; charset=utf-8";
 		}
 	}
 

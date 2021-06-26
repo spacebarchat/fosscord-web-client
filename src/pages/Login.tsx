@@ -36,6 +36,7 @@ export default function LoginScreen() {
 		event.preventDefault();
 		if (!network) return setErr("Please select a network");
 		// setErr(null);
+		var body, error;
 
 		if (mfaTicket) {
 			var { body, error } = await request("/auth/mfa/totp", {
@@ -48,6 +49,7 @@ export default function LoginScreen() {
 				},
 			});
 		} else {
+			// eslint-disable-next-line @typescript-eslint/no-redeclare
 			var { body, error } = await request(`/auth/login`, {
 				network,
 				body: {
@@ -60,9 +62,11 @@ export default function LoginScreen() {
 				},
 			});
 		}
+
 		setLoading(false);
 		setErr(error);
 		if (error) return;
+
 		if (body.mfa) return setMfaTicket(body.ticket);
 
 		body.network_id = network.id;
@@ -74,7 +78,7 @@ export default function LoginScreen() {
 	async function changeNetwork(network: Network) {
 		setErr(null);
 		setNetwork(network);
-		if (network?.discord) {
+		if (network.discord) {
 			const { error, response } = await request("/", { network });
 			if (response?.status !== 404) setErr(error);
 		}

@@ -1,9 +1,7 @@
-// @ts-nocheck
 import { RootState, useSelector } from "react-redux";
 import { Modal } from "../framework/Modal";
 import { Dropdown, DropdownItem } from "../framework/Dropdown";
 import { Network } from "../models/networks";
-import { networksSelector } from "../models/selectors";
 import "./NetworkSelection.scss";
 import React, { useEffect, useState } from "react";
 import { Route, useHistory } from "react-router";
@@ -19,21 +17,18 @@ export interface NetworkSelectionProps {
 export function NetworkSelection(props: NetworkSelectionProps) {
 	const { t } = useTranslation("network");
 	const history = useHistory();
-	const networks = useSelector((s) => s.orm);
-	console.log(networks);
-	// const [network, setNetwork] = useState(networks?.[0]);
-	// useEffect(() => {
-	// 	if (!props.defaultValue) props.onChange?.(network);
-	// });
+	const networks = useSelector((s: RootState) => s.networks);
+	const [network, setNetwork] = useState(networks[0]);
+	useEffect(() => {
+		if (!props.defaultValue) props.onChange?.(network);
+	});
 
-	// function changeNetwork(network: Network) {
-	// 	setNetwork(network);
-	// 	props.onChange?.(network);
-	// }
+	function changeNetwork(network: Network) {
+		setNetwork(network);
+		props.onChange?.(network);
+	}
 
-	// const urlWithoutNetwork = history.location.pathname.replaceAll("/network", "");
-
-	return <div></div>;
+	const urlWithoutNetwork = history.location.pathname.replaceAll("/network", "");
 
 	return (
 		<>

@@ -111,6 +111,7 @@
 	<preference name="AllowWebViewNavigation" value="true" />
 
 	<!-- AppendUserAgent doesnt work do it manually in CDVWebViewEngine.m + CDVViewController.m -->
+	<!-- <preference name="AppendUserAgent" value="Fosscord App" /> -->
 	<preference name="AllowInlineMediaPlayback" value="true" />
 	<preference name="Orientation" value="all" />
 	<preference name="AllowNewWindows" value="false" />

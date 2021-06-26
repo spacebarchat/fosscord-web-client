@@ -3,13 +3,13 @@ import { RootState, useSelector } from "react-redux";
 import { Route, Switch, useHistory } from "react-router-dom";
 import { connectAccount } from "../actions";
 import GuildSidebar from "../components/GuildSidebar";
+import SideBar from "../components/SideBar";
 import "./general.scss";
 const NotFound = React.lazy(() => import("../pages/NotFound"));
 
 export default function HomeScreen(props: any) {
 	const history = useHistory();
-
-	const accounts = useSelector((state: RootState) => state.accounts || []);
+	const accounts = useSelector((state: RootState) => state.accounts);
 	useEffect(() => {
 		if (!accounts.length) history.push("/login");
 	});
@@ -26,6 +26,7 @@ export default function HomeScreen(props: any) {
 			<Route path="/">
 				<div className="page root">
 					<GuildSidebar></GuildSidebar>
+					<SideBar></SideBar>
 				</div>
 			</Route>
 			<Route component={NotFound}></Route>

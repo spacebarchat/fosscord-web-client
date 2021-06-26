@@ -7,6 +7,8 @@ export function READY(this: Client, data: Payload) {
 	console.log(`[Event] Ready in `, performance.now() - window.startTime);
 	const { d } = data;
 
+	//console.log(d);
+
 	store.dispatch({ type: "UPDATE_GUILDS", payload: d.guilds });
 	store.dispatch({ type: "UPDATE_USERS", payload: d.users });
 	store.dispatch({ type: "UPDATE_USER", payload: d.user });
