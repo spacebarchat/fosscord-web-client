@@ -6,7 +6,7 @@
 	"registerNotice": "Nincs fiókod?",
 	"register": "Regisztráció",
 	"captchaRequired": "Kérlek old meg a captchat először",
-	"captchaTitle": "Checking if you are a robot",
-	"mfa": "Enter Auth/Backup Code",
-	"mfaPlaceholder": "6-digit authentication code/8-digit backup code"
+	"captchaTitle": "Ellenőrizzük, hogy robot vagy-e",
+	"mfa": "Add meg Hitelesítő/Biztonsági Kódod",
+	"mfaPlaceholder": "6 karakteres hitelesítő kód/8 karakteres biztonsági kód"
 }
