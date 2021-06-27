@@ -96,7 +96,7 @@
 
 .menuButton {
 	position: fixed;
-	bottom: 0;
+	top: 0;
 	left: 0;
 	padding-left: 1em;
 	user-select: none;
@@ -107,4 +107,8 @@
 	.menuButton {
 		display: none;
 	}
+}
+
+.guild-container {
+	padding-top: 3em;
 }
