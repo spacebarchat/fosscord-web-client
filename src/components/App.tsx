@@ -14,7 +14,7 @@ function App() {
 		<StrictMode>
 			<Provider store={store}>
 				<ErrorBoundary>
-					<Suspense fallback={<div className="text page-center headline"> Loading ...</div>}>
+					<Suspense fallback={<div className="text page-center headline"> Loading...</div>}>
 						<Router>
 							<Switch>
 								<Route path="/register" component={Register}></Route>

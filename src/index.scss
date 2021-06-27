@@ -31,7 +31,6 @@ body,
 
 html,
 body {
-	position: fixed;
 	overflow: hidden;
 }
 
@@ -43,4 +42,29 @@ body {
 	width: 100%;
 	height: 100%;
 	flex-direction: column;
+}
+
+.page.root {
+	flex-wrap: nowrap !important;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #4a4d52;
+    border: 2px solid #282a2d;
+    border-radius: 10px;
 }

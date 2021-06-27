@@ -1,6 +1,7 @@
 import { RootState, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Guild } from "../models/guilds";
+import Logo from "../assets/logo_big_transparent.png";
 import "@fosscord/ui/scss/guild.scss";
 
 export default function GuildSidebar() {
@@ -14,7 +15,7 @@ export default function GuildSidebar() {
 		<div className="guild-container">
 			<div className="guild home" onClick={() => history.push("/channels/@me")}>
 				<span className="pill"></span>
-				<a></a>
+				<img src={Logo} alt="" className="img" />
 			</div>
 			<div className="guild seperator">
 				<hr />
@@ -25,7 +26,10 @@ export default function GuildSidebar() {
 					{x.icon ? (
 						<img src={x.icon} alt="" className="img" />
 					) : (
-						<span className="img">{getAcronym(x.name)}</span>
+						<img
+							src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mOM/A8AAbcBWrkBW6MAAAAASUVORK5CYII="
+							className="img"
+						></img>
 					)}
 				</div>
 			))}

@@ -8,8 +8,10 @@ import { FriendList } from "./FriendList";
 import { Network } from "../models/networks";
 import store from "../util/store";
 import { getMessages, sendMessages } from "../util/Messages";
-import { useEffect, useState } from "react";
+import React, { FunctionComponent, useEffect, useState } from "react";
 import i18n from "../util/i18n";
+import { Button } from "../framework/Button";
+import MenuLogo from "../assets/menu.svg";
 
 export interface Params {
 	id: string;
@@ -22,11 +24,20 @@ export interface Channel {
 	type: number;
 }
 
-const SideBar = () => {
+const SideBar:FunctionComponent<{ activated?: boolean }> = ({ activated = true }) => {
 	const [key, setKey] = useState<any>(Math.random());
 	const guilds = useSelector((select: RootState) => select.guilds || []);
 	const account: any = useSelector((select: RootState) => select.accounts || [])[0];
 	const network: Network = store.getState().networks.find((x) => x.id === account.network_id);
+	const [active, setActive] = useState(activated);
+
+	function activate() {
+		if (active) {
+			setActive(false);
+		} else {
+			setActive(true);
+		}
+	}
 
 	if (guilds.length < 0) return <div></div>;
 
@@ -51,7 +62,10 @@ const SideBar = () => {
 
 	return (
 		<div className="content">
-			<div className="sidebar">
+			<Button primary className="menuButton" onClick={() => activate() }>
+            	<img src={ MenuLogo } />
+        	</Button>
+			<div className="sidebar" style={{ display: (active ? "none" : "block") }}>
 				<div className="container">
 					<header>
 						<h1 className="text headline">{guild?.name}</h1>
@@ -78,7 +92,7 @@ const SideBar = () => {
 				<input
 					type="text"
 					className="text secondary"
-					placeholder="Message #test"
+					placeholder="Message this channel"
 					defaultValue=""
 					onKeyPress={(event) => {
 						if (event.key === "Enter" && match?.params.channel) {
