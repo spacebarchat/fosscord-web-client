@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { RootState, useSelector } from "react-redux";
 import { Route, Switch, useHistory } from "react-router-dom";
 import { connectAccount } from "../actions";
-import GuildSidebar from "../components/GuildSidebar";
 import SideBar from "../components/SideBar";
 import "./general.scss";
+
 const NotFound = React.lazy(() => import("../pages/NotFound"));
 
 export default function HomeScreen(props: any) {
@@ -25,7 +25,6 @@ export default function HomeScreen(props: any) {
 		<Switch>
 			<Route path="/">
 				<div className="page root">
-					<GuildSidebar></GuildSidebar>
 					<SideBar></SideBar>
 				</div>
 			</Route>

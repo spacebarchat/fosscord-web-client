@@ -1,8 +1,6 @@
-@import "@fosscord/ui/scss/scrollbar.scss";
-
 .sidebar.friendList {
-	width: 230px;
-	padding: 10px;
+	width: 224px;
+	padding: 0.5em;
 	background-color: var(--background-secondary);
 }
 
@@ -10,33 +8,69 @@
 	display: flex;
 	flex-direction: row;
 	flex: 1 1 auto;
+
+	.pageContent {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+
 	.sidebar {
+		display: none;
+	}
+
+	.sidebar.show {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+	}
+
+	.topbar {
+		background-color: var(--background-secondary);
+		box-shadow: var(--elevation-low);
+
+		header {
+			display: flex;
+			flex-direction: row;
+
+			h1 {
+				padding-left: 0.5em;
+			}
+		}
+	}
+
+	.sidebar-channels {
 		width: 240px;
 		background-color: var(--background-secondary);
+
 		.container {
 			display: flex;
 			flex-direction: column;
 			flex: 1 1 auto;
+
 			header {
 				display: flex;
 				align-items: center;
-				padding: 0 16px;
-				height: 48px;
+				padding: 1px 17px;
 				box-shadow: var(--elevation-low);
 			}
+
 			input {
 				font-size: 14px;
 			}
+
 			.list {
 				width: 232px;
 			}
 		}
 	}
+
 	.chatContent {
 		width: 100%;
-		max-height: 100vh;
+		max-height: calc(100vh - 50px);
 		display: flex;
 		flex-direction: column;
+
 		input {
 			width: auto;
 			height: 44px;
@@ -46,6 +80,9 @@
 			padding-left: 16px;
 			border: none;
 			margin: 20px;
+			margin-top: 20px;
+			margin-bottom: 30px;
+			outline: 0;
 		}
 	}
 
@@ -55,34 +92,158 @@
 		display: flex;
 		flex-direction: column-reverse;
 		overflow: auto;
+		overflow-x: hidden;
 
 		.message {
 			display: flex;
 			flex-direction: row;
 			padding: 10px;
 			padding-left: 20px;
+
 			img {
 				cursor: pointer;
 				border-radius: 50%;
 				width: 38px;
 				height: 38px;
 			}
+
 			.contentMessage {
 				display: flex;
 				flex-direction: column;
 				padding-left: 20px;
+
 				.messageHeader {
 					a {
 						cursor: pointer;
 					}
+
 					span {
 						padding-left: 5px;
 					}
 				}
 			}
+
 			&:hover {
 				background-color: var(--background-secondary);
 			}
 		}
 	}
+}
+
+@media (min-width: 600px) {
+	.menuBtn {
+		display: none;
+	}
+
+	.sidebar {
+		display: flex !important;
+	}
+}
+
+.guild-container {
+	display: flex;
+	flex-direction: column;
+	background-color: var(--guild-container-background);
+	padding-top: 0.5rem;
+	max-width: 66px;
+}
+
+.guild {
+	display: flex;
+	margin-right: 0.6rem;
+	align-items: center;
+	margin-bottom: 0.5rem;
+	cursor: pointer;
+
+	&.new-server {
+		.img {
+			background-color: darkgreen;
+			color: black;
+			font-weight: 700;
+			font-size: 10px;
+		}
+	}
+}
+
+.guild.unread .pill {
+	background-color: var(--guild-pill);
+	height: 0.6rem;
+	width: 0.25rem;
+}
+
+.guild.active {
+	border-radius: 25%;
+}
+
+.guild .img {
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	transition: border-radius 0.1s ease, background-color 0.15s ease;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: var(--background-primary);
+	text-align: center;
+	overflow: hidden;
+	user-select: none;
+	color: var(--text-default);
+}
+
+.guild .img:hover {
+	background: var(--primary);
+	color: var(--text-strong);
+}
+
+.guild.active img {
+	border-radius: 35%;
+}
+
+.guild.active .pill {
+	height: 2.5rem !important;
+	width: 0.25rem;
+	background-color: var(--guild-pill);
+}
+
+.guild.home a {
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	background-color: var(--guild-container-secondary);
+}
+
+.guild.separator {
+	margin: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+hr {
+	margin: 0 auto;
+	padding: 0;
+	margin-bottom: 0.5rem;
+	width: 40%;
+	border: none;
+	border-bottom: 2px solid var(--guild-container-secondary);
+}
+
+.guild:hover .pill {
+	height: 1.25rem;
+	width: 0.25rem;
+	background-color: var(--guild-pill);
+}
+
+.guild:hover .img {
+	border-radius: 35%;
+}
+
+.guild .pill {
+	height: 0rem;
+	width: 0.25rem;
+	background-color: transparent;
+	border-top-right-radius: 0.5rem;
+	border-bottom-right-radius: 0.5rem;
+	margin-right: 0.3rem;
+	transition: height 0.2s;
 }

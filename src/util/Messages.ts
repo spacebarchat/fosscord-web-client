@@ -1,4 +1,3 @@
-import { RootState, useSelector } from "react-redux";
 import { Network } from "../models/networks";
 import { request } from "./request";
 import _ from "lodash";

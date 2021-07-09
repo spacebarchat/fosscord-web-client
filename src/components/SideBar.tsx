@@ -2,14 +2,18 @@
 import { RootState, useSelector } from "react-redux";
 import { useRouteMatch } from "react-router";
 import { useHistory } from "react-router-dom";
-import "@fosscord/ui/scss/list.scss";
-import "./SideBar.scss";
 import { FriendList } from "./FriendList";
 import { Network } from "../models/networks";
 import store from "../util/store";
 import { getMessages, sendMessages } from "../util/Messages";
 import { useEffect, useState } from "react";
 import i18n from "../util/i18n";
+import { Guild } from "../models/guilds";
+import { Button } from "../framework/Button";
+import "./SideBar.scss";
+import "@fosscord/ui/scss/scrollbar.scss";
+import "@fosscord/ui/scss/guild.scss";
+import FosscordLogo from "../assets/logo_big_transparent.png";
 
 export interface Params {
 	id: string;
@@ -24,6 +28,9 @@ export interface Channel {
 
 const SideBar = () => {
 	const [key, setKey] = useState<any>(Math.random());
+	const [channel, setChannel] = useState<string>("");
+	const [sidebar, setSidebar] = useState<boolean>(true);
+
 	const guilds = useSelector((select: RootState) => select.guilds || []);
 	const account: any = useSelector((select: RootState) => select.accounts || [])[0];
 	const network: Network = store.getState().networks.find((x) => x.id === account.network_id);
@@ -38,56 +45,152 @@ const SideBar = () => {
 		path: "/channels/:id/:channel?",
 		exact: false,
 	});
-
-	if (match?.params.id === "@me") return <FriendList></FriendList>;
-
 	const guild = guilds.find((i) => i.id === match?.params.id);
+
+	useEffect(() => {
+		if (guild) {
+			let channel_name = guild.channels.find((i: any) => i.id === match?.params.channel)?.name;
+			if (channel_name) setChannel(channel_name);
+		}
+	}, [match?.params.channel, guild]);
 
 	const channelChange = (x: any) => {
 		if (x.type === 0) history.push("/channels/" + match?.params.id + "/" + x.id);
 	};
 
-	console.log(guild);
-
 	return (
 		<div className="content">
-			<div className="sidebar">
-				<div className="container">
-					<header>
-						<h1 className="text headline">{guild?.name}</h1>
-					</header>
-					<div className="scrolled-container scrollbar">
-						<div style={{ height: "16px" }}></div>
-						<ul className="list">
-							{guild?.channels.map((x: Channel) => (
-								<li key={x.id} className="item" onClick={() => channelChange(x)}>
-									{x.type === 0 && <i className="icon hashtag left"> </i>}
-									{x.type === 2 && <i className="icon voice-chat left"> </i>}
-									<div className="content">{x.name}</div>
-									<i className="icon settings right visibleOnHover"> </i>
-								</li>
-							))}
-						</ul>
+			<div className={"sidebar" + (!sidebar ? " show" : "")}>
+				<GuildBar></GuildBar>
+				{(() => {
+					switch (match?.params.id) {
+						case "@me":
+							return <FriendList></FriendList>;
+						default:
+							return (
+								<div className="sidebar-channels">
+									<div className="container">
+										<header>
+											<h1 className="text headline">{guild?.name}</h1>
+										</header>
+										<div className="scrolled-container scrollbar">
+											<div style={{ height: "16px" }}></div>
+											<ul className="list">
+												{guild?.channels.map((x: Channel) => (
+													<li
+														key={x.id}
+														className="item"
+														onClick={() => channelChange(x)}
+													>
+														{x.type === 0 && (
+															<i className="icon hashtag left"> </i>
+														)}
+														{x.type === 2 && (
+															<i className="icon voice-chat left"> </i>
+														)}
+														<div className="content">{x.name}</div>
+														<i className="icon settings right visibleOnHover">
+															{" "}
+														</i>
+													</li>
+												))}
+											</ul>
+										</div>
+									</div>
+								</div>
+							);
+					}
+				})()}
+			</div>
+
+			<div className="pageContent">
+				<div className="topbar">
+					<div className="container">
+						<header>
+							<Button primary onClick={() => setSidebar(!sidebar)} className="menuBtn">
+								Menu
+							</Button>
+							<h1 className="text headline">
+								<i className="icon hashtag left"> </i>
+							</h1>
+							<h1 className="text headline">{channel}</h1>
+						</header>
 					</div>
 				</div>
-			</div>
-			<div className="chatContent">
-				<div className="scrolled-container scrollbar">
-					<Messages message={key}></Messages>
+
+				<div className="chatContent">
+					<div className="scrolled-container scrollbar">
+						<Messages message={key}></Messages>
+					</div>
+					<input
+						type="text"
+						className="text secondary"
+						placeholder="Message this channel"
+						defaultValue=""
+						onKeyPress={(event) => {
+							if (event.key === "Enter" && match?.params.channel) {
+								sendMessages(account, network, match?.params.channel, event);
+								(event.target as HTMLInputElement).value = "";
+								setKey(Math.random());
+							}
+						}}
+					/>
 				</div>
-				<input
-					type="text"
-					className="text secondary"
-					placeholder="Message #test"
-					defaultValue=""
-					onKeyPress={(event) => {
-						if (event.key === "Enter" && match?.params.channel) {
-							sendMessages(account, network, match?.params.channel, event);
-							(event.target as HTMLInputElement).value = "";
-							setKey(Math.random());
-						}
-					}}
-				/>
+			</div>
+		</div>
+	);
+};
+
+export function getAcronym(str: string) {
+	return str
+		.replace(/'s /g, " ")
+		.replace(/\w+/g, function (e) {
+			return e[0];
+		})
+		.replace(/\s/g, "");
+}
+
+const GuildBar = () => {
+	const guilds = useSelector((select: RootState) => select.guilds || []);
+
+	// eslint-disable-next-line react-hooks/rules-of-hooks
+	const history = useHistory();
+
+	// eslint-disable-next-line react-hooks/rules-of-hooks
+	const match = useRouteMatch<Params>({
+		path: "/channels/:id/:channel?",
+		exact: false,
+	});
+
+	const navigateTo = (channel: string) => history.push("/channels/" + channel);
+
+	return (
+		<div className="guild-container">
+			<div
+				className={"guild " + (match?.params.id === "@me" ? "active" : "")}
+				onClick={() => history.push("/channels/@me")}
+			>
+				<span className="pill"></span>
+				<img src={FosscordLogo} className="img" />
+			</div>
+			<hr />
+			{guilds.map((x: Guild) => (
+				<div
+					className={"guild " + (match?.params.id === x.id ? "active" : "")}
+					key={x.id}
+					onClick={() => navigateTo(x.id.toString())}
+				>
+					<span className="pill"></span>
+					{x.icon ? (
+						<img src={x.icon} alt="" className="img" />
+					) : (
+						<span className="img">{getAcronym(x.name)}</span>
+					)}
+				</div>
+			))}
+			<div className="guild new-server" onClick={() => console.log("create button pressed")}>
+				<span className="pill"></span>
+				<span className="img">+</span>
 			</div>
 		</div>
 	);
