@@ -1,13 +1,13 @@
 {
-	"register": "Register",
-	"login": "Login",
+	"register": "Registrácia",
+	"login": "Prihlásenie",
 	"email": "Email",
-	"username": "Username",
-	"password": "Password",
-	"dateOfBirth": "Date of birth",
-	"network": "network",
-	"consent": "I agree to the terms of service of this network",
-	"submit": "Continue",
-	"loginNotice": "Already have an account?",
-	"captchaRequired": "Please solve the captcha first"
+	"username": "Používateľské meno",
+	"password": "Heslo",
+	"dateOfBirth": "Dátum narodenia",
+	"network": "sieť",
+	"consent": "Súhlasím s podmienkami služby tejto siete",
+	"submit": "Pokračovať",
+	"loginNotice": "Už máte účet?",
+	"captchaRequired": "Najprv prosím vyriešte captcha"
 }
