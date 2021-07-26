@@ -1,7 +1,7 @@
-.sidebar.friendList {
-	width: 224px;
-	padding: 0.5em;
-	background-color: var(--background-secondary);
+:root {
+	--guild-container-background: var(--background-tertiary);
+	--guild-container-secondary: var(--background-primary);
+	--guild-pill: var(--text-default);
 }
 
 .content {
@@ -32,9 +32,14 @@
 		header {
 			display: flex;
 			flex-direction: row;
+			padding-left: 4em;
 
 			h1 {
 				padding-left: 0.5em;
+			}
+
+			h1:not(&.icon) {
+				font-size: 1.3em;
 			}
 		}
 	}
@@ -131,6 +136,10 @@
 }
 
 @media (min-width: 600px) {
+	.topbar header {
+		padding-left: 0 !important;
+	}
+
 	.menuBtn {
 		display: none;
 	}
@@ -138,6 +147,41 @@
 	.sidebar {
 		display: flex !important;
 	}
+
+	.sidebar.show .guild-container {
+		padding-top: 0.5em !important;
+	}
+
+	.sidebar-enabled {
+		filter: none !important;
+		user-select: all !important;
+		pointer-events: all !important;
+	}
+}
+
+.menuBtn {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 66px;
+	height: 58px;
+}
+
+.sidebar-enabled {
+	filter: blur(3px);
+	user-select: none;
+	pointer-events: none;
+
+	.topbar header {
+		padding-left: 0 !important;
+	}
+}
+
+.sidebar.friendList {
+	width: 224px;
+	padding: 0.5em;
+	background-color: var(--background-secondary);
+	display: flex !important;
 }
 
 .guild-container {
@@ -146,6 +190,10 @@
 	background-color: var(--guild-container-background);
 	padding-top: 0.5rem;
 	max-width: 66px;
+}
+
+.sidebar.show .guild-container {
+	padding-top: 4.5rem;
 }
 
 .guild {
