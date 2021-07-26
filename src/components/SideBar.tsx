@@ -12,7 +12,6 @@ import { Guild } from "../models/guilds";
 import { Button } from "../framework/Button";
 import "./SideBar.scss";
 import "@fosscord/ui/scss/scrollbar.scss";
-import "@fosscord/ui/scss/guild.scss";
 import FosscordLogo from "../assets/logo_big_transparent.png";
 
 export interface Params {
@@ -103,14 +102,15 @@ const SideBar = () => {
 				})()}
 			</div>
 
-			<div className="pageContent">
+			<Button primary onClick={() => setSidebar(!sidebar)} className="menuBtn">
+				Menu
+			</Button>
+
+			<div className={"pageContent" + (!sidebar ? " sidebar-enabled" : "")}>
 				<div className="topbar">
 					<div className="container">
 						<header>
-							<Button primary onClick={() => setSidebar(!sidebar)} className="menuBtn">
-								Menu
-							</Button>
-							<h1 className="text headline">
+							<h1 className="text headline icon">
 								<i className="icon hashtag left"> </i>
 							</h1>
 							<h1 className="text headline">{channel}</h1>
