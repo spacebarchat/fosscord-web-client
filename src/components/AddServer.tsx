@@ -40,7 +40,7 @@ export const AddServer = () => {
 					</div>
 					<Input labelText={t("serverName")}></Input>
 					<div className="text muted">{t("addServerNotice")}</div>
-					<Button primary>{t("login")}</Button>
+					<Button primary>{t("add")}</Button>
 				</form>
 			</div>
 		</>
