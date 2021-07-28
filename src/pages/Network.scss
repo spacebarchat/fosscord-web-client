@@ -1,50 +1,23 @@
-.network.page {
-	.sidebar {
-		flex-direction: column;
-		justify-content: flex-start;
-		align-items: flex-end;
-		margin-top: -1rem;
+.network.page .content {
+    .addNetwork {
+        display: flex;
+        flex-direction: column;
 
-		.list {
-			max-width: 300px;
-			width: 100%;
+        > * {
+            margin: 0.5rem;
+        }
 
-			.item {
-				padding: 10px;
-				margin-bottom: 7px;
+        .inputButton {
+            display: flex;
+            align-items: flex-end;
 
-				.icon {
-					--size: 16px;
+            .input-wrapper {
+                flex-grow: 1;
+            }
 
-					&.left {
-						margin-right: 1rem;
-					}
-				}
-			}
-		}
-	}
-
-	.content {
-		.addNetwork {
-			display: flex;
-			flex-direction: column;
-
-			> * {
-				margin: 0.5rem;
-			}
-
-			.inputButton {
-				display: flex;
-				align-items: flex-end;
-
-				.input-wrapper {
-					flex-grow: 1;
-				}
-
-				.button {
-					height: 40px;
-				}
-			}
-		}
-	}
+            .button {
+                height: 40px;
+            }
+        }
+    }
 }

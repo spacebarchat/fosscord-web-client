@@ -188,7 +188,7 @@ const GuildBar = () => {
 					)}
 				</div>
 			))}
-			<div className="guild new-server" onClick={() => console.log("create button pressed")}>
+			<div className="guild new-server" onClick={() => history.push("/server/add")}>
 				<span className="pill"></span>
 				<span className="img">+</span>
 			</div>

@@ -4,7 +4,7 @@
 	--guild-pill: var(--text-default);
 }
 
-.content {
+.content:not(.network.page .content) {
 	display: flex;
 	flex-direction: row;
 	flex: 1 1 auto;
@@ -75,6 +75,7 @@
 		max-height: calc(100vh - 50px);
 		display: flex;
 		flex-direction: column;
+		background-color: var(--guild-container-secondary);
 
 		input {
 			width: auto;
@@ -206,9 +207,11 @@
 	&.new-server {
 		.img {
 			background-color: darkgreen;
-			color: black;
+			color: white;
 			font-weight: 700;
-			font-size: 10px;
+			font-size: 30px;
+			margin: 0;
+			padding: 0;
 		}
 	}
 }
