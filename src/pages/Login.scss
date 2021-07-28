@@ -1,9 +1,15 @@
+#root {
+	background-image: url("../assets/login.svg") !important;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
 .page.register,
-.page.login {
+.page.login,
+.page.add {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: var(--background-secondary);
 	background-size: cover;
 
 	.form {
@@ -12,10 +18,20 @@
 		box-shadow: 0 2px 10px 0 rgb(0 0 0 / 20%);
 		border-radius: 5px;
 		padding: 10px;
-		background: var(--background-primary);
 		max-height: 100%;
 		overflow-x: hidden;
 		overflow-y: auto;
+		background: var(--background-secondary);
+
+		@media screen and (max-width: 950px) {
+			& {
+			  margin-right: initial;
+			  height: 100%;
+			  box-shadow: 0;
+			  padding-bottom: 0;
+			  padding-top: 10vh;
+			}
+		  }
 
 		> *:not(.modal):not(.error) {
 			margin: calc(var(--element-margin) * 2);

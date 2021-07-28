@@ -1,0 +1,26 @@
+.network.page {
+	.sidebar {
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: flex-end;
+		margin-top: -1rem;
+
+		.list {
+			max-width: 300px;
+			width: 100%;
+
+			.item {
+				padding: 10px;
+				margin-bottom: 7px;
+
+				.icon {
+					--size: 16px;
+
+					&.left {
+						margin-right: 1rem;
+					}
+				}
+			}
+		}
+	}
+}

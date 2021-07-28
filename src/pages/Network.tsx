@@ -4,6 +4,7 @@ import { Input } from "../framework/Input";
 import { List, ListItem } from "../framework/List";
 import { Text } from "../framework/Text";
 import { useTranslation } from "react-i18next";
+import "./TopScreen.scss";
 import "./Network.scss";
 import { RootState, useDispatch, useSelector } from "react-redux";
 import { Network } from "../models/networks";

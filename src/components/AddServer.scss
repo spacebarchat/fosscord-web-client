@@ -1,0 +1,10 @@
+:root {
+	--size: 48px;
+}
+
+.form .guild .img {
+	font-size: calc(var(--size) / 3.5);
+	width: calc(var(--size) * 1.5) !important;
+	height: calc(var(--size) * 1.5) !important;
+	margin: 0 auto;
+}
