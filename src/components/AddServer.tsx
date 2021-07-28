@@ -34,9 +34,9 @@ export const AddServer = () => {
 		<>
 			<div className="page add">
 				<form className="form" onSubmit={submit}>
-					<h1 className="text headline">{t("AddAServer")}</h1>
+					<h1 className="text headline">{t("addServer")}</h1>
 					<div className="guild">
-						<span className="img">UPLOAD</span>
+						<span className="img">{t("upload").toUpperCase()}</span>
 					</div>
 					<Input labelText={t("serverName")}></Input>
 					<div className="text muted">{t("addServerNotice")}</div>
