@@ -1,32 +1,35 @@
-import { RootState, useSelector } from "react-redux";
+import { RootState, useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import { Input } from "../framework/Input";
-import { guilds, Guild } from "../models/guilds";
-import "../pages/Login.scss";
-import "@fosscord/ui/scss/guild.scss";
 import "./AddServer.scss";
-import { List, ListItem } from "../framework/List";
 import { Text } from "../framework/Text";
-import React, { FormEvent } from "react";
-import { Route, useHistory } from "react-router";
+import { useState, FormEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "../framework/Button";
-
-const NetworkPage = React.lazy(() => import("../pages/Network"));
-
-// export interface AddServerProps {
-// 	onChange?: (network: Network) => any;
-// 	defaultValue?: Network;
-// }
+import "../pages/general.scss";
+import "../pages/TopScreen.scss";
+import "missing-native-js-functions";
 
 export const AddServer = () => {
 	const { t } = useTranslation("login");
+	const dispatch = useDispatch();
 	const guilds = useSelector((select: RootState) => select.guilds || []);
 	const history = useHistory();
+	const [name] = useState("");
 
 	const urlWithoutAddServer = history.location.pathname.replaceAll("/server/add", "");
 
 	async function submit(event: FormEvent) {
-		// event.preventDefault();
+		event.preventDefault();
+		const guild = {
+			id: Math.randomIntBetween(0, 100000),
+			name: name,
+		};
+		// TODO: validate and fetch network
+		dispatch({
+			type: "ADD_GUILDS",
+			payload: guild,
+		});
 		history.push(urlWithoutAddServer);
 	}
 
@@ -34,12 +37,12 @@ export const AddServer = () => {
 		<>
 			<div className="page add">
 				<form className="form" onSubmit={submit}>
-					<h1 className="text headline">{t("addServer")}</h1>
+					<Text headline={true}>{t("addServer")}</Text>
 					<div className="guild">
 						<span className="img">{t("upload").toUpperCase()}</span>
 					</div>
-					<Input labelText={t("serverName")}></Input>
-					<div className="text muted">{t("addServerNotice")}</div>
+					<Input labelText={t("serverName")} value={name}></Input>
+					<Text muted={true} className="little">{t("addServerNotice")}</Text>
 					<Button primary>{t("add")}</Button>
 				</form>
 			</div>
