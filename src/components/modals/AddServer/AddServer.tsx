@@ -1,35 +1,30 @@
 import { RootState, useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { Input } from "../framework/Input";
+import { Input } from "../../../framework/Input";
 import "./AddServer.scss";
-import { Text } from "../framework/Text";
+import { Text } from "../../../framework/Text";
 import { useState, FormEvent } from "react";
 import { useTranslation } from "react-i18next";
-import { Button } from "../framework/Button";
-import "../pages/general.scss";
-import "../pages/TopScreen.scss";
+import { Button } from "../../../framework/Button";
+import "../../../pages/general.scss";
+
 import "missing-native-js-functions";
-import { getFormError, PlainTextError } from "../util/FormError";
-import { Network } from "../models/networks";
-import store from "../util/store";
-import { request } from "../util/request";
+import { getFormError, PlainTextError } from "../../../util/FormError";
+import { Network } from "../../../models/networks";
+import store from "../../../util/store";
+import { request } from "../../../util/request";
 
 export const AddServer = () => {
 	const { t } = useTranslation("login");
 	const dispatch = useDispatch();
-	const guilds = useSelector((select: RootState) => select.guilds || []);
-	const history = useHistory();
 	const [name, setName] = useState("");
 	const [loading, setLoading] = useState(false);
 	const [err, setErr] = useState<any>(null);
 	const account: any = useSelector((select: RootState) => select.accounts || [])[0];
 	const network: Network = store.getState().networks.find((x) => x.id === account.network_id);
 
-	const urlWithoutAddServer = history.location.pathname.replaceAll("/", "");
-
 	async function submit(event: FormEvent) {
 		event.preventDefault();
-		console.log(account);
 
 		var { body, error } = await request("/guilds", {
 			network,
@@ -42,10 +37,15 @@ export const AddServer = () => {
 		});
 
 		setLoading(false);
-		setErr(error.name._errors[0].message);
+		// setErr(error.name._errors[0].message);
 		if (error) return;
 
-		dispatch({ type: "ADD_GUILDS", payload: body });
+		console.log(event.target);
+
+		await dispatch({
+			type: "GUILD_CREATE",
+			payload: 0,
+		});
 	}
 
 	return (

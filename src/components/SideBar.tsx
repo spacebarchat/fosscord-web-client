@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { RootState, useSelector } from "react-redux";
-import { Route, useHistory, useRouteMatch } from "react-router";
+import { useHistory, useRouteMatch } from "react-router";
 import { FriendList } from "./FriendList";
 import { Network } from "../models/networks";
 import store from "../util/store";
@@ -14,7 +14,8 @@ import "./SideBar.scss";
 import "@fosscord/ui/scss/scrollbar.scss";
 import FosscordLogo from "../assets/logo_big_transparent.png";
 // import { Modal } from "../framework/Modal";
-import AddServer from "../components/AddServer";
+import AddServer from "./modals/AddServer/AddServer";
+import { ContextMenu } from "../components/menu/ContextMenu";
 
 export interface Params {
 	id: string;
@@ -61,6 +62,7 @@ const SideBar = () => {
 
 	return (
 		<div className="content">
+			<ContextMenu></ContextMenu>
 			<div className={"sidebar" + (!sidebar ? " show" : "")}>
 				<GuildBar></GuildBar>
 				{(() => {
@@ -89,7 +91,7 @@ const SideBar = () => {
 														{x.type === 2 && (
 															<i className="icon voice-chat left"> </i>
 														)}
-														<div className="content">{x.name}</div>
+														<div className="content channel">{x.name}</div>
 														<i className="icon settings right visibleOnHover">
 															{" "}
 														</i>
@@ -120,24 +122,28 @@ const SideBar = () => {
 					</div>
 				</div>
 
-				<div className="chatContent">
-					<div className="scrolled-container scrollbar">
-						<Messages message={key}></Messages>
+				{match?.params.channel != null && (
+					<div className="chatContent">
+						<div className="scrolled-container scrollbar">
+							<Messages message={key}>
+								<p>loading</p>
+							</Messages>
+						</div>
+						<input
+							type="text"
+							className="text secondary"
+							placeholder="Message this channel"
+							defaultValue=""
+							onKeyPress={(event) => {
+								if (event.key === "Enter" && match?.params.channel) {
+									sendMessages(account, network, match?.params.channel, event);
+									(event.target as HTMLInputElement).value = "";
+									setKey(Math.random());
+								}
+							}}
+						/>
 					</div>
-					<input
-						type="text"
-						className="text secondary"
-						placeholder="Message this channel"
-						defaultValue=""
-						onKeyPress={(event) => {
-							if (event.key === "Enter" && match?.params.channel) {
-								sendMessages(account, network, match?.params.channel, event);
-								(event.target as HTMLInputElement).value = "";
-								setKey(Math.random());
-							}
-						}}
-					/>
-				</div>
+				)}
 			</div>
 		</div>
 	);
@@ -184,11 +190,12 @@ const GuildBar = () => {
 				onClick={() => history.push("/channels/@me")}
 			>
 				<span className="pill"></span>
-				<img src={FosscordLogo} className="img" />
+				<img src={FosscordLogo} className="img" alt="" />
 			</div>
 			<hr />
 			{guilds.map((x: Guild) => (
 				<div
+					id={x.id}
 					className={"guild " + (match?.params.id === x.id ? "active" : "")}
 					key={x.id}
 					onClick={() => {
@@ -197,9 +204,9 @@ const GuildBar = () => {
 				>
 					<span className="pill"></span>
 					{x.icon ? (
-						<img src={x.icon} alt="" className="img" />
+						<img src={x.icon} alt="" className="img server" />
 					) : (
-						<span className="img">{getAcronym(x.name)}</span>
+						<span className="img server">{getAcronym(x.name)}</span>
 					)}
 				</div>
 			))}
@@ -275,9 +282,9 @@ const Messages = (message: any) => {
 					/>
 					<div className="contentMessage">
 						<div className="messageHeader">
-							<a className="text default" style={{ color: "rgb(0, 69, 255)" }}>
+							<button className="text default" style={{ color: "rgb(0, 69, 255)" }}>
 								{x.author.username}
-							</a>
+							</button>
 							<span className="text muted">
 								{" "}
 								{formatTimeAgo(new Date(x.created_at).setMonth(+new Date().getMonth()))}

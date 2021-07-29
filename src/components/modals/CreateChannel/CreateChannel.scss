@@ -1,0 +1,32 @@
+:root {
+	--size: 48px;
+}
+
+.form {
+	padding: 1em;
+	text-align: center;
+	color: white;
+	
+	* {
+		margin: 0 auto;
+		margin-bottom: 0.5em;
+	}
+
+	.guild .img {
+		font-size: calc(var(--size) / 3.5);
+		width: calc(var(--size) * 1.5) !important;
+		height: calc(var(--size) * 1.5) !important;
+	}
+}
+
+button {
+	border: 0;
+}
+
+.muted {
+	color: grey;
+}
+
+.little {
+	font-size: 13px;
+}
