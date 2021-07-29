@@ -119,8 +119,16 @@
 				padding-left: 20px;
 
 				.messageHeader {
-					a {
+					a,
+					button {
 						cursor: pointer;
+						padding: 0;
+						margin: 0;
+						background: none;
+
+						&:focus {
+							text-decoration: underline;
+						}
 					}
 
 					span {

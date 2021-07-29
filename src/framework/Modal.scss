@@ -1,0 +1,10 @@
+@media screen and (max-width: 640px) {
+	.modal {
+		padding-top: 7em;
+
+		.close-wrapper {
+			top: calc(var(--modal-padding) - 3%);
+			right: calc(var(--modal-padding) - 3%);
+		}
+	}
+}

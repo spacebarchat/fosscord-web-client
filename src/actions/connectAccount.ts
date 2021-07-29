@@ -12,6 +12,5 @@ export function connectAccount(account: Partial<Account>) {
 	if (!account.client || !(account.client instanceof Client)) {
 		account.client = new Client(network.gateway, { token: account.token });
 	}
-
 	return account;
 }

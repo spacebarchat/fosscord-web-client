@@ -1,5 +1,6 @@
 import { Network } from "./networks";
-import { attr, Model } from "redux-orm";
+import { Model } from "redux-orm";
+import { Channel } from "./channels";
 
 export function guilds(state = [], action: any) {
 	switch (action.type) {
@@ -10,11 +11,12 @@ export function guilds(state = [], action: any) {
 				if (x.id !== action.payload.id) return x;
 				return action.payload;
 			});
+		case "REMOVE_GUILDS":
+			return state.filter((x: any) => x.id !== action.payload.id);
 		default:
 			return state;
 	}
 }
-
 export class GuildModel extends Model {
 	static modelName = "Guild";
 }
@@ -24,7 +26,7 @@ export interface Guild {
 	name: string;
 	icon?: string;
 	network: Network;
-	channels: any;
+	channels: Channel[];
 }
 
 export interface GuildState {
