@@ -9,28 +9,43 @@ import { Button } from "../framework/Button";
 import "../pages/general.scss";
 import "../pages/TopScreen.scss";
 import "missing-native-js-functions";
+import { getFormError, PlainTextError } from "../util/FormError";
+import { Network } from "../models/networks";
+import store from "../util/store";
+import { request } from "../util/request";
 
 export const AddServer = () => {
 	const { t } = useTranslation("login");
 	const dispatch = useDispatch();
 	const guilds = useSelector((select: RootState) => select.guilds || []);
 	const history = useHistory();
-	const [name] = useState("");
+	const [name, setName] = useState("");
+	const [loading, setLoading] = useState(false);
+	const [err, setErr] = useState<any>(null);
+	const account: any = useSelector((select: RootState) => select.accounts || [])[0];
+	const network: Network = store.getState().networks.find((x) => x.id === account.network_id);
 
-	const urlWithoutAddServer = history.location.pathname.replaceAll("/server/add", "");
+	const urlWithoutAddServer = history.location.pathname.replaceAll("/", "");
 
 	async function submit(event: FormEvent) {
 		event.preventDefault();
-		const guild = {
-			id: Math.randomIntBetween(0, 100000),
-			name: name,
-		};
-		// TODO: validate and fetch network
-		dispatch({
-			type: "ADD_GUILDS",
-			payload: guild,
+		console.log(account);
+
+		var { body, error } = await request("/guilds", {
+			network,
+			body: {
+				name: name,
+			},
+			headers: {
+				Authorization: `${account.token}`,
+			},
 		});
-		history.push(urlWithoutAddServer);
+
+		setLoading(false);
+		setErr(error.name._errors[0].message);
+		if (error) return;
+
+		dispatch({ type: "ADD_GUILDS", payload: body });
 	}
 
 	return (
@@ -38,12 +53,18 @@ export const AddServer = () => {
 			<div className="page add">
 				<form className="form" onSubmit={submit}>
 					<Text headline={true}>{t("addServer")}</Text>
-					<div className="guild">
-						<span className="img">{t("upload").toUpperCase()}</span>
-					</div>
-					<Input labelText={t("serverName")} value={name}></Input>
-					<Text muted={true} className="little">{t("addServerNotice")}</Text>
-					<Button primary>{t("add")}</Button>
+					<Input
+						labelText={t("serverName")}
+						error={getFormError(err, "login")}
+						onChange={(e) => setName(e.target.value)}
+					></Input>
+					<PlainTextError error={err} style={{ marginBottom: 0 }}></PlainTextError>
+					<Text muted={true} className="little">
+						{t("addServerNotice")}
+					</Text>
+					<Button loading={loading} primary>
+						{t("add")}
+					</Button>
 				</form>
 			</div>
 		</>

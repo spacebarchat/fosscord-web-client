@@ -6,13 +6,14 @@ import { Network } from "../models/networks";
 import store from "../util/store";
 import { getMessages, sendMessages } from "../util/Messages";
 import { useEffect, useState } from "react";
+import { Modal } from "../framework/Modal";
 import i18n from "../util/i18n";
 import { Guild } from "../models/guilds";
 import { Button } from "../framework/Button";
 import "./SideBar.scss";
 import "@fosscord/ui/scss/scrollbar.scss";
 import FosscordLogo from "../assets/logo_big_transparent.png";
-import { Modal } from "../framework/Modal";
+// import { Modal } from "../framework/Modal";
 import AddServer from "../components/AddServer";
 
 export interface Params {
@@ -143,12 +144,13 @@ const SideBar = () => {
 };
 
 export function getAcronym(str: string) {
-	return str
-		.replace(/'s /g, " ")
-		.replace(/\w+/g, function (e) {
-			return e[0];
-		})
-		.replace(/\s/g, "");
+	if (str)
+		return str
+			.replace(/'s /g, " ")
+			.replace(/\w+/g, function (e) {
+				return e[0];
+			})
+			.replace(/\s/g, "");
 }
 
 const GuildBar = () => {
@@ -163,9 +165,17 @@ const GuildBar = () => {
 		exact: false,
 	});
 
+	const [modalIsOpen, setIsOpen] = useState<boolean>(false);
+
+	function openModal() {
+		setIsOpen(true);
+	}
+
+	function closeModal() {
+		setIsOpen(false);
+	}
 
 	const navigateTo = (channel: string) => history.push("/channels/" + channel);
-	const urlWithoutAddServer = history.location.pathname.replaceAll("/server/add", "");
 
 	return (
 		<div className="guild-container">
@@ -181,7 +191,9 @@ const GuildBar = () => {
 				<div
 					className={"guild " + (match?.params.id === x.id ? "active" : "")}
 					key={x.id}
-					onClick={() => navigateTo(x.id.toString())}
+					onClick={() => {
+						if (x.id) navigateTo(x.id.toString());
+					}}
 				>
 					<span className="pill"></span>
 					{x.icon ? (
@@ -191,19 +203,13 @@ const GuildBar = () => {
 					)}
 				</div>
 			))}
-			<div className="guild new-server" onClick={() => history.push("/server/add")}>
+			<div className="guild new-server" onClick={openModal}>
 				<span className="pill"></span>
 				<span className="img">+</span>
 			</div>
 
-			<Modal
-				className="server page"
-				open={history.location.pathname.includes("/server/add")}
-				onClose={() => history.replace(urlWithoutAddServer)}
-			>
-				<Route path={`${urlWithoutAddServer}/server/add`}>
-					<AddServer></AddServer>
-				</Route>
+			<Modal className="server page" open={modalIsOpen} onClose={closeModal}>
+				<AddServer></AddServer>
 			</Modal>
 		</div>
 	);

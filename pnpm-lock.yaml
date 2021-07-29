@@ -15,6 +15,7 @@ specifiers:
   '@types/node': ^12.20.17
   '@types/react': ^17.0.15
   '@types/react-dom': ^17.0.9
+  '@types/react-modal': ^3.12.1
   '@types/react-responsive': ^8.0.3
   '@types/react-router-dom': ^5.1.8
   '@types/redux-orm': ^0.16.0
@@ -119,6 +120,7 @@ dependencies:
   '@types/node': 12.20.17
   '@types/react': 17.0.15
   '@types/react-dom': 17.0.9
+  '@types/react-modal': 3.12.1
   '@typescript-eslint/eslint-plugin': 4.28.5_514553717ff968e20f6d1c6e521f8616
   '@typescript-eslint/parser': 4.28.5_eslint@7.31.0+typescript@4.3.5
   axios: 0.21.1
@@ -2536,6 +2538,12 @@ packages:
 
   /@types/react-dom/17.0.9:
     resolution: {integrity: sha512-wIvGxLfgpVDSAMH5utdL9Ngm5Owu0VsGmldro3ORLXV8CShrL8awVj06NuEXFQ5xyaYfdca7Sgbk/50Ri1GdPg==}
+    dependencies:
+      '@types/react': 17.0.15
+    dev: false
+
+  /@types/react-modal/3.12.1:
+    resolution: {integrity: sha512-pgq/jAnSJqHX7NXTFyUSXwlFOBUGngBXavFmAIKE7bkM7WNKyF/9XvmMr2+eIBOvR8waiA0Nj2qHfDZqMgeT6w==}
     dependencies:
       '@types/react': 17.0.15
     dev: false
