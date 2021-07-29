@@ -9,7 +9,6 @@ import { Spinner } from "../framework/Spinner";
 
 const Login = React.lazy(() => import("../pages/Login"));
 const Register = React.lazy(() => import("../pages/Register"));
-const AddServer = React.lazy(() => import("../pages/AddServer"));
 
 function App() {
 	return (
@@ -21,7 +20,6 @@ function App() {
 							<Switch>
 								<Route path="/register" component={Register}></Route>
 								<Route path="/login" component={Login}></Route>
-								<Route path="/server/add" component={AddServer}></Route>
 								<Route component={Home}></Route>
 							</Switch>
 						</Router>

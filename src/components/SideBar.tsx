@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { RootState, useSelector } from "react-redux";
-import { useRouteMatch } from "react-router";
-import { useHistory } from "react-router-dom";
+import { Route, useHistory, useRouteMatch } from "react-router";
 import { FriendList } from "./FriendList";
 import { Network } from "../models/networks";
 import store from "../util/store";
@@ -13,6 +12,8 @@ import { Button } from "../framework/Button";
 import "./SideBar.scss";
 import "@fosscord/ui/scss/scrollbar.scss";
 import FosscordLogo from "../assets/logo_big_transparent.png";
+import { Modal } from "../framework/Modal";
+import AddServer from "../components/AddServer";
 
 export interface Params {
 	id: string;
@@ -162,7 +163,9 @@ const GuildBar = () => {
 		exact: false,
 	});
 
+
 	const navigateTo = (channel: string) => history.push("/channels/" + channel);
+	const urlWithoutAddServer = history.location.pathname.replaceAll("/server/add", "");
 
 	return (
 		<div className="guild-container">
@@ -192,6 +195,16 @@ const GuildBar = () => {
 				<span className="pill"></span>
 				<span className="img">+</span>
 			</div>
+
+			<Modal
+				className="server page"
+				open={history.location.pathname.includes("/server/add")}
+				onClose={() => history.replace(urlWithoutAddServer)}
+			>
+				<Route path={`${urlWithoutAddServer}/server/add`}>
+					<AddServer></AddServer>
+				</Route>
+			</Modal>
 		</div>
 	);
 };

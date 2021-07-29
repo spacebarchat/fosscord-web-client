@@ -26,7 +26,7 @@ export function Text(p: TextProps) {
 	if (props.link) props.className += " link";
 	if (props.anchor) props.className += " anchor";
 
-	props.className += " text" + getColor(props);
+	props.className = "title " + props.className;
 
 	return React.createElement(
 		props.tag || "p",
