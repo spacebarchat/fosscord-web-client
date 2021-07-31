@@ -22,8 +22,10 @@
 	-webkit-box-shadow: var(--elevation-high);
 	box-shadow: var(--elevation-high);
 	background: var(--background-floating);
-	border-radius: 4px;
-
+	&,
+	& li {
+		border-radius: 4px;
+	}
 	overflow: hidden;
 
 	padding: 6px 8px;

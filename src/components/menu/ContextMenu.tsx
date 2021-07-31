@@ -1,14 +1,15 @@
 import { Component, useState } from "react";
-import { Modal } from "../../framework/Modal";
+import { LittleModal } from "../../framework/LittleModal";
 import { useTranslation } from "react-i18next";
 import "./ContextMenu.scss";
 import CreateChannel from "../modals/CreateChannel/CreateChannel";
 import { request } from "../../util/request";
 import { Network } from "../../models/networks";
-import { RootState, useDispatch, useSelector } from "react-redux";
+import { RootState, useSelector } from "react-redux";
 import store from "../../util/store";
 
 export class ContextMenu extends Component {
+	// TODO: fix overflow
 	state = {
 		xPos: "0px",
 		yPos: "0px",
@@ -54,14 +55,18 @@ export class ContextMenu extends Component {
 	}
 }
 
+export interface Params {
+	id: string;
+	channel: string;
+}
+
 const ContentContextMenu = (state: any) => {
-	const { t } = useTranslation("login");
+	const { t } = useTranslation("translation");
 	const { showMenu, xPos, yPos, target, targetGuildID } = state.state;
 	const [modalIsOpen, setIsOpen] = useState<boolean>(false);
 	const [modal, setModal] = useState<any>(null);
 	const account: any = useSelector((select: RootState) => select.accounts || [])[0];
 	const network: Network = store.getState().networks.find((x: any) => x.id === account.network_id);
-	const dispatch = useDispatch();
 
 	function openModal(modal: string) {
 		setModal(modal);
@@ -81,8 +86,23 @@ const ContentContextMenu = (state: any) => {
 			},
 		});
 
-		await dispatch({
+		store.dispatch({
 			type: "GUILD_DELETE",
+			payload: 0,
+		});
+	};
+
+	const deleteChannel = async () => {
+		var { body, error } = await request(`channels/${targetGuildID}`, {
+			network,
+			method: "DELETE",
+			headers: {
+				Authorization: `${account.token}`,
+			},
+		});
+
+		store.dispatch({
+			type: "CHANNEL_DELETE",
 			payload: 0,
 		});
 	};
@@ -99,7 +119,9 @@ const ContentContextMenu = (state: any) => {
 						}}
 					>
 						<div className="context">
-							<li onClick={() => openModal("createChannel")}>{t("createChannel")}</li>
+							<li onClick={() => openModal("createChannel")}>
+								{t("add") + " " + t("a") + " " + t("channel")}
+							</li>
 							<li>{t("createCategory")}</li>
 						</div>
 					</ul>
@@ -115,9 +137,11 @@ const ContentContextMenu = (state: any) => {
 					}}
 				>
 					<div className="context">
-						<li>{t("editChannel")}</li>
+						<li>{t("edit")}</li>
 						<div className="separator"></div>
-						<li className="red">{t("deleteChannel")}</li>
+						<li className="red" onClick={() => deleteChannel()}>
+							{t("delete")}
+						</li>
 					</div>
 				</ul>
 			);
@@ -131,10 +155,10 @@ const ContentContextMenu = (state: any) => {
 					}}
 				>
 					<div className="context">
-						<li>{t("editGuild")}</li>
+						<li>{t("edit")}</li>
 						<div className="separator"></div>
 						<li className="red" onClick={() => deleteGuild()}>
-							{t("deleteGuild")}
+							{t("delete")}
 						</li>
 					</div>
 				</ul>
@@ -144,8 +168,8 @@ const ContentContextMenu = (state: any) => {
 		}
 	else
 		return (
-			<Modal className="server page" open={modalIsOpen} onClose={closeModal}>
-				{modal === "createChannel" && <CreateChannel></CreateChannel>}
-			</Modal>
+			<LittleModal className="server page" open={modalIsOpen} onClose={closeModal}>
+				{modal === "createChannel" && <CreateChannel close={() => closeModal()}></CreateChannel>}
+			</LittleModal>
 		);
 };

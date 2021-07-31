@@ -14,17 +14,17 @@ import { Network } from "../../../models/networks";
 import store from "../../../util/store";
 import { request } from "../../../util/request";
 
-export const AddServer = () => {
-	const { t } = useTranslation("login");
-	const dispatch = useDispatch();
+export const AddServer = (props: any) => {
+	const { t } = useTranslation("translation");
 	const [name, setName] = useState("");
 	const [loading, setLoading] = useState(false);
 	const [err, setErr] = useState<any>(null);
 	const account: any = useSelector((select: RootState) => select.accounts || [])[0];
 	const network: Network = store.getState().networks.find((x) => x.id === account.network_id);
 
-	async function submit(event: FormEvent) {
+	async function submit(this: any, event: any) {
 		event.preventDefault();
+		// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 
 		var { body, error } = await request("/guilds", {
 			network,
@@ -37,34 +37,58 @@ export const AddServer = () => {
 		});
 
 		setLoading(false);
-		// setErr(error.name._errors[0].message);
+		setErr(error);
 		if (error) return;
 
-		console.log(event.target);
-
-		await dispatch({
+		store.dispatch({
 			type: "GUILD_CREATE",
 			payload: 0,
 		});
+
+		props.close?.();
+		return;
 	}
 
 	return (
 		<>
-			<div className="page add">
-				<form className="form" onSubmit={submit}>
-					<Text headline={true}>{t("addServer")}</Text>
-					<Input
-						labelText={t("serverName")}
-						error={getFormError(err, "login")}
-						onChange={(e) => setName(e.target.value)}
-					></Input>
-					<PlainTextError error={err} style={{ marginBottom: 0 }}></PlainTextError>
-					<Text muted={true} className="little">
-						{t("addServerNotice")}
-					</Text>
-					<Button loading={loading} primary>
-						{t("add")}
-					</Button>
+			<Text headline={true} className="titleModal">
+				Create New Server
+			</Text>
+			<div
+				className="page channel"
+				onSubmit={(e) => {
+					e.preventDefault();
+					submit(e);
+				}}
+			>
+				<form>
+					<div className="form">
+						<Text secondary={true}>{t("addServer")}</Text>
+
+						<div className="inputWrapper">
+							<input
+								className="inputDefault-_djjkz input-cIJ7To inputInner-2UxuB6"
+								maxLength={100}
+								placeholder="new-channel"
+								onChange={(e) => setName(e.target.value)}
+								name=""
+								type="text"
+								value={name}
+							/>
+						</div>
+						<PlainTextError error={err} style={{ marginBottom: 0 }}></PlainTextError>
+						<Text muted={true} className="little">
+							{t("addServerNotice")}
+						</Text>
+					</div>
+					<div className="footer">
+						<Button type="submit" loading={loading} primary disabled={loading}>
+							{t("add")}
+						</Button>
+						<Button type="button" onClick={() => props.close?.()} secondary>
+							{t("cancel")}
+						</Button>
+					</div>
 				</form>
 			</div>
 		</>

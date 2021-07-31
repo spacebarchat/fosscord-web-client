@@ -9,5 +9,5 @@ export function CHANNEL_CREATE(this: Client, data: Payload) {
 
 	console.log(d);
 
-	store.dispatch({ type: "UPDATE_GUILDS", payload: d });
+	store.dispatch({ type: "ADD_CHANNELS", payload: d });
 }

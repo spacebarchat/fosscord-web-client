@@ -6,11 +6,6 @@
 	padding: 1em;
 	text-align: center;
 	color: white;
-	
-	* {
-		margin: 0 auto;
-		margin-bottom: 0.5em;
-	}
 
 	.guild .img {
 		font-size: calc(var(--size) / 3.5);
@@ -30,3 +25,9 @@ button {
 .little {
 	font-size: 13px;
 }
+
+// .inputWrapper {
+// 	input {
+// 		padding-left: 10px !important;
+// 	}
+// }
