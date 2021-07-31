@@ -5,17 +5,74 @@
 .form {
 	padding: 1em;
 	text-align: center;
-	color: white;
-	
-	* {
-		margin: 0 auto;
-		margin-bottom: 0.5em;
-	}
 
 	.guild .img {
 		font-size: calc(var(--size) / 3.5);
 		width: calc(var(--size) * 1.5) !important;
 		height: calc(var(--size) * 1.5) !important;
+	}
+}
+
+.modal .titleModal {
+	color: #fff;
+	text-align: center;
+	padding: 30px 0 0 0;
+}
+
+.secondary {
+	text-align: left;
+	padding: 15px 0 5px 0;
+	text-transform: uppercase;
+}
+
+.input-wrapper {
+	margin-top: 0px !important;
+}
+
+.inputWrapper {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 20px;
+	svg {
+		position: absolute;
+		top: 12px;
+		left: 8px;
+		color: #dcddde;
+		height: 18px;
+	}
+	input {
+		font-size: 16px;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+		width: 100%;
+		border-radius: 3px;
+		color: #dcddde;
+		background-color: rgba(0, 0, 0, 0.1);
+		border: 1px solid rgba(0, 0, 0, 0.3);
+		-webkit-transition: border-color 0.2s ease-in-out;
+		transition: border-color 0.2s ease-in-out;
+		height: 40px;
+		padding-left: 35px;
+	}
+}
+
+.footer {
+	position: relative;
+	display: flex;
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 auto;
+	flex: 0 0 auto;
+	padding: 16px;
+	z-index: 1;
+	flex-direction: row-reverse;
+	overflow-x: hidden;
+	background-color: #2f3136;
+	box-shadow: inset 0 1px 0 rgba(47, 49, 54, 0.6);
+	border-radius: 0 0 5px 5px;
+	button {
+		margin: 10px;
+		min-width: 100px;
 	}
 }
 
@@ -29,4 +86,49 @@ button {
 
 .little {
 	font-size: 13px;
+}
+
+.radio {
+	width: auto !important;
+	background-color: var(--background-tertiary);
+	color: var(--interactive-active);
+	cursor: pointer;
+	border-radius: 3px;
+	display: block;
+	padding: 10px;
+	display: grid;
+	grid-template-columns: auto 1fr;
+	grid-gap: 8px;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	svg {
+		color: var(--interactive-active);
+	}
+	.radio-content {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		svg {
+			opacity: 0.6;
+			margin-right: 6px;
+			fill: #b9bbbe;
+		}
+		.radio-info {
+			display: flex;
+			flex-direction: column;
+			justify-content: left;
+			align-items: first baseline;
+			span:first-child {
+				font-size: 16px;
+				line-height: 20px;
+				font-weight: 500;
+			}
+			span:last-child {
+				font-size: 12px;
+				line-height: 16px;
+				font-weight: 500;
+			}
+		}
+	}
 }

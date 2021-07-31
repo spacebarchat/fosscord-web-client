@@ -1,9 +1,11 @@
 import { RootState, useSelector } from "react-redux";
 import "@fosscord/ui/scss/input-fields.scss";
 import "@fosscord/ui/scss/list.scss";
+import { useTranslation } from "react-i18next";
 import "./SideBar.scss";
 
 export const FriendList = () => {
+	const { t } = useTranslation("translation");
 	const guilds = useSelector((select: RootState) => select.guilds || []);
 	if (guilds.length < 0) return <div></div>;
 
@@ -13,7 +15,7 @@ export const FriendList = () => {
 				<header>
 					<input
 						className="input"
-						placeholder="Find or start a conversation"
+						placeholder={t("friendsSearchPlaceholder")}
 						name=""
 						type="text"
 						defaultValue=""
@@ -24,7 +26,7 @@ export const FriendList = () => {
 					<ul className="list">
 						<li className="item">
 							<i className="icon settings left"></i>
-							<div className="content">Friends</div>
+							<div className="content">{t("friends")}</div>
 						</li>
 					</ul>
 				</div>
