@@ -1,0 +1,13 @@
+{
+	"register": "Registracija",
+	"login": "Prijava",
+	"email": "Email",
+	"username": "Korisničko ime",
+	"password": "Lozinka",
+	"dateOfBirth": "Datum rođenja",
+	"network": "mreža",
+	"consent": "Slažem se s uvjetima pružanja usluge ove mreže",
+	"submit": "Nastavi",
+	"loginNotice": "Već imate račun?",
+	"captchaRequired": "Molimo vas da prvo riješite captcha"
+}
