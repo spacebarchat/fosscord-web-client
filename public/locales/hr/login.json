@@ -1,0 +1,12 @@
+{
+	"emailTelephone": "Email ili broj mobitela",
+	"password": "Lozinka",
+	"forgotPassword": "Zaboravili ste lozinku?",
+	"login": "Prijava",
+	"registerNotice": "Nemate račun?",
+	"register": "Registrirajte se",
+	"captchaRequired": "Molimo vas da prvo riješite captcha",
+	"captchaTitle": "Provjeramo dali ste robot",
+	"mfa": "Unesite Autentifikacijski/Rezervni kod",
+	"mfaPlaceholder": "6-znamenkasti kod za provjeru autentičnosti/8-znamenkasti rezervni kod"
+}
