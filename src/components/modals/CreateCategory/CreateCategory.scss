@@ -1,0 +1,52 @@
+:root {
+	--size: 48px;
+}
+
+.form {
+	padding: 1em;
+	text-align: center;
+
+	.guild .img {
+		font-size: calc(var(--size) / 3.5);
+		width: calc(var(--size) * 1.5) !important;
+		height: calc(var(--size) * 1.5) !important;
+	}
+}
+
+.modal .titleModal {
+	color: #fff;
+	text-align: center;
+	padding: 30px 0 0 0;
+}
+
+.input-wrapper {
+	margin-top: 0px !important;
+}
+
+.inputWrapper.category {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	input {
+		font-size: 16px;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+		width: 100%;
+		border-radius: 3px;
+		color: #dcddde;
+		background-color: rgba(0, 0, 0, 0.1);
+		border: 1px solid rgba(0, 0, 0, 0.3);
+		-webkit-transition: border-color 0.2s ease-in-out;
+		transition: border-color 0.2s ease-in-out;
+		height: 40px;
+		padding-left: 1em;
+	}
+}
+
+.muted {
+	color: grey;
+}
+
+.little {
+	font-size: 13px;
+}

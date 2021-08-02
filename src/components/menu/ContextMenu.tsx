@@ -7,6 +7,7 @@ import { request } from "../../util/request";
 import { Network } from "../../models/networks";
 import { RootState, useSelector } from "react-redux";
 import store from "../../util/store";
+import CreateCategory from "../modals/CreateCategory/CreateCategory";
 
 export class ContextMenu extends Component {
 	// TODO: fix overflow
@@ -119,10 +120,8 @@ const ContentContextMenu = (state: any) => {
 						}}
 					>
 						<div className="context">
-							<li onClick={() => openModal("createChannel")}>
-								{t("add") + " " + t("a") + " " + t("channel")}
-							</li>
-							<li>{t("createCategory")}</li>
+							<li onClick={() => openModal("createChannel")}>{t("createChannel")}</li>
+							<li onClick={() => openModal("createCategory")}>{t("createCategory")}</li>
 						</div>
 					</ul>
 				</>
@@ -170,6 +169,7 @@ const ContentContextMenu = (state: any) => {
 		return (
 			<LittleModal className="server page" open={modalIsOpen} onClose={closeModal}>
 				{modal === "createChannel" && <CreateChannel close={() => closeModal()}></CreateChannel>}
+				{modal === "createCategory" && <CreateCategory close={() => closeModal()}></CreateCategory>}
 			</LittleModal>
 		);
 };
