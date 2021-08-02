@@ -1,0 +1,21 @@
+{
+	"rateLimited": "Molimo vas pričekajte {{seconds}} sekundi",
+	"offline": "Niste povezani na mreži, molimo vas da se spojite na internet",
+	"serverOffline": "Poslužitelj nije dostupan, molimo vas da pokušate ponovo nakon minute",
+	"discordCORSIssue": "Nije moguće pristupiti Discord.com sa treće strane web stranice, molimo vas da umjesto toga preuzmete aplikaciju (dolazi uskoro)",
+	"friends": "Prijatelji",
+	"friendsSearchPlaceholder": "Pronađite ili započnite razgovor",
+	"addServer": "Dodaj poslužitelja",
+	"upload": "Pošalji",
+	"serverName": "Ime poslužitelja",
+	"addServerNotice": "Ako nastavite, prihvaćate grafikon od poslužitelja mreže.",
+	"add": "Dodaj",
+	"edit": "Uredi",
+	"delete": "Obriši",
+	"guild": "poslužitelj",
+	"this": "ovo",
+	"a": "a",
+	"home": "Naslovnica",
+	"channel": "kanal",
+	"createCategory": "Kreiraj kategoriju"
+}
