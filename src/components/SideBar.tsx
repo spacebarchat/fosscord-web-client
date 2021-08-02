@@ -6,17 +6,16 @@ import { Network } from "../models/networks";
 import store from "../util/store";
 import { getMessages, sendMessages } from "../util/Messages";
 import { useEffect, useState } from "react";
-import { Modal } from "../framework/Modal";
+import { LittleModal } from "../framework/LittleModal";
 import i18n from "../util/i18n";
+import { useTranslation } from "react-i18next";
 import { Guild } from "../models/guilds";
 import { Button } from "../framework/Button";
 import "./SideBar.scss";
 import "@fosscord/ui/scss/scrollbar.scss";
 import FosscordLogo from "../assets/logo_big_transparent.png";
-// import { Modal } from "../framework/Modal";
 import AddServer from "./modals/AddServer/AddServer";
 import { ContextMenu } from "../components/menu/ContextMenu";
-
 export interface Params {
 	id: string;
 	channel: string;
@@ -33,7 +32,10 @@ const SideBar = () => {
 	const [channel, setChannel] = useState<string>("");
 	const [sidebar, setSidebar] = useState<boolean>(true);
 
-	const guilds = useSelector((select: RootState) => select.guilds || []);
+	var guilds = useSelector((select: RootState) => select.guilds || []);
+	guilds = guilds.filter(function (el) {
+		return el != null;
+	});
 	const account: any = useSelector((select: RootState) => select.accounts || [])[0];
 	const network: Network = store.getState().networks.find((x) => x.id === account.network_id);
 
@@ -47,7 +49,10 @@ const SideBar = () => {
 		path: "/channels/:id/:channel?",
 		exact: false,
 	});
-	const guild = guilds.find((i) => i.id === match?.params.id);
+
+	const guild = guilds.find((i) => {
+		if (i != null && i.id === match?.params.id) return i;
+	});
 
 	useEffect(() => {
 		if (guild) {
@@ -76,11 +81,13 @@ const SideBar = () => {
 										<header>
 											<h1 className="text headline">{guild?.name}</h1>
 										</header>
+										{/* TODO: dropdown for server related actions */}
 										<div className="scrolled-container scrollbar">
 											<div style={{ height: "16px" }}></div>
 											<ul className="list">
 												{guild?.channels.map((x: Channel) => (
 													<li
+														id={x.id}
 														key={x.id}
 														className="item"
 														onClick={() => channelChange(x)}
@@ -125,9 +132,7 @@ const SideBar = () => {
 				{match?.params.channel != null && (
 					<div className="chatContent">
 						<div className="scrolled-container scrollbar">
-							<Messages message={key}>
-								<p>loading</p>
-							</Messages>
+							<Messages message={key}></Messages>
 						</div>
 						<input
 							type="text"
@@ -160,7 +165,11 @@ export function getAcronym(str: string) {
 }
 
 const GuildBar = () => {
-	const guilds = useSelector((select: RootState) => select.guilds || []);
+	const { t } = useTranslation("translation");
+	var guilds = useSelector((select: RootState) => select.guilds || []);
+	guilds = guilds.filter(function (el) {
+		return el != null;
+	});
 
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const history = useHistory();
@@ -186,7 +195,8 @@ const GuildBar = () => {
 	return (
 		<div className="guild-container">
 			<div
-				className={"guild " + (match?.params.id === "@me" ? "active" : "")}
+				className={"guild home" + (match?.params.id === "@me" ? " active" : "")}
+				title={t("home")}
 				onClick={() => history.push("/channels/@me")}
 			>
 				<span className="pill"></span>
@@ -196,8 +206,9 @@ const GuildBar = () => {
 			{guilds.map((x: Guild) => (
 				<div
 					id={x.id}
-					className={"guild " + (match?.params.id === x.id ? "active" : "")}
-					key={x.id}
+					className={"guild" + (match?.params.id === x.id ? " active" : "")}
+					title={x.name}
+					key={+new Date() + "_" + x.id + "_" + Math.random()}
 					onClick={() => {
 						if (x.id) navigateTo(x.id.toString());
 					}}
@@ -210,14 +221,14 @@ const GuildBar = () => {
 					)}
 				</div>
 			))}
-			<div className="guild new-server" onClick={openModal}>
+			<div className="guild new-guild" title={t("add") + " " + t("guild")} onClick={openModal}>
 				<span className="pill"></span>
 				<span className="img">+</span>
 			</div>
 
-			<Modal className="server page" open={modalIsOpen} onClose={closeModal}>
-				<AddServer></AddServer>
-			</Modal>
+			<LittleModal className="server page" open={modalIsOpen} onClose={closeModal}>
+				<AddServer close={() => closeModal()}></AddServer>
+			</LittleModal>
 		</div>
 	);
 };
@@ -242,7 +253,7 @@ const Messages = (message: any) => {
 				}
 			});
 		}
-	}, [message]);
+	}, [account, match?.params.channel, message, network]);
 
 	const formatter = new Intl.RelativeTimeFormat(i18n.language, {
 		numeric: "auto",

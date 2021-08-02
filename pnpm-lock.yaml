@@ -32,6 +32,7 @@ specifiers:
   bfj: ^7.0.2
   camelcase: ^6.2.0
   case-sensitive-paths-webpack-plugin: 2.3.0
+  convert-svg-react: ^1.0.0-beta.7
   cordova-android: ^9.1.0
   cordova-browser: ^6.0.0
   cordova-ios: ^6.2.0
@@ -78,12 +79,15 @@ specifiers:
   react-dev-utils: ^11.0.4
   react-dom: ^17.0.2
   react-i18next: ^11.11.4
+  react-inlinesvg: ^2.3.0
+  react-native-svg: ^12.1.1
   react-redux: ^7.2.4
   react-refresh: ^0.8.3
   react-responsive: ^8.2.0
   react-router: ^5.2.0
   react-router-dom: ^5.2.0
   react-scripts: ^4.0.3
+  react-svg: ^14.0.6
   redux: ^4.1.0
   redux-orm: ^0.16.2
   redux-thunk: ^2.3.0
@@ -132,6 +136,7 @@ dependencies:
   bfj: 7.0.2
   camelcase: 6.2.0
   case-sensitive-paths-webpack-plugin: 2.3.0
+  convert-svg-react: 1.0.0-beta.7
   css-loader: 4.3.0_webpack@4.44.2
   dotenv: 8.2.0
   dotenv-expand: 5.1.0
@@ -172,12 +177,15 @@ dependencies:
   react-dev-utils: 11.0.4
   react-dom: 17.0.2_react@17.0.2
   react-i18next: 11.11.4_i18next@20.3.5+react@17.0.2
+  react-inlinesvg: 2.3.0_react@17.0.2
+  react-native-svg: 12.1.1_react@17.0.2
   react-redux: 7.2.4_react-dom@17.0.2+react@17.0.2
   react-refresh: 0.8.3
   react-responsive: 8.2.0_react@17.0.2
   react-router: 5.2.0_react@17.0.2
   react-router-dom: 5.2.0_react@17.0.2
   react-scripts: 4.0.3_687bcacd2ae2a769ee8885875a1ba0a1
+  react-svg: 14.0.6_react-dom@17.0.2+react@17.0.2
   redux: 4.1.0
   redux-orm: 0.16.2
   redux-thunk: 2.3.0
@@ -2269,6 +2277,14 @@ packages:
       - supports-color
     dev: false
 
+  /@tanem/svg-injector/10.1.0:
+    resolution: {integrity: sha512-wmw1oE6zWNem3o9vCSwDr0CQJ10MDjbcXwBW83Npz3jl9hgxwSHnUPSC6Q2joa9cexgWf/s2MfVenX1UhqViUw==}
+    dependencies:
+      '@babel/runtime': 7.14.8
+      content-type: 1.0.4
+      tslib: 2.3.0
+    dev: false
+
   /@testing-library/dom/7.31.2:
     resolution: {integrity: sha512-3UqjCpey6HiTZT92vODYLPxTBWlM8ZOOjr3LX5F37/VRipW2M1kX6I/Cm4VXzteZqfGfagg8yXywpcOgQBlNsQ==}
     engines: {node: '>=10'}
@@ -4344,6 +4360,16 @@ packages:
       safe-buffer: 5.1.2
     dev: false
 
+  /convert-svg-react/1.0.0-beta.7:
+    resolution: {integrity: sha512-ROR5JC1A5BwBkRqpFEmVp0BoJhZHWgHdQPEPjvZco1VhkBoZ7EPuiKwk5COy+yNFwL/l1dlxl9Z1WRSAcuEfIA==}
+    dependencies:
+      install: 0.13.0
+      react: 16.14.0
+      react-dom: 16.14.0_react@16.14.0
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: false
+
   /cookie-signature/1.0.6:
     resolution: {integrity: sha1-4wOogrNCzD7oylE6eZmXNNqzriw=}
 
@@ -5842,6 +5868,10 @@ packages:
       strip-final-newline: 2.0.0
     dev: true
 
+  /exenv/1.2.2:
+    resolution: {integrity: sha1-KueOhdmJQVhnCwPUe+wfA72Ru50=}
+    dev: false
+
   /exit/0.1.2:
     resolution: {integrity: sha1-BjJjj42HfMghB9MKD/8aF8uhzQw=}
     engines: {node: '>= 0.8.0'}
@@ -6866,6 +6896,11 @@ packages:
 
   /ini/1.3.8:
     resolution: {integrity: sha512-JV/yugV2uzW5iMRSiZAyDtQd+nxtUnjeLt0acNdw98kKLrvuRVyB80tsREOE7yvGVgalhZ6RNXCmEHkUKBKxew==}
+    dev: false
+
+  /install/0.13.0:
+    resolution: {integrity: sha512-zDml/jzr2PKU9I8J/xyZBQn8rPCAY//UOYNmR01XwNwyfhEWObo2SWfSl1+0tm1u6PhxLwDnfsT/6jB7OUxqFA==}
+    engines: {node: '>= 0.10'}
     dev: false
 
   /internal-ip/4.3.0:
@@ -10311,6 +10346,18 @@ packages:
       text-table: 0.2.0
     dev: false
 
+  /react-dom/16.14.0_react@16.14.0:
+    resolution: {integrity: sha512-1gCeQXDLoIqMgqD3IO2Ah9bnf0w9kzhwN5q4FGnHZ67hBm9yePzB5JJAIQCc8x3pFnNlwFq4RidZggNAAkzWWw==}
+    peerDependencies:
+      react: ^16.14.0
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+      prop-types: 15.7.2
+      react: 16.14.0
+      scheduler: 0.19.1
+    dev: false
+
   /react-dom/17.0.2_react@17.0.2:
     resolution: {integrity: sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA==}
     peerDependencies:
@@ -10326,6 +10373,14 @@ packages:
     resolution: {integrity: sha512-nQTTcUu+ATDbrSD1BZHr5kgSD4oF8OFjxun8uAaL8RwPBacGBNPf/yAuVVdx17N8XNzRDMrZ9XcKZHCjPW+9ew==}
     dev: false
 
+  /react-from-dom/0.6.1_react@17.0.2:
+    resolution: {integrity: sha512-7aAZx7LhRnmR51W5XtmTBYHGFl2n1AdEk1uoXLuzHa1OoGXrxOW/iwLcudvgp6BGX/l4Yh1rtMrIzvhlvbVddg==}
+    peerDependencies:
+      react: ^15.0.0 || ^16.0.0 || ^17.0.0
+    dependencies:
+      react: 17.0.2
+    dev: false
+
   /react-i18next/11.11.4_i18next@20.3.5+react@17.0.2:
     resolution: {integrity: sha512-ayWFlu8Sc7GAxW1PzMaPtzq+yiozWMxs0P1WeITNVzXAVRhC0Httkzw/IiODBta6seJRBCLrtUeFUSXhAIxlRg==}
     peerDependencies:
@@ -10338,12 +10393,33 @@ packages:
       react: 17.0.2
     dev: false
 
+  /react-inlinesvg/2.3.0_react@17.0.2:
+    resolution: {integrity: sha512-fEGOdDf4k4bcveArbEpj01pJcH8pOCKLxmSj2POFdGvEk5YK0NZVnH6BXpW/PzACHPRsuh1YKAhNZyFnD28oxg==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0
+    dependencies:
+      exenv: 1.2.2
+      react: 17.0.2
+      react-from-dom: 0.6.1_react@17.0.2
+    dev: false
+
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
     dev: false
 
   /react-is/17.0.2:
     resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
+    dev: false
+
+  /react-native-svg/12.1.1_react@17.0.2:
+    resolution: {integrity: sha512-NIAJ8jCnXGCqGWXkkJ1GTzO4a3Md5at5sagYV8Vh4MXYnL4z5Rh428Wahjhh+LIjx40EE5xM5YtwyJBqOIba2Q==}
+    peerDependencies:
+      react: '*'
+      react-native: '>=0.50.0'
+    dependencies:
+      css-select: 2.1.0
+      css-tree: 1.1.3
+      react: 17.0.2
     dev: false
 
   /react-redux/7.2.4_react-dom@17.0.2+react@17.0.2:
@@ -10508,6 +10584,29 @@ packages:
       - webpack-command
       - webpack-hot-middleware
       - webpack-plugin-serve
+    dev: false
+
+  /react-svg/14.0.6_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-6+vHvHYepXC3nEqs8QcdozB67rAXu98D7VaiOuegUL7BbuQO4CWQHO6/phRQ6/pifvo2KYIw9EuagQGXHSBJwQ==}
+    peerDependencies:
+      react: ^15.5.4 || ^16.0.0 || ^17.0.0
+      react-dom: ^15.5.4 || ^16.0.0 || ^17.0.0
+    dependencies:
+      '@babel/runtime': 7.14.8
+      '@tanem/svg-injector': 10.1.0
+      '@types/prop-types': 15.7.4
+      prop-types: 15.7.2
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+    dev: false
+
+  /react/16.14.0:
+    resolution: {integrity: sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==}
+    engines: {node: '>=0.10.0'}
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+      prop-types: 15.7.2
     dev: false
 
   /react/17.0.2:
@@ -11047,6 +11146,13 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       xmlchars: 2.2.0
+    dev: false
+
+  /scheduler/0.19.1:
+    resolution: {integrity: sha512-n/zwRWRYSUj0/3g/otKDRPMh6qv2SYMWNq85IEa8iZyAv8od9zDYpGSnpBEjNgcMNq6Scbu5KfIPxNF72R/2EA==}
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
     dev: false
 
   /scheduler/0.20.2:
