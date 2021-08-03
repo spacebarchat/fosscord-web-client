@@ -44,3 +44,20 @@ body {
 	height: 100%;
 	flex-direction: column;
 }
+
+input {
+	outline: 0;
+	padding-left: 0;
+}
+
+h1 {
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 22px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.inputWrapper {
+	margin-bottom: 20px;
+}

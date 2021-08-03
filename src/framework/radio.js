@@ -1,4 +1,4 @@
-export function Radio(props) {
+export function Radio() {
 	return (
 		<svg aria-hidden="false" width="24" height="24" viewBox="0 0 24 24">
 			<path
@@ -14,9 +14,9 @@ export function Radio(props) {
 
 export function ChannelSVG() {
 	return (
-		<svg width="24" height="24" viewBox="0 0 24 24" className="icon-3pNFyS">
+		<svg width="24" height="24" viewBox="0 0 24 24" className="icon">
 			<path
-				className="foreground-SshK2E"
+				className="foreground"
 				fill="currentColor"
 				fillRule="evenodd"
 				clipRule="evenodd"
@@ -26,18 +26,18 @@ export function ChannelSVG() {
 	);
 }
 
-export function VoiceSVG(props) {
+export function VoiceSVG() {
 	return (
 		<svg
-			className="icon-3pNFyS"
-			background="background-6FOJIb"
+			className="icon"
+			background="background"
 			aria-hidden="false"
 			width="24"
 			height="24"
 			viewBox="0 0 24 24"
 		>
 			<path
-				className="foreground-SshK2E"
+				className="foreground"
 				fill="currentColor"
 				fillRule="evenodd"
 				clipRule="evenodd"

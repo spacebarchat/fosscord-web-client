@@ -11,11 +11,19 @@
 	"addServerNotice": "Si vous continuez, vous acceptez le charte du réseau du serveur.",
 	"add": "Ajouter",
 	"edit": "Éditer",
+	"cancel": "Annuler",
 	"delete": "Supprimer",
 	"guild": "un serveur",
+	"guildName": "Nom du serveur",
 	"this": "ce",
 	"a": "un",
 	"home": "Accueil",
 	"channel": "salon",
-	"createCategory": "Créer une catégorie"
+	"textChannel": "Salon textuel",
+	"textChannelDesc": "Postez des images, des GIFs, des autocollants, des opinions et des jeux de mots",
+	"voiceChannel": "Salon vocal",
+	"voiceChannelDesc": "Partage de la voix, de la vidéo et de l'écran",
+	"createCategory": "Créer une catégorie",
+	"createChannel": "Créer un salon",
+	"sendMessage": "Message"
 }

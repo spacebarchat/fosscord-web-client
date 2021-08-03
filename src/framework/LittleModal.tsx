@@ -5,7 +5,7 @@ import { Route } from "react-router";
 
 export interface ModalProps {
 	children?: React.ReactNode;
-	open?: boolean;
+	open: boolean;
 	onClose?: () => any;
 	className?: string;
 }
@@ -19,10 +19,34 @@ export function LittleModal(props: ModalProps) {
 
 		document.addEventListener("keydown", handleKeyDown);
 
+		function handleClick(evt: any) {
+			const insideItem = document.querySelector(".modal.open");
+			let targetElement = evt.target; // clicked element
+
+			do {
+				if (targetElement === insideItem) {
+					return;
+				}
+				targetElement = targetElement.parentNode;
+			} while (targetElement);
+
+			if (props.open) {
+				props.onClose?.();
+			}
+		}
+
+		document.addEventListener("click", handleClick);
+
 		return () => {
 			document.removeEventListener("keydown", handleKeyDown);
+			document.removeEventListener("click", handleClick);
 		};
 	});
+
+	// if (props.open) {
+	// 	document.querySelector(".modal")?.classList.remove("open");
+	// 	document.querySelector(".modal-background")?.classList.remove("modal-open");
+	// }
 
 	if (props.open) document.querySelector(".modal-background")?.classList.add("modal-open");
 	if (!props.open) document.querySelector(".modal-background")?.classList.remove("modal-open");

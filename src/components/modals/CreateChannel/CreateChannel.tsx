@@ -45,12 +45,16 @@ export const CreateChannel = (props: any) => {
 		setLoading(true);
 
 		var type = (document.querySelector(".active")?.id || "") === "voiceChannel" ? 2 : 0;
+		let parent_id = undefined;
+
+		if (props.category_id) parent_id = props.category_id;
 
 		var { body, error } = await request(`/guilds/${match?.params.id}/channels`, {
 			network,
 			body: {
 				name: name,
 				type: type,
+				parent_id,
 			},
 			headers: {
 				Authorization: `${account.token}`,
@@ -89,7 +93,7 @@ export const CreateChannel = (props: any) => {
 	return (
 		<>
 			<Text headline={true} className="titleModal">
-				Create Text Channel
+				{t("createChannel")}
 			</Text>
 			<div
 				className="page channel"
@@ -100,16 +104,13 @@ export const CreateChannel = (props: any) => {
 			>
 				<form>
 					<div className="form">
-						<Text secondary={true}>{t("channelType")}</Text>
 						<span id="textChannel" onClick={() => toggle("textChannel")} className="radio">
 							<Radio></Radio>
 							<div className="radio-content">
 								<ChannelSVG></ChannelSVG>
 								<div className="radio-info">
-									<span className="name">Text Channel</span>
-									<span className="description">
-										Post images, GIFs, stickers, opinions, and puns
-									</span>
+									<span className="name">{t("textChannel")}</span>
+									<span className="description">{t("textChannelDesc")}</span>
 								</div>
 							</div>
 						</span>
@@ -118,20 +119,14 @@ export const CreateChannel = (props: any) => {
 							<div className="radio-content">
 								<VoiceSVG></VoiceSVG>
 								<div className="radio-info">
-									<span className="name">Voice Channel</span>
-									<span className="description">
-										Hang out with voice, video, and screen sharing
-									</span>
+									<span className="name">{t("voiceChannel")}</span>
+									<span className="description">{t("voiceChannelDesc")}</span>
 								</div>
 							</div>
 						</span>
-
-						<Text secondary={true}>{t("createChannel")}</Text>
-
-						<div className="inputWrapper">
+						<div className="inputWrapper channel">
 							{icon}
-							<input
-								className="inputDefault-_djjkz input-cIJ7To inputInner-2UxuB6"
+							<Input
 								maxLength={100}
 								placeholder="new-channel"
 								onChange={(e) => setName(e.target.value)}
