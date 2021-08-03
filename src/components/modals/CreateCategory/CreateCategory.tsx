@@ -1,14 +1,14 @@
-import { RootState, useDispatch, useSelector } from "react-redux";
+import { RootState, useSelector } from "react-redux";
 import { Input } from "../../../framework/Input";
 import "./CreateCategory.scss";
 import { Text } from "../../../framework/Text";
-import { useState, FormEvent, useEffect } from "react";
+import { useState, FormEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "../../../framework/Button";
 import "../../../pages/general.scss";
 
 import "missing-native-js-functions";
-import { getFormError, PlainTextError } from "../../../util/FormError";
+import { PlainTextError } from "../../../util/FormError";
 import { Network } from "../../../models/networks";
 import store from "../../../util/store";
 import { request } from "../../../util/request";
@@ -22,7 +22,6 @@ export interface Params {
 
 export const CreateCategory = (props: any) => {
 	const { t } = useTranslation("translation");
-	const dispatch = useDispatch();
 	const [name, setName] = useState("");
 	const [loading, setLoading] = useState(false);
 	const [err, setErr] = useState<any>(null);
@@ -43,7 +42,7 @@ export const CreateCategory = (props: any) => {
 
 		setLoading(true);
 
-		var { body, error } = await request(`/guilds/${match?.params.id}/channels`, {
+		var { error } = await request(`/guilds/${match?.params.id}/channels`, {
 			network,
 			body: {
 				name: name,

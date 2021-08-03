@@ -52,12 +52,14 @@
 		&.red {
 			color: hsl(359, calc(var(--saturation-factor, 1) * 82.6%), 59.4%);
 			&:hover {
-				background: var(--list-danger-hover-color);
+				background: hsl(359, calc(var(--saturation-factor, 1) * 82.6%), 59.4%);
+				color: #fff !important;
 			}
 		}
 
 		&:hover {
-			background-color: var(--list-primary-color);
+			background: hsl(235, calc(var(--saturation-factor, 1) * 85.6%), 64.7%);
+			color: #fff !important;
 		}
 	}
 }

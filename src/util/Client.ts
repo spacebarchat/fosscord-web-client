@@ -1,7 +1,6 @@
 import OPCodeHandlers from "./opcodes/";
 import "missing-native-js-functions";
 import { UAParser } from "ua-parser-js";
-import store from "./store";
 
 // TODO: zlib
 window.sleep = function (ms) {

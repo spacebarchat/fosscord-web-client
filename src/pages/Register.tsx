@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from "react";
+import { FormEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Branding } from "../components/Branding";
 import { NetworkSelection } from "../components/NetworkSelection";
@@ -32,7 +32,7 @@ export default function Register() {
 		setLoading(true);
 
 		// TODO: make response body complete
-		const { response, error } = await request(`/auth/register`, {
+		const { error } = await request(`/auth/register`, {
 			network,
 			// TODO: fingerprint
 			body: {

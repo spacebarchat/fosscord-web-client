@@ -1,6 +1,6 @@
 import Model from "redux-orm";
 import { Client } from "../util/Client";
-import { Guild, GuildState } from "./guilds";
+import { Guild } from "./guilds";
 
 export class NetworkModel extends Model {
 	static modelName = "Network";

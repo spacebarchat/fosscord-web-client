@@ -12,18 +12,22 @@ export function users(state = [], action: any) {
 		case "REMOVE_USERS":
 			return state.filter((x) => x !== action.payload);
 		case "UPDATE_USER":
-			return [...state].map((x: User) => {
-				if (x.id !== action.payload.id) return x;
-				return action.payload;
-			});
+			if (state.length > 0)
+				return [...state].map((x: User) => {
+					if (x.id !== action.payload.id) return x;
+					return action.payload;
+				});
+			else return [...state, action.payload];
 		default:
 			return state;
 	}
 }
-
 export interface User {
 	id: string;
-	avatar?: string;
+	bot: boolean;
+	username: string;
+	avatar: string;
+	discriminator: string;
 	network: Network;
 	guilds: Guild[];
 }

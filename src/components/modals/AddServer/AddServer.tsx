@@ -1,15 +1,15 @@
-import { RootState, useDispatch, useSelector } from "react-redux";
+import { RootState, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import "./AddServer.scss";
 import { Text } from "../../../framework/Text";
-import { useState, FormEvent } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "../../../framework/Button";
 import { Input } from "../../../framework/Input";
 import "../../../pages/general.scss";
 
 import "missing-native-js-functions";
-import { getFormError, PlainTextError } from "../../../util/FormError";
+import { PlainTextError } from "../../../util/FormError";
 import { Network } from "../../../models/networks";
 import store from "../../../util/store";
 import { request } from "../../../util/request";
@@ -21,6 +21,9 @@ export const AddServer = (props: any) => {
 	const [err, setErr] = useState<any>(null);
 	const account: any = useSelector((select: RootState) => select.accounts || [])[0];
 	const network: Network = store.getState().networks.find((x) => x.id === account.network_id);
+
+	// eslint-disable-next-line react-hooks/rules-of-hooks
+	const history = useHistory();
 
 	async function submit(this: any, event: any) {
 		event.preventDefault();
@@ -41,6 +44,7 @@ export const AddServer = (props: any) => {
 		setLoading(false);
 		setErr(error);
 		if (error) return;
+		else history.push("/channels/" + body.id);
 
 		store.dispatch({
 			type: "GUILD_CREATE",
