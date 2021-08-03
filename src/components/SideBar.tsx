@@ -15,7 +15,7 @@ import { Spinner } from "../framework/Spinner";
 import "./SideBar.scss";
 import "@fosscord/ui/scss/scrollbar.scss";
 import "@fosscord/ui/scss/indicators.scss";
-import "@fosscord/ui/scss/tooltip.scss";
+import "../framework/tooltip.scss";
 import FosscordLogo from "../assets/logo_big_transparent.png";
 
 import VoiceSVG from "../assets/voice.png";
