@@ -123,15 +123,15 @@
 	.privateChannelsHeader {
 		position: relative;
 		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		padding: 18px 8px 4px 18px;
+		padding: 5px 8px 0 10px;
 		height: 40px;
 
 		span {
 			cursor: default;
 			display: flex;
+			flex-grow: 2;
 			width: 100%;
+			padding-top: 5%;
 			height: 18px;
 			text-overflow: ellipsis;
 			white-space: nowrap;
@@ -149,9 +149,7 @@
 		}
 		.icon {
 			cursor: pointer;
-			right: 10px;
-			position: absolute;
-			top: 32px;
+			margin-left: 40%;
 			width: 12px;
 			height: 12px;
 		}
