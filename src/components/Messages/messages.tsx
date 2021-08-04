@@ -8,6 +8,8 @@ import { Network } from "../../models/networks";
 import store from "../../util/store";
 import { relativeTime } from "../../util/Time";
 import { getMessages } from "../../util/Messages";
+import { Text } from "../../framework/Text";
+// import { string } from "yargs";
 
 export interface Params {
 	id: string;
@@ -18,6 +20,7 @@ export interface Channel {
 	id: string;
 	name: string;
 	type: number;
+	messages: [];
 }
 
 export const Messages = (message: any) => {
@@ -43,7 +46,12 @@ export const Messages = (message: any) => {
 		}
 	}, [account, match?.params.channel, message, network]);
 
-	if (!match?.params.channel || !messages) return <div></div>;
+	if (!match?.params.channel || !messages)
+		return (
+			<div>
+				<Text className="empty">{t("emptyMessages")}</Text>
+			</div>
+		);
 
 	return (
 		<FlatList

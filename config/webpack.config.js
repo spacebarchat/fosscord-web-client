@@ -286,18 +286,7 @@ module.exports = function (webpackEnv) {
 			splitChunks: {
 				chunks: "all",
 				name: isEnvDevelopment,
-				// TODO: is this the best way of caching all vendor packages?
-				// https://webpack.js.org/guides/caching/
-				cacheGroups: {
-					vendor: {
-						test: /[\\/]node_modules[\\/]/,
-						name: "vendors",
-						chunks: "all",
-					},
-				},
 			},
-			// TODO moduleIds deterministic if we upgrade to webpack 5
-			// moduleIds: "deterministic",
 			// Keep the runtime chunk separated to enable long term caching
 			// https://twitter.com/wSokra/status/969679223278505985
 			// https://github.com/facebook/create-react-app/issues/5358
@@ -405,12 +394,15 @@ module.exports = function (webpackEnv) {
 										{
 											loaderMap: {
 												svg: {
-													ReactComponent: "@svgr/webpack?-svgo,+titleProp,+ref![path]",
+													ReactComponent:
+														"@svgr/webpack?-svgo,+titleProp,+ref![path]",
 												},
 											},
 										},
 									],
-									isEnvDevelopment && shouldUseReactRefresh && require.resolve("react-refresh/babel"),
+									isEnvDevelopment &&
+										shouldUseReactRefresh &&
+										require.resolve("react-refresh/babel"),
 								].filter(Boolean),
 								// This is a feature of `babel-loader` for webpack (not Babel itself).
 								// It enables caching results in ./node_modules/.cache/babel-loader/
@@ -431,7 +423,12 @@ module.exports = function (webpackEnv) {
 								babelrc: false,
 								configFile: false,
 								compact: false,
-								presets: [[require.resolve("babel-preset-react-app/dependencies"), { helpers: true }]],
+								presets: [
+									[
+										require.resolve("babel-preset-react-app/dependencies"),
+										{ helpers: true },
+									],
+								],
 								cacheDirectory: true,
 								// See #6846 for context on why cacheCompression is disabled
 								cacheCompression: false,
@@ -488,7 +485,6 @@ module.exports = function (webpackEnv) {
 								},
 								"sass-loader"
 							),
-
 							// Don't consider CSS imports dead code even if the
 							// containing package claims to have no side effects.
 							// Remove this when webpack adds a warning or an error for this.
@@ -663,7 +659,9 @@ module.exports = function (webpackEnv) {
 					async: isEnvDevelopment,
 					checkSyntacticErrors: true,
 					resolveModuleNameModule: process.versions.pnp ? `${__dirname}/pnpTs.js` : undefined,
-					resolveTypeReferenceDirectiveModule: process.versions.pnp ? `${__dirname}/pnpTs.js` : undefined,
+					resolveTypeReferenceDirectiveModule: process.versions.pnp
+						? `${__dirname}/pnpTs.js`
+						: undefined,
 					tsconfig: paths.appTsConfig,
 					reportFiles: [
 						// This one is specifically to match during CI tests,

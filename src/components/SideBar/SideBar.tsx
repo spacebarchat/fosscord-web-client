@@ -10,6 +10,7 @@ import { sendMessages } from "../../util/Messages";
 import { LittleModal } from "../../framework/LittleModal";
 import { Button } from "../../framework/Button";
 import { FaChevronDown } from "../../framework/radio";
+import { Text } from "../../framework/Text";
 // MODELS
 import { Network } from "../../models/networks";
 // COMPONENTS
@@ -79,15 +80,19 @@ const SideBar = () => {
 		if (guild) {
 			// eslint-disable-next-line react-hooks/exhaustive-deps
 			channel_name = guild.channels.find((i: any) => i.id === match?.params.channel)?.name;
-			if (channel_name) setChannel(channel_name);
+			if (channel_name) return setChannel(channel_name);
 		}
-	}, [match?.params.channel]);
+	}, [match?.params.channel, guild?.channels, guild]);
 
 	useEffect(() => {
-		if (guild) {setData(guild?.channels)} else {setData({})};
-	}, [match?.params.channel, guild, guild?.channels]);
+		if (guild) {
+			return setData(guild?.channels);
+		} else {
+			return setData({});
+		}
+	}, [guild, guild?.channels]);
 
-	if (data === undefined) {
+	if (data === undefined || null) {
 		if (guild) setData(guild?.channels);
 	}
 
@@ -120,7 +125,7 @@ const SideBar = () => {
 											{/* TODO: dropdown for server related actions */}
 											<div className="scrolled-container scrollbar channels">
 												<div style={{ height: "16px" }}></div>
-												{!typeof data === undefined && (
+												{(data !== undefined || null) && Array.isArray(data) && (
 													<div className="list">
 														<div>
 															{renderChannels(
@@ -193,7 +198,10 @@ const SideBar = () => {
 															/>
 														</div>
 													</div>
-												) && console.log(data)}
+												)}
+												{(data === undefined || null) && (
+													<Text className="empty">{t("emptyMessages")}</Text>
+												)}
 											</div>
 											<div className="settingsBar">
 												<div className="member">
