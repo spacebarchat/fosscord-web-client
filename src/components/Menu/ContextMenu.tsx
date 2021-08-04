@@ -2,12 +2,13 @@ import { Component, useState } from "react";
 import { LittleModal } from "../../framework/LittleModal";
 import { useTranslation } from "react-i18next";
 import "./ContextMenu.scss";
-import CreateChannel from "../modals/CreateChannel/CreateChannel";
+import CreateChannel from "../Modals/CreateChannel/CreateChannel";
 import { request } from "../../util/request";
 import { Network } from "../../models/networks";
 import { RootState, useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import store from "../../util/store";
-import CreateCategory from "../modals/CreateCategory/CreateCategory";
+import CreateCategory from "../Modals/CreateCategory/CreateCategory";
 
 export class ContextMenu extends Component {
 	// TODO: fix overflow
@@ -47,7 +48,7 @@ export class ContextMenu extends Component {
 			yPos: `${e.pageY}px`,
 			showMenu: true,
 			target: e.target.className,
-			targetGuildID: e.target.parentElement.id,
+			targetGuildID: e.target.id,
 		});
 	};
 
@@ -69,6 +70,9 @@ const ContentContextMenu = (state: any) => {
 	const account: any = useSelector((select: RootState) => select.accounts || [])[0];
 	const network: Network = store.getState().networks.find((x: any) => x.id === account.network_id);
 
+	// eslint-disable-next-line react-hooks/rules-of-hooks
+	const history = useHistory();
+
 	function openModal(modal: string) {
 		setModal(modal);
 		setIsOpen(true);
@@ -79,13 +83,15 @@ const ContentContextMenu = (state: any) => {
 	}
 
 	const deleteGuild = async () => {
-		var { body, error } = await request(`/guilds/${targetGuildID}/delete`, {
+		await request(`/guilds/${targetGuildID}/delete`, {
 			network,
 			method: "POST",
 			headers: {
 				Authorization: `${account.token}`,
 			},
 		});
+
+		history.push("/channels/@me");
 
 		store.dispatch({
 			type: "GUILD_DELETE",
@@ -94,13 +100,15 @@ const ContentContextMenu = (state: any) => {
 	};
 
 	const deleteChannel = async () => {
-		var { body, error } = await request(`channels/${targetGuildID}`, {
+		await request(`channels/${targetGuildID}`, {
 			network,
 			method: "DELETE",
 			headers: {
 				Authorization: `${account.token}`,
 			},
 		});
+
+		history.push(".");
 
 		store.dispatch({
 			type: "CHANNEL_DELETE",
@@ -109,7 +117,7 @@ const ContentContextMenu = (state: any) => {
 	};
 
 	if (showMenu)
-		if (target === "sidebar-channels") {
+		if (target === "scrolled-container scrollbar channels") {
 			return (
 				<>
 					<ul
@@ -126,7 +134,39 @@ const ContentContextMenu = (state: any) => {
 					</ul>
 				</>
 			);
-		} else if (target === "content channel") {
+		} else if (target === "scrolled-container scrollbar chat") {
+			return (
+				<ul
+					className="menu"
+					style={{
+						top: yPos,
+						left: xPos,
+					}}
+				>
+					<div className="context">
+						<li>{t("delete")}</li>
+					</div>
+				</ul>
+			);
+		} else if (target === "item" || target === "item active") {
+			return (
+				<ul
+					className="menu"
+					style={{
+						top: yPos,
+						left: xPos,
+					}}
+				>
+					<div className="context">
+						<li>{t("edit")}</li>
+						<div className="separator"></div>
+						<li className="red" onClick={() => deleteChannel()}>
+							{t("delete")}
+						</li>
+					</div>
+				</ul>
+			);
+		} else if (target === "item category") {
 			return (
 				<ul
 					className="menu"

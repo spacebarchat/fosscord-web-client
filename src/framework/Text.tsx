@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { ColorProps, deleteProps, getColor } from "./Types";
+import { ColorProps, deleteProps } from "./Types";
 
 export interface TextProps extends ColorProps {
 	title?: boolean;

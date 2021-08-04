@@ -53,6 +53,7 @@ specifiers:
   eslint-plugin-testing-library: ^3.10.2
   eslint-webpack-plugin: ^2.5.4
   file-loader: 6.1.1
+  flatlist-react: ^1.5.0
   fs-extra: ^9.1.0
   html-webpack-plugin: 4.5.0
   i18next: ^20.3.5
@@ -81,6 +82,7 @@ specifiers:
   react-i18next: ^11.11.4
   react-inlinesvg: ^2.3.0
   react-native-svg: ^12.1.1
+  react-pressable: ^0.2.0
   react-redux: ^7.2.4
   react-refresh: ^0.8.3
   react-responsive: ^8.2.0
@@ -151,6 +153,7 @@ dependencies:
   eslint-plugin-testing-library: 3.10.2_eslint@7.31.0+typescript@4.3.5
   eslint-webpack-plugin: 2.5.4_eslint@7.31.0+webpack@4.44.2
   file-loader: 6.1.1_webpack@4.44.2
+  flatlist-react: 1.5.0_react-dom@17.0.2+react@17.0.2
   fs-extra: 9.1.0
   html-webpack-plugin: 4.5.0_webpack@4.44.2
   i18next: 20.3.5
@@ -179,6 +182,7 @@ dependencies:
   react-i18next: 11.11.4_i18next@20.3.5+react@17.0.2
   react-inlinesvg: 2.3.0_react@17.0.2
   react-native-svg: 12.1.1_react@17.0.2
+  react-pressable: 0.2.0_react@17.0.2
   react-redux: 7.2.4_react-dom@17.0.2+react@17.0.2
   react-refresh: 0.8.3
   react-responsive: 8.2.0_react@17.0.2
@@ -5803,6 +5807,10 @@ packages:
     resolution: {integrity: sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==}
     dev: false
 
+  /eventlistener/0.0.1:
+    resolution: {integrity: sha1-7Suqu4UiJ68rz4iRUscsY8pTLrg=}
+    dev: false
+
   /events/3.3.0:
     resolution: {integrity: sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==}
     engines: {node: '>=0.8.x'}
@@ -6130,6 +6138,18 @@ packages:
     dependencies:
       flatted: 3.2.1
       rimraf: 3.0.2
+    dev: false
+
+  /flatlist-react/1.5.0_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-Ux0Pnp679sNcq+v0o+mU5pJgPBFdaOWDzxGknftZw1G4uBrwyAFRJN++gyveiEXc5bPvRL0wsE2B6OYSmdUmKg==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    dependencies:
+      prop-types: 15.7.2
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      warning: 4.0.3
     dev: false
 
   /flatted/3.2.1:
@@ -10422,6 +10442,16 @@ packages:
       react: 17.0.2
     dev: false
 
+  /react-pressable/0.2.0_react@17.0.2:
+    resolution: {integrity: sha1-13nfi+sFnXeD6d7VAZ/xZJNIPjc=}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      eventlistener: 0.0.1
+      react: 17.0.2
+      xtend: 4.0.2
+    dev: false
+
   /react-redux/7.2.4_react-dom@17.0.2+react@17.0.2:
     resolution: {integrity: sha512-hOQ5eOSkEJEXdpIKbnRyl04LhaWabkDPV+Ix97wqQX3T3d2NQ8DUblNXXtNMavc7DpswyQM6xfaN4HQDKNY2JA==}
     peerDependencies:
@@ -12520,6 +12550,12 @@ packages:
     resolution: {integrity: sha1-L3+bj9ENZ3JisYqITijRlhjgKPs=}
     dependencies:
       makeerror: 1.0.11
+    dev: false
+
+  /warning/4.0.3:
+    resolution: {integrity: sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==}
+    dependencies:
+      loose-envify: 1.4.0
     dev: false
 
   /watchpack-chokidar2/2.0.1:

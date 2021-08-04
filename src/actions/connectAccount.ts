@@ -8,6 +8,7 @@ export function connectAccount(account: Partial<Account>) {
 	if (!account.token) return null;
 	const network: Network = store.getState().networks.find((x) => x.id === account.network_id);
 	if (!network) return null;
+
 	// @ts-ignore
 	if (!account.client || !(account.client instanceof Client)) {
 		account.client = new Client(network.gateway, { token: account.token });

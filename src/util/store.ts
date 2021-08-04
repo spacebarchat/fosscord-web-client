@@ -1,7 +1,6 @@
 import { applyMiddleware, compose, createStore } from "redux";
 import reducers from "../models";
 import thunk from "redux-thunk";
-import { createReducer } from "redux-orm";
 
 export const loadState = () => {
 	try {

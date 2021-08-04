@@ -21,7 +21,7 @@ export type RequestResult = {
 export var defaultTimeout = 5000;
 
 // TODO: rate limit buckets (but aren't high priority for normal user clients)
-const RateLimitBuckets = new Map();
+//const RateLimitBuckets = new Map();
 
 // TODO: make different rate limit buckets for different networks
 // TODO: optimistic/predict rate limits with network config

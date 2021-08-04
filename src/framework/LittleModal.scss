@@ -3,6 +3,21 @@
 		width: 100vw !important;
 	}
 }
+
+.overlay {
+	transition: all ease 0.2s;
+	&.open {
+		position: fixed;
+		transition: all 0.2s;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 2000;
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+}
+
 .modal,
 .modal.open {
 	position: absolute !important;
@@ -21,7 +36,7 @@
 		right: calc(var(--modal-padding) - 10%);
 	}
 }
-.modal-background.modal-open {
+.modal-background .modal-open {
 	transform: none !important;
 }
 
