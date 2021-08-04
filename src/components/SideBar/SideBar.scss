@@ -49,7 +49,7 @@ i.icon {
 		padding: 1px 17px;
 		height: 57px;
 		z-index: 999;
-		width: 128%;
+		width: calc(98% + 240px);
 
 		header {
 			display: flex;
@@ -545,7 +545,7 @@ i.icon {
 		.img {
 			color: hsl(139, calc(var(--saturation-factor, 1) * 47.3%), 43.9%);
 			background-color: var(--background-primary);
-			font-weight: 400;
+			font-weight: 365;
 			font-size: 30px;
 		}
 	}
@@ -583,9 +583,6 @@ i.icon {
 
 .guild.home:hover {
 	border-radius: 0;
-	& .img:hover {
-		box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
-	}
 }
 
 .guild.active img {
@@ -658,7 +655,7 @@ hr {
 		position: relative;
 		bottom: 0;
 		padding: 0.5em;
-		margin-top: 57px;
+		margin-top: 59px;
 	}
 	* {
 		user-select: none;

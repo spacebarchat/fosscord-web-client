@@ -79,12 +79,12 @@ const SideBar = () => {
 		if (guild) {
 			// eslint-disable-next-line react-hooks/exhaustive-deps
 			channel_name = guild.channels.find((i: any) => i.id === match?.params.channel)?.name;
-			if (channel_name) setChannel("#" + channel_name);
+			if (channel_name) setChannel(channel_name);
 		}
 	}, [match?.params.channel]);
 
 	useEffect(() => {
-		if (guild) setData(guild?.channels);
+		if (guild) {setData(guild?.channels)} else {setData({})};
 	}, [match?.params.channel, guild, guild?.channels]);
 
 	if (data === undefined) {
@@ -120,7 +120,7 @@ const SideBar = () => {
 											{/* TODO: dropdown for server related actions */}
 											<div className="scrolled-container scrollbar channels">
 												<div style={{ height: "16px" }}></div>
-												{data !== undefined && (
+												{!typeof data === undefined && (
 													<div className="list">
 														<div>
 															{renderChannels(
@@ -193,7 +193,7 @@ const SideBar = () => {
 															/>
 														</div>
 													</div>
-												)}
+												) && console.log(data)}
 											</div>
 											<div className="settingsBar">
 												<div className="member">
@@ -213,7 +213,7 @@ const SideBar = () => {
 													</div>
 													<div className="contentWrap">
 														<span className="name">{user.username}</span>
-														<span className="description">Test Game playing</span>
+														{/* <span className="description">Test Game playing</span> */}
 													</div>
 												</div>
 												<div className="tooltip">
@@ -284,7 +284,7 @@ const SideBar = () => {
 							<input
 								type="text"
 								className="text secondary"
-								placeholder={t("sendMessage") + " " + channel_name}
+								placeholder={t("sendMessage") + " #" + channel_name}
 								defaultValue=""
 								onKeyPress={(event) => {
 									if (event.key === "Enter" && match?.params.channel) {
@@ -299,7 +299,7 @@ const SideBar = () => {
 				)}
 			</div>
 
-			{match?.params.id != "@me" && (
+			{match?.params.id !== "@me" && (
 				<div className="membersWrap right">
 					<h2 className="membersGroup" aria-label="👑Founders👑, 3 members">
 						<span aria-hidden="true">👑Founders👑 — 3</span>
