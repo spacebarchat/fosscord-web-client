@@ -6,17 +6,17 @@
 
 i.icon {
 	&.edit {
-		mask-image: url(../../node_modules/@fosscord/ui/icons/regular/edit.svg);
+		mask-image: url(../../../node_modules/@fosscord/ui/icons/regular/edit.svg);
 	}
 	&.react {
-		mask-image: url(../../node_modules/@fosscord/ui/icons/regular/dizzy.svg);
+		mask-image: url(../../../node_modules/@fosscord/ui/icons/regular/dizzy.svg);
 	}
 	&.arrow-down {
-		mask-image: url("../../node_modules/@fosscord/ui/icons/solid/arrow-down.svg");
+		mask-image: url("../../../node_modules/@fosscord/ui/icons/solid/arrow-down.svg");
 		width: 10px;
 	}
 	&.arrow-right {
-		mask-image: url("../../node_modules/@fosscord/ui/icons/solid/arrow-right.svg");
+		mask-image: url("../../../node_modules/@fosscord/ui/icons/solid/arrow-right.svg");
 		width: 10px;
 	}
 }
@@ -47,22 +47,25 @@ i.icon {
 		background-color: var(--background-primary);
 		box-shadow: var(--elevation-low);
 		padding: 1px 17px;
-		height: 48px;
+		height: 57px;
 		z-index: 999;
+		width: calc(98% + 240px);
 
 		header {
 			display: flex;
-			flex-direction: row;
 			height: 48px;
 
-			h1:has(&.icon) {
-				padding-left: 0.5em;
+			& h1.icon {
 				font-size: 15px;
+				padding-left: 4em;
 			}
 
-			& h1:not(&.icon) {
+			& h1:not(.icon) {
+				position: relative;
+				top: 3px;
 				font-size: 20px;
 				line-height: 20px;
+				padding-left: 0.5em;
 			}
 		}
 	}
@@ -70,7 +73,7 @@ i.icon {
 	.sidebar-channels {
 		position: relative;
 		width: 240px;
-		overflow-x: auto;
+		overflow-x: hidden;
 		background-color: var(--background-secondary);
 
 		.container {
@@ -78,9 +81,74 @@ i.icon {
 			flex-direction: column;
 			flex: 1 1 auto;
 
+			.scrolled-container {
+				height: calc(100vh - 100px);
+				max-height: calc(100vh - 100px);
+				overflow-y: auto;
+				scrollbar-color: var(--guild-container-background) var(--background-secondary) !important;
+				scrollbar-width: thin;
+			}
+
 			.list .item {
+				flex: 1 1 auto;
+				box-sizing: border-box;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				min-width: 0;
+				padding: 6px 8px;
+				cursor: pointer;
+				border-radius: 4px;
+
 				margin-left: 8px;
+				margin-right: 8px;
+
+				font-weight: inherit;
+				font-style: inherit;
+				font-family: inherit;
+				font-size: 100%;
+
+				.icon {
+					position: relative;
+					margin-right: 6px;
+					width: 15px;
+					height: 15px;
+					color: #72767d;
+					pointer-events: none !important;
+				}
+				svg {
+					position: relative;
+					margin-right: 6px;
+					width: 12px;
+					height: 12px;
+					color: #72767d;
+					pointer-events: none !important;
+				}
+				span {
+					color: #829297;
+					font-size: 16px;
+					line-height: 20px;
+					font-weight: 500;
+					flex: 1 1 auto;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					pointer-events: none !important;
+				}
+				.right {
+					&.icon {
+						width: 12px !important;
+						height: 12px !important;
+						color: #72767d !important;
+						&.plus {
+							width: 15px !important;
+							height: 15px !important;
+						}
+					}
+					pointer-events: all !important;
+				}
 				&.category {
+					padding-top: 16px;
 					margin-left: 0px;
 					&:hover {
 						background-color: transparent !important;
@@ -90,7 +158,19 @@ i.icon {
 					}
 				}
 				&.active {
-					background-color: var(--list-primary-hover-color) !important;
+					background-color: rgba(79, 84, 92, 0.24);
+					.icon {
+						color: #fff !important;
+					}
+					span {
+						color: #fff !important;
+					}
+				}
+				&:hover {
+					background-color: rgba(79, 84, 92, 0.16);
+					.visibleOnHover {
+						opacity: 1;
+					}
 				}
 			}
 
@@ -99,16 +179,18 @@ i.icon {
 				align-items: center;
 				padding: 1px 17px;
 				box-shadow: var(--elevation-low);
-				height: 48px;
+				min-height: 57px;
+
+				& h1 {
+					font-size: 25px !important;
+					word-break: break-all;
+				}
 			}
 
 			input {
 				font-size: 14px;
 			}
 
-			.list {
-				width: 232px;
-			}
 			h1 {
 				font-size: 15px !important;
 				line-height: 20px !important;
@@ -128,7 +210,6 @@ i.icon {
 				position: absolute;
 				left: 0;
 				bottom: 0;
-				width: 93%;
 				overflow: hidden;
 				.member {
 					width: 125px !important;
@@ -229,7 +310,8 @@ i.icon {
 
 	.chatContent {
 		width: 100%;
-		max-height: calc(100vh - 50px);
+		height: calc(100vh - 60px);
+		max-height: calc(100vh - 60px);
 		display: flex;
 		flex-direction: column;
 		background-color: var(--guild-container-secondary);
@@ -250,12 +332,22 @@ i.icon {
 	}
 
 	.chatContent .scrolled-container {
-		height: 100vh;
+		height: 100%;
 		width: 100%;
 		display: flex;
 		flex-direction: column-reverse;
 		overflow: auto;
 		overflow-x: hidden;
+		scrollbar-color: var(--guild-container-background) var(--background-secondary) !important;
+		scrollbar-width: thin;
+		color: white;
+
+		.empty {
+			position: absolute;
+			top: 50%;
+			right: 50%;
+			transform: translate(50%, -100%);
+		}
 
 		.message {
 			position: relative;
@@ -349,12 +441,20 @@ i.icon {
 }
 
 @media (min-width: 600px) {
-	.topbar header {
+	.topbar header h1.icon {
 		padding-left: 0 !important;
 	}
 
 	.menuBtn {
 		display: none;
+	}
+
+	.chatContent .empty {
+		transform: translate(80%, -80%) !important;
+	}
+
+	.membersWrap {
+		display: initial !important;
 	}
 
 	.sidebar {
@@ -374,6 +474,7 @@ i.icon {
 
 .menuBtn {
 	position: fixed;
+	z-index: 1000;
 	top: 0;
 	left: 0;
 	width: 66px;
@@ -444,7 +545,7 @@ i.icon {
 		.img {
 			color: hsl(139, calc(var(--saturation-factor, 1) * 47.3%), 43.9%);
 			background-color: var(--background-primary);
-			font-weight: 400;
+			font-weight: 365;
 			font-size: 30px;
 		}
 	}
@@ -482,9 +583,6 @@ i.icon {
 
 .guild.home:hover {
 	border-radius: 0;
-	& .img:hover {
-		box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
-	}
 }
 
 .guild.active img {
@@ -543,119 +641,121 @@ hr {
 .contentWrap {
 	display: flex;
 	flex-direction: row;
-	.membersWrap {
-		width: 240px;
-		padding: 0 0 20px;
-		padding-right: 0px;
-		padding-right: 0px;
-		-webkit-box-flex: 0;
-		-ms-flex: 0 0 auto;
-		flex: 0 0 auto;
-		height: auto;
-		overflow: auto;
-		background-color: var(--background-secondary);
-		* {
-			user-select: none;
-		}
-		.membersGroup {
-			padding: 24px 8px 0 16px;
-			height: 40px;
-			-webkit-box-sizing: border-box;
-			box-sizing: border-box;
-			text-overflow: ellipsis;
-			white-space: nowrap;
-			overflow: hidden;
-			text-transform: uppercase;
-			font-size: 12px;
-			line-height: 16px;
-			letter-spacing: 0.25px;
-			font-family: Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif;
-			font-weight: 600;
-			-webkit-box-flex: 1;
-			-ms-flex: 1 1 auto;
-			flex: 1 1 auto;
-			color: #8e9297;
-		}
-		.member {
-			display: flex;
-			-webkit-box-align: center;
-			-ms-flex-align: center;
-			align-items: center;
-			border-radius: 4px;
+}
+
+.membersWrap {
+	width: 240px;
+	padding: 0 0 20px;
+	padding-right: 0px;
+	flex: 0 0 auto;
+	display: none;
+	overflow: auto;
+	background-color: var(--background-secondary);
+	&.right {
+		position: relative;
+		bottom: 0;
+		padding: 0.5em;
+		margin-top: 59px;
+	}
+	* {
+		user-select: none;
+	}
+	.membersGroup {
+		padding: 24px 8px 0 16px;
+		height: 40px;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+		text-transform: uppercase;
+		font-size: 12px;
+		line-height: 16px;
+		letter-spacing: 0.25px;
+		font-family: Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-weight: 600;
+		flex: 1 1 auto;
+		color: #8e9297;
+	}
+	.member {
+		display: flex;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+		height: 42px;
+		border-radius: 4px;
+		padding: 8px 8px 0 17px;
+		cursor: pointer;
+		.image {
+			margin-right: 12px;
 			height: 42px;
-			padding: 8px 8px 0 17px;
-			cursor: pointer;
-			.image {
-				margin-right: 12px;
-				height: 42px;
-				img {
-					border-radius: 50%;
-					width: 32px;
-					height: 32px;
-				}
-				.indicator {
-					position: relative;
-					bottom: 1.09rem;
-					left: 1.2rem;
-					width: 0.8rem !important;
-					height: 0.8rem !important;
-				}
-				.avatar-wrapper {
-					border: 0.23rem solid var(--background);
-					display: flex;
-					flex-direction: column;
-					align-items: center;
-				}
-
-				.avatar-wrapper .indicator {
-					border: none;
-					top: 3px;
-					left: 0.2px;
-					height: 15px;
-					width: 15px;
-					margin-bottom: 1px;
-				}
-
-				.indicator-wrapper {
-					background: var(--background);
-					height: auto;
-					border-radius: 5px;
-
-					position: relative;
-					top: -15px;
-					left: 15px;
-				}
+			img {
+				border-radius: 50%;
+				width: 32px;
+				height: 32px;
 			}
-			.contentWrap {
+			.indicator {
+				position: relative;
+				bottom: 1.09rem;
+				left: 1.2rem;
+				width: 0.8rem !important;
+				height: 0.8rem !important;
+			}
+			.avatar-wrapper {
+				border: 0.23rem solid var(--background);
 				display: flex;
 				flex-direction: column;
-				white-space: nowrap;
-				text-overflow: ellipsis;
-				overflow: hidden;
-				margin-top: -10px;
-				.name {
-					font-size: 16px;
-					line-height: 20px;
-					font-weight: 500;
-					-webkit-box-flex: 0;
-					-ms-flex: 0 1 auto;
-					flex: 0 1 auto;
-					color: #8e9297;
-				}
-				.description {
-					display: flex;
-					-webkit-box-align: center;
-					-ms-flex-align: center;
-					align-items: center;
-					font-size: 12px;
-					line-height: 16px;
-					color: #8e9297;
-					font-weight: 500;
-				}
+				align-items: center;
 			}
-			&:hover {
-				background-color: var(--background-primary);
+
+			.avatar-wrapper .indicator {
+				border: none;
+				top: 3px;
+				left: 0.2px;
+				height: 15px;
+				width: 15px;
+				margin-bottom: 1px;
 			}
+
+			.indicator-wrapper {
+				background: var(--background);
+				height: auto;
+				border-radius: 5px;
+
+				position: relative;
+				top: -15px;
+				left: 15px;
+			}
+		}
+		.contentWrap {
+			display: flex;
+			flex-direction: column;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			margin-top: -10px;
+			.name {
+				font-size: 16px;
+				line-height: 20px;
+				font-weight: 500;
+				-webkit-box-flex: 0;
+				-ms-flex: 0 1 auto;
+				flex: 0 1 auto;
+				color: #8e9297;
+			}
+			.description {
+				display: flex;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				font-size: 12px;
+				line-height: 16px;
+				color: #8e9297;
+				font-weight: 500;
+			}
+		}
+		&:hover {
+			background-color: var(--background-primary);
 		}
 	}
 }

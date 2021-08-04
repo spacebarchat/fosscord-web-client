@@ -36,7 +36,6 @@ export default function LoginScreen() {
 		event.preventDefault();
 		if (!network) return setErr("Please select a network");
 		// setErr(null);
-		var body, error;
 
 		if (mfaTicket) {
 			var { body, error } = await request("/auth/mfa/totp", {
@@ -72,7 +71,7 @@ export default function LoginScreen() {
 		body.network_id = network.id;
 
 		dispatch({ type: "ADD_ACCOUNT", payload: connectAccount(body) });
-		history.push("/");
+		history.push("/channels/@me");
 	}
 
 	async function changeNetwork(network: Network) {

@@ -12,7 +12,7 @@ export const db = orm.getDatabase();
 export const session = orm.session();
 
 declare module "react-redux" {
-	interface RootState extends AccountState, NetworkState, UserState, GuildState {}
+	interface RootState extends AccountState, NetworkState, GuildState, UserState {}
 }
 
 export default combineReducers({ accounts, networks, users, guilds });

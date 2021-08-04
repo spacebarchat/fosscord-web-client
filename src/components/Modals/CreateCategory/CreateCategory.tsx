@@ -1,20 +1,26 @@
-import { RootState, useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router";
-import "./AddServer.scss";
+import { RootState, useSelector } from "react-redux";
+import { Input } from "../../../framework/Input";
+import "./CreateCategory.scss";
 import { Text } from "../../../framework/Text";
 import { useState, FormEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "../../../framework/Button";
-import { Input } from "../../../framework/Input";
 import "../../../pages/general.scss";
 
 import "missing-native-js-functions";
-import { getFormError, PlainTextError } from "../../../util/FormError";
+import { PlainTextError } from "../../../util/FormError";
 import { Network } from "../../../models/networks";
 import store from "../../../util/store";
 import { request } from "../../../util/request";
+import { useRouteMatch } from "react-router";
+import "@fosscord/ui/scss/radio.scss";
 
-export const AddServer = (props: any) => {
+export interface Params {
+	id: string;
+	channel: string;
+}
+
+export const CreateCategory = (props: any) => {
 	const { t } = useTranslation("translation");
 	const [name, setName] = useState("");
 	const [loading, setLoading] = useState(false);
@@ -22,16 +28,25 @@ export const AddServer = (props: any) => {
 	const account: any = useSelector((select: RootState) => select.accounts || [])[0];
 	const network: Network = store.getState().networks.find((x) => x.id === account.network_id);
 
-	async function submit(this: any, event: any) {
+	// eslint-disable-next-line react-hooks/rules-of-hooks
+	const match = useRouteMatch<Params>({
+		path: "/channels/:id/:channel?",
+		exact: false,
+	});
+
+	var country = document.getElementById("innerFill");
+	country?.setAttribute("style", "fill: blue; stroke: black");
+
+	async function submit(event: FormEvent) {
 		event.preventDefault();
-		// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 
 		setLoading(true);
 
-		var { body, error } = await request("/guilds", {
+		var { error } = await request(`/guilds/${match?.params.id}/channels`, {
 			network,
 			body: {
 				name: name,
+				type: 4,
 			},
 			headers: {
 				Authorization: `${account.token}`,
@@ -43,32 +58,35 @@ export const AddServer = (props: any) => {
 		if (error) return;
 
 		store.dispatch({
-			type: "GUILD_CREATE",
+			type: "CHANNEL_CREATE",
 			payload: 0,
 		});
 
 		props.close?.();
+
 		return;
 	}
 
 	return (
 		<>
 			<Text headline={true} className="titleModal">
-				{t("addServer")}
+				{t("createCategory")}
 			</Text>
-			<div className="page channel">
-				<form
-					onSubmit={(e) => {
-						submit(e);
-					}}
-				>
-					<div className="form">
-						<div className="inputWrapper">
+			<div
+				className="page channel"
+				onSubmit={(e) => {
+					e.preventDefault();
+					submit(e);
+				}}
+			>
+				<form>
+					<div id="formCreateChannel" className="form">
+						<div className="inputWrapper category">
 							<Input
 								maxLength={100}
-								placeholder={t("guildName")}
+								placeholder="New category"
 								onChange={(e) => setName(e.target.value)}
-							></Input>
+							/>
 						</div>
 						<PlainTextError error={err} style={{ marginBottom: 0 }}></PlainTextError>
 						<Text muted={true} className="little">
@@ -76,10 +94,10 @@ export const AddServer = (props: any) => {
 						</Text>
 					</div>
 					<div className="footer">
-						<Button primary type="submit" loading={loading} disabled={loading}>
+						<Button type="submit" loading={loading} primary disabled={loading}>
 							{t("add")}
 						</Button>
-						<Button secondary type="button" onClick={() => props.close?.()}>
+						<Button type="button" onClick={() => props.close?.()} secondary>
 							{t("cancel")}
 						</Button>
 					</div>
@@ -89,4 +107,4 @@ export const AddServer = (props: any) => {
 	);
 };
 
-export default AddServer;
+export default CreateCategory;

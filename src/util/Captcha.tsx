@@ -1,6 +1,4 @@
 import HCaptcha from "@hcaptcha/react-hcaptcha";
-import { useTranslation } from "react-i18next";
-import { Text } from "../framework/Text";
 
 export interface CaptchaProps {
 	captcha_service: "hcaptcha" | "recaptcha";

@@ -1,4 +1,4 @@
-export function Radio() {
+export const Radio = (props) => {
 	return (
 		<svg aria-hidden="false" width="24" height="24" viewBox="0 0 24 24">
 			<path
@@ -10,9 +10,9 @@ export function Radio() {
 			<circle cx="12" cy="12" r="5" className="innerFill"></circle>
 		</svg>
 	);
-}
+};
 
-export function ChannelSVG() {
+export const ChannelSVG = (props) => {
 	return (
 		<svg width="24" height="24" viewBox="0 0 24 24" className="icon">
 			<path
@@ -24,9 +24,9 @@ export function ChannelSVG() {
 			></path>
 		</svg>
 	);
-}
+};
 
-export function VoiceSVG() {
+export const VoiceSVG = (props) => {
 	return (
 		<svg
 			className="icon"
@@ -46,4 +46,15 @@ export function VoiceSVG() {
 			></path>
 		</svg>
 	);
-}
+};
+
+export const FaChevronDown = (props) => {
+	return (
+		<svg aria-hidden="false" viewBox="0 0 448 512" {...props}>
+			<path
+				fill="currentColor"
+				d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"
+			></path>
+		</svg>
+	);
+};

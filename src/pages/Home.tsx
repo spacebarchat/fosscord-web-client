@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { RootState, useSelector } from "react-redux";
 import { Route, Switch, useHistory } from "react-router-dom";
+import SideBar from "../components/SideBar/SideBar";
 import { connectAccount } from "../actions";
-import SideBar from "../components/SideBar";
 import "./general.scss";
 
 const NotFound = React.lazy(() => import("../pages/NotFound"));
