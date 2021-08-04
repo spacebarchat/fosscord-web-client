@@ -23,7 +23,7 @@ export interface Channel {
 const GuildBar = () => {
 	const { t } = useTranslation("translation");
 	var guilds = useSelector((select: RootState) => select.guilds || []);
-	guilds = guilds.filter(function (el) {
+	guilds = guilds.filter(function (el: any) {
 		return el != null;
 	});
 

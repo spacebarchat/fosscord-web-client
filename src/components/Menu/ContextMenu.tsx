@@ -108,8 +108,6 @@ const ContentContextMenu = (state: any) => {
 			},
 		});
 
-		history.push(".");
-
 		store.dispatch({
 			type: "CHANNEL_DELETE",
 			payload: 0,
@@ -184,7 +182,7 @@ const ContentContextMenu = (state: any) => {
 					</div>
 				</ul>
 			);
-		} else if (target === "img server") {
+		} else if (target === "guild") {
 			return (
 				<ul
 					className="menu"

@@ -535,6 +535,13 @@ i.icon {
 	margin-bottom: 0.5rem;
 	cursor: pointer;
 
+	.pill {
+		pointer-events: none !important;
+	}
+	.img {
+		pointer-events: none !important;
+	}
+
 	&:active {
 		transform: translateY(1px);
 	}
@@ -547,6 +554,7 @@ i.icon {
 			background-color: var(--background-primary);
 			font-weight: 365;
 			font-size: 30px;
+			pointer-events: none !important;
 		}
 	}
 }
