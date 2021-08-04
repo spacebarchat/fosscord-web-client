@@ -11,11 +11,19 @@
 	"addServerNotice": "Jeśli kontynuujesz, akceptujesz wykres sieci serwera.",
 	"add": "Dodaj",
 	"edit": "Edytuj",
+	"cancel": "Anuluj",
 	"delete": "Usuń",
 	"guild": "serwer",
+	"guildName": "Nazwa serwera",
 	"this": "to",
 	"a": "a",
 	"home": "Strona główna",
 	"channel": "kanał",
-	"createCategory": "Stwórz kategorię"
+	"textChannel": "Kanał tekstowy",
+	"textChannelDesc": "Publkuj zdjęcia, GIFy, naklejki, opinie i kalambury",
+	"voiceChannel": "Kanał głosowy",
+	"voiceChannelDesc": "Spoktaj się z udostępnianiem głosu, filmu i ekrany",
+	"createChannel": "Stwórz Kanał",
+	"createCategory": "Stwórz kategorię",
+	"sendMessage": "Wiadomość"
 }
