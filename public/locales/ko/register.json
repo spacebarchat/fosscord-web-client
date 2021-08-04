@@ -1,13 +1,13 @@
 {
-	"register": "Register",
-	"login": "Login",
-	"email": "Email",
-	"username": "Username",
-	"password": "Password",
-	"dateOfBirth": "Date of birth",
-	"network": "network",
-	"consent": "I agree to the terms of service of this network",
-	"submit": "Continue",
-	"loginNotice": "Already have an account?",
-	"captchaRequired": "Please solve the captcha first"
+	"register": "회원가입",
+	"login": "로그인",
+	"email": "이메일",
+	"username": "사용자 이름",
+	"password": "비밀번호",
+	"dateOfBirth": "생년월일",
+	"network": "네트워크",
+	"consent": "이 네트워크의 이용약관에 동의합니다",
+	"submit": "계속",
+	"loginNotice": "이미 계정이 있나요?",
+	"captchaRequired": "우선 CAPTCHA를 통과하세요"
 }

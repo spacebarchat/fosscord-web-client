@@ -1,14 +1,14 @@
 {
-	"discover": "Discover",
-	"explore": "Explore",
-	"add": "Add",
-	"search": "Search",
-	"network": "Network",
-	"chooseNetwork": "Choose Network",
-	"findNetwork": "Find Networks",
-	"findPlaceholder": "Explore communities",
-	"addNetwork": "Add Network",
-	"addNotice": "You can add new networks here",
-	"setupNotice": "To setup a new network have a look at our setup guide: coming soon",
-	"addPlaceholder": "For example https://fosscord.com"
+	"discover": "발견",
+	"explore": "탐색",
+	"add": "추가",
+	"search": "검색",
+	"network": "네트워크",
+	"chooseNetwork": "네트워크 선택",
+	"findNetwork": "네트워크 찾기",
+	"findPlaceholder": "커뮤니티 탐색",
+	"addNetwork": "네트워크 추가",
+	"addNotice": "여기에 새 네트워크를 추가할 수 있습니다",
+	"setupNotice": "새 네트워크를 설정할 때 설정 도움말을 확인해보세요: 추후 제공",
+	"addPlaceholder": "예시는 https://fosscord.com 사이트에서 볼 수 있습니다"
 }

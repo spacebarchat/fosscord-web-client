@@ -8,5 +8,5 @@
 	"captchaRequired": "자동 로그인 방지 시스템 캡챠를 통과하세요.",
 	"captchaTitle": "당신이 로봇인지 확인합니다",
 	"mfa": "Auth/Backup 코드를 입력하세요",
-	"mfaPlaceholder": "6-digit authentication code/8-digit backup code"
+	"mfaPlaceholder": "6자리 인증 코드 또는 8자리 복구 코드 입력"
 }

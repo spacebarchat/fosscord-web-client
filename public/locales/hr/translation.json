@@ -11,11 +11,19 @@
 	"addServerNotice": "Ako nastavite, prihvaćate grafikon od poslužitelja mreže.",
 	"add": "Dodaj",
 	"edit": "Uredi",
+	"cancel": "Cancel",
 	"delete": "Obriši",
 	"guild": "poslužitelj",
+	"guildName": "Server name",
 	"this": "ovo",
 	"a": "a",
 	"home": "Naslovnica",
 	"channel": "kanal",
-	"createCategory": "Kreiraj kategoriju"
+	"textChannel": "Text channel",
+	"textChannelDesc": "Post images, GIFs, stickers, opinions, and puns",
+	"voiceChannel": "Voice channel",
+	"voiceChannelDesc": "Hang out with voice, video, and screen sharing",
+	"createChannel": "Create a Channel",
+	"createCategory": "Create a Category",
+	"sendMessage": "Message"
 }

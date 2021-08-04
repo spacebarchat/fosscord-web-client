@@ -11,11 +11,19 @@
 	"addServerNotice": "Αν συνεχίσετε, αποδέχεστε το γράφημα του δικτύου του διακομιστή.",
 	"add": "Προσθήκη",
 	"edit": "Edit",
+	"cancel": "Cancel",
 	"delete": "Delete",
 	"guild": "a server",
+	"guildName": "Server name",
 	"this": "this",
 	"a": "a",
 	"home": "Home",
 	"channel": "channel",
-	"createCategory": "Create a category"
+	"textChannel": "Text channel",
+	"textChannelDesc": "Post images, GIFs, stickers, opinions, and puns",
+	"voiceChannel": "Voice channel",
+	"voiceChannelDesc": "Hang out with voice, video, and screen sharing",
+	"createChannel": "Create a Channel",
+	"createCategory": "Create a Category",
+	"sendMessage": "Message"
 }
