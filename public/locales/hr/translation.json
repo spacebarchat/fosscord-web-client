@@ -25,5 +25,7 @@
 	"voiceChannelDesc": "Hang out with voice, video, and screen sharing",
 	"createChannel": "Create a Channel",
 	"createCategory": "Create a Category",
-	"sendMessage": "Message"
+	"sendMessage": "Message",
+	"emptyMessages": "It's appear we have found nothing here...",
+	"addReaction": "Add a reaction"
 }
