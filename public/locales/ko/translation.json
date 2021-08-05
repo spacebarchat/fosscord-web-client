@@ -25,5 +25,7 @@
 	"voiceChannelDesc": "음성이나 동영상, 화면 공유 기능을 통해 놀아보세요",
 	"createChannel": "채널 생성",
 	"createCategory": "카테고리 생성",
-	"sendMessage": "메시지"
+	"sendMessage": "메시지",
+	"emptyMessages": "아무것도 못 찾았어요...",
+	"addReaction": "반응 추가"
 }

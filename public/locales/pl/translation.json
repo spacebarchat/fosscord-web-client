@@ -25,5 +25,7 @@
 	"voiceChannelDesc": "Spoktaj się z udostępnianiem głosu, filmu i ekrany",
 	"createChannel": "Stwórz Kanał",
 	"createCategory": "Stwórz kategorię",
-	"sendMessage": "Wiadomość"
+	"sendMessage": "Wiadomość",
+	"emptyMessages": "Wygląda na to, że nic tu nie ma...",
+	"addReaction": "Dodaj reakcję"
 }
