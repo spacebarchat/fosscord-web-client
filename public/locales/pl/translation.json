@@ -22,10 +22,10 @@
 	"textChannel": "Kanał tekstowy",
 	"textChannelDesc": "Publkuj zdjęcia, GIFy, naklejki, opinie i kalambury",
 	"voiceChannel": "Kanał głosowy",
-	"voiceChannelDesc": "Spoktaj się z udostępnianiem głosu, filmu i ekrany",
+	"voiceChannelDesc": "Spotkaj się z udostępnianiem głosu, wideo i ekranu",
 	"createChannel": "Stwórz Kanał",
 	"createCategory": "Stwórz kategorię",
 	"sendMessage": "Wiadomość",
-	"emptyMessages": "Wygląda na to, że nic tu nie ma...",
+	"emptyMessages": "Wygląda na to, że nic tu nie znaleźliśmy...",
 	"addReaction": "Dodaj reakcję"
 }
