@@ -20,12 +20,12 @@
 	"home": "Início",
 	"channel": "Canal",
 	"textChannel": "Canal de texto",
-	"textChannelDesc": "Publicar imagens, adesivos, opiniões e trocadilhos",
+	"textChannelDesc": "Postar imagens, adesivos, opiniões e trocadilhos",
 	"voiceChannel": "Canal de voz",
 	"voiceChannelDesc": "Interagir com voz, vídeo e compartilhamento de tela",
 	"createChannel": "Criar um Canal",
 	"createCategory": "Criar uma Categoria",
 	"sendMessage": "Mensagem",
-	"emptyMessages": "It's appear we have found nothing here...",
-	"addReaction": "Add a reaction"
+	"emptyMessages": "Parece que não encontramos nada aqui...",
+	"addReaction": "Adicionar uma reação"
 }
