@@ -1,0 +1,21 @@
+{
+	"rateLimited": "Vent venligst {{seconds}} sekunder",
+	"offline": "Du er offline, forbind venligst til internettet",
+	"serverOffline": "Serveren er ikke tilgængelig, prøv igen efter et minut",
+	"discordCORSIssue": "Det er ikke muligt at få adgang til Discord.com fra en tredjeparts hjemmeside, venligst downloade programmet i stedet (kommer snart)",
+	"friends": "Friends",
+	"friendsSearchPlaceholder": "Find or start a conversation",
+	"addServer": "Add a server",
+	"upload": "Upload",
+	"serverName": "Server name",
+	"addServerNotice": "If you continue, you accept the chart of the server's network.",
+	"add": "Add",
+	"edit": "Edit",
+	"delete": "Delete",
+	"guild": "a server",
+	"this": "this",
+	"a": "a",
+	"home": "Home",
+	"channel": "channel",
+	"createCategory": "Create a category"
+}

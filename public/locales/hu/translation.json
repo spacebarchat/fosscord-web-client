@@ -1,0 +1,21 @@
+{
+	"rateLimited": "Kérlek várj {{seconds}} másodpercet",
+	"offline": "Offline vagy jelenleg, kérlek csatlakozz az internetre",
+	"serverOffline": "A szerver nem elérhető, kérlek próbáld újra pár percel később",
+	"discordCORSIssue": "Discord.com elérése nem lehetséges harmadik fél weboldaláról, kérlek töltsd le az alkalmazást inkább (hamarosan)",
+	"friends": "Friends",
+	"friendsSearchPlaceholder": "Find or start a conversation",
+	"addServer": "Add a server",
+	"upload": "Upload",
+	"serverName": "Server name",
+	"addServerNotice": "If you continue, you accept the chart of the server's network.",
+	"add": "Add",
+	"edit": "Edit",
+	"delete": "Delete",
+	"guild": "a server",
+	"this": "this",
+	"a": "a",
+	"home": "Home",
+	"channel": "channel",
+	"createCategory": "Create a category"
+}

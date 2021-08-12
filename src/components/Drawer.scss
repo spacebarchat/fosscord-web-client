@@ -1,0 +1,46 @@
+.content {
+  display: none;
+
+  &.show {
+    display: flex;
+  }
+
+  &.show .guild-container {
+    padding-top: 4.5rem;
+  }
+}
+
+.drawer-enabled {
+  filter: blur(3px);
+  user-select: none;
+  pointer-events: none;
+
+  .topbar header {
+    padding-left: 0 !important;
+  }
+}
+
+.menuBtn {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 66px;
+  height: 58px;
+}
+
+@media (min-width: 600px) {
+  .content {
+    display: flex !important;
+
+    &.show .guild-container {
+      padding-top: 0.5em !important;
+    }
+  }
+
+  .drawer-enabled {
+    filter: none !important;
+    user-select: all !important;
+    pointer-events: all !important;
+  }
+}

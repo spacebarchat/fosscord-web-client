@@ -1,0 +1,14 @@
+{
+	"discover": "Otkrij",
+	"explore": "Istraži",
+	"add": "Dodaj",
+	"search": "Traži",
+	"network": "Mreža",
+	"chooseNetwork": "Odaberite mrežu",
+	"findNetwork": "Pronađite mrežu",
+	"findPlaceholder": "Istražite zajednice",
+	"addNetwork": "Dodajte mrežu",
+	"addNotice": "Ovdje možete dodati nove mreže",
+	"setupNotice": "Za postavljanje nove mreže pogledajte naš vodič za postavljanje: dolazi uskoro",
+	"addPlaceholder": "Na primjer: https://fosscord.com"
+}

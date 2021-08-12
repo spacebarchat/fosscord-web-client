@@ -1,0 +1,21 @@
+{
+	"rateLimited": "-Prosím počkajte {{seconds}} sekúnd",
+	"offline": "Ste offline, prosím pripojte sa k internetu",
+	"serverOffline": "Server nie je dosiahnuteľný, skúste to prosím znova po minúte",
+	"discordCORSIssue": "Prístup na stránku Discord.com z webovej stránky tretej strany nie je možný, namiesto toho si stiahnite aplikáciu (už čoskoro)",
+	"friends": "Friends",
+	"friendsSearchPlaceholder": "Find or start a conversation",
+	"addServer": "Add a server",
+	"upload": "Upload",
+	"serverName": "Server name",
+	"addServerNotice": "If you continue, you accept the chart of the server's network.",
+	"add": "Add",
+	"edit": "Edit",
+	"delete": "Delete",
+	"guild": "a server",
+	"this": "this",
+	"a": "a",
+	"home": "Home",
+	"channel": "channel",
+	"createCategory": "Create a category"
+}

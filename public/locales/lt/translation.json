@@ -1,0 +1,21 @@
+{
+	"rateLimited": "Prašome palaukti {{seconds}} sekundžių",
+	"offline": "You are offline, please connect to the internet",
+	"serverOffline": "Serveris nepasiekiamas, po minutės bandykite dar kartą",
+	"discordCORSIssue": "Neįmanoma pasiekti Discord.com iš trečiosios šalies svetainės, atsisiųskite programą (netrukus)",
+	"friends": "Friends",
+	"friendsSearchPlaceholder": "Find or start a conversation",
+	"addServer": "Add a server",
+	"upload": "Upload",
+	"serverName": "Server name",
+	"addServerNotice": "If you continue, you accept the chart of the server's network.",
+	"add": "Add",
+	"edit": "Edit",
+	"delete": "Delete",
+	"guild": "a server",
+	"this": "this",
+	"a": "a",
+	"home": "Home",
+	"channel": "channel",
+	"createCategory": "Create a category"
+}

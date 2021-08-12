@@ -1,0 +1,67 @@
+.page {
+  background-image: url("../../assets/login.svg") !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.page.register,
+.page.login,
+.page.add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+
+  .form {
+    max-width: 480px;
+    flex-grow: 1;
+    box-shadow: 0 2px 10px 0 rgb(0 0 0 / 20%);
+    border-radius: 5px;
+    padding: 10px;
+    max-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: var(--background-secondary);
+
+    @media screen and (max-width: 950px) {
+      & {
+        margin-right: initial;
+        height: 100%;
+        box-shadow: 0;
+        padding-bottom: 0;
+        padding-top: 10vh;
+      }
+    }
+
+    > *:not(.modal):not(.error) {
+      margin: calc(var(--element-margin) * 2);
+      height: auto;
+      width: calc(100% - calc(var(--element-margin) * 4));
+    }
+
+    .checkbox {
+      margin-bottom: 0px !important;
+    }
+
+    .headline {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .small {
+      font-size: small;
+      margin-top: 0;
+    }
+
+    .text.muted {
+      font-size: 0.9rem;
+      margin-top: 0px;
+    }
+
+    .submit {
+      margin-top: var(--element-margin);
+      height: 45px !important;
+      width: 94%;
+    }
+  }
+}

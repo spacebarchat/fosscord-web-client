@@ -1,0 +1,21 @@
+{
+	"rateLimited": "Proszę czekać {{seconds}} sekund",
+	"offline": "Jesteś offline, połącz się z Internetem",
+	"serverOffline": "Serwer jest niedostępny, spróbuj ponownie za minutę",
+	"discordCORSIssue": "Nie można uzyskać dostępu do Discord.com ze strony innej firmy, pobierz aplikację (już wkrótce)",
+	"friends": "Znajomi",
+	"friendsSearchPlaceholder": "Wybierz lub rozpocznij rozmowę",
+	"addServer": "Dodaj serwer",
+	"upload": "Wyślij",
+	"serverName": "Nazwa serwera",
+	"addServerNotice": "Jeśli kontynuujesz, akceptujesz wykres sieci serwera.",
+	"add": "Dodaj",
+	"edit": "Edytuj",
+	"delete": "Usuń",
+	"guild": "serwer",
+	"this": "to",
+	"a": "a",
+	"home": "Strona główna",
+	"channel": "kanał",
+	"createCategory": "Stwórz kategorię"
+}

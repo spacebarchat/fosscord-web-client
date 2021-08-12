@@ -1,0 +1,64 @@
+@import "~@fosscord/ui/scss/general.scss";
+@import "~@fosscord/ui/scss/text.scss";
+@import "~@fosscord/ui/scss/icons.scss";
+
+body {
+  margin: 0;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body,
+input,
+textarea,
+button {
+  background: var(--background-primary);
+  color: var(--TEXT-default);
+
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
+
+html,
+body,
+.page,
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+html,
+body {
+  position: fixed;
+  overflow: hidden;
+}
+
+.page-center {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+}
+
+input {
+  outline: 0;
+  padding-left: 0;
+}
+
+h1 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.inputWrapper {
+  margin-bottom: 20px;
+}
