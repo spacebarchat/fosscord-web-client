@@ -41,6 +41,6 @@ if we are finished we'll host our own support server.
 
 ## Contribute
 
-This project is only possible by volunteers like you and me, your contribution is very much appreciated 🥺.
+This project is only possible by volunteers like you and me, your contribution is very much appreciated.
 
 If you want to make this project reality and and you would like to contribute then [read the wiki](https://github.com/fosscord/fosscord-client/wiki) first.
