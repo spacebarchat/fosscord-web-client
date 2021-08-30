@@ -62,3 +62,57 @@ h1 {
 .inputWrapper {
   margin-bottom: 20px;
 }
+
+.contentWrap {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.view {
+  width: 100%;
+  height: 100vh;
+  background: #202225;
+  .notFound {
+    width: 100%;
+    height: 100%;
+    display: table;
+    header {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      h1 {
+        font-size: 50px;
+        color: white;
+        font-weight: bold;
+      }
+      .description {
+        font-size: 18px;
+        color: white;
+        font-weight: 100;
+      }
+      a {
+        position: absolute;
+        z-index: 9999;
+        left: 47%;
+      }
+      button {
+        border: 3px solid gray;
+        padding: 15px;
+        border-radius: 15px;
+        font-size: 15px;
+        font-weight: bold;
+        color: #fff;
+        cursor: pointer;
+        background-color: transparent;
+      }
+    }
+    .particles {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+}

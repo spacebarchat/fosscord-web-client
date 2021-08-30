@@ -24,6 +24,59 @@ i.icon {
   }
 }
 
+.channelContent {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex: auto 1 1;
+  div.header {
+    display: flex;
+    align-items: center;
+    padding: 1px 17px;
+    box-shadow: var(--elevation-low);
+    border: none;
+    z-index: 9999;
+    height: 46px;
+    .separator {
+      height: 24px;
+      width: 1px;
+      background-color: #fff;
+      opacity: 0.2;
+      margin: 0 13px;
+    }
+    .description {
+      font-size: 15px;
+      color: #8a8c90;
+    }
+    .typeChannel {
+      position: relative;
+      height: 25px;
+      width: 25px;
+      font-weight: 600;
+      flex: 0 0 auto;
+      margin: 0 8px;
+      color: var(--text-muted);
+    }
+    h1 {
+      font-size: 16px;
+      line-height: 20px;
+      font-family: var(--font-display);
+      font-weight: 600;
+      color: #fff;
+    }
+  }
+  .contentWrap {
+    height: calc(100% - 60px);
+    .membersWrap.right {
+      margin-top: 0px !important;
+      width: 232px !important;
+      .contentWrap {
+        height: 40px !important;
+      }
+    }
+  }
+}
+
 .sidebar-channels {
   position: relative;
   width: 240px;
@@ -35,7 +88,7 @@ i.icon {
     align-items: center;
     padding: 1px 17px;
     box-shadow: var(--elevation-low);
-    min-height: 57px;
+    min-height: 46px;
     color: white;
 
     & .guild-title {
@@ -55,7 +108,7 @@ i.icon {
     flex: 1 1 auto;
 
     .scrolled-container {
-      max-height: calc(100vh - 100px - 54px);
+      max-height: calc(100vh - 100px);
       overflow-y: auto;
       scrollbar-color: var(--guild-container-background)
         var(--background-secondary) !important;

@@ -49,6 +49,8 @@ const SideBar = ({ guild }: { guild: Guild | any }) => {
     ));
   }
 
+  console.log(data);
+
   return (
     <div className="sidebar-channels">
       <div className="header">
@@ -58,11 +60,13 @@ const SideBar = ({ guild }: { guild: Guild | any }) => {
         <div className="scrolled-container">
           <div className="list">
             {/*  SCROLL BAR */}
+            {/* check discord AGAIN */}
             {renderChannels(
               data
                 .sort((a: any, b: any) =>
                   a.rawPosition > b.rawPosition ? 1 : -1
                 )
+
                 .filter((x) => !x.parentId && x.type !== "GUILD_CATEGORY")
             )}
 

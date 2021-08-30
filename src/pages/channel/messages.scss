@@ -1,24 +1,46 @@
 .chatContent {
   width: 100%;
-  height: calc(100vh - 60px);
-  max-height: calc(100vh - 60px);
+  height: 100%;
   display: flex;
   flex-direction: column;
   background-color: var(--guild-container-secondary);
+  flex-shrink: 1;
 
-  input {
+  div.inputMessage {
+    position: relative;
+    display: flex;
+    flex-direction: row;
     width: auto;
     height: 44px;
     background-color: #40444b;
-    max-height: 50vh;
-    min-height: 50vh;
     border-radius: 8px;
     padding-left: 16px;
     border: none;
     margin: 20px;
-    margin-top: 20px;
+    margin-top: 0px;
     margin-bottom: 30px;
     outline: 0;
+    flex-shrink: 1;
+    div.buttonOption {
+      margin: auto;
+      & .button {
+        background: #b9bbbe;
+        width: 1px;
+        height: 25px;
+        min-width: 1px !important;
+        min-height: 25px !important;
+        border-radius: 50%;
+        font-size: 7px;
+      }
+    }
+    input {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      display: flex;
+      flex-shrink: 1;
+      margin-left: 16px;
+    }
   }
 }
 .chatContent .scrolled-container {
@@ -31,6 +53,16 @@
   scrollbar-color: var(--guild-container-background) var(--background-secondary) !important;
   scrollbar-width: thin;
   color: white;
+
+  .scrollerSpacer {
+    display: block;
+    height: 20px;
+    width: 1px;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    pointer-events: none;
+  }
 
   .empty {
     position: absolute;
@@ -100,6 +132,9 @@
           padding: 0;
           margin: 0;
           background: none;
+          font-size: 1rem;
+          font-weight: 500;
+          line-height: 1.375rem;
           &:focus {
             text-decoration: underline;
           }
@@ -161,4 +196,18 @@
       }
     }
   }
+}
+
+.bot {
+  background: hsl(235, calc(var(--saturation-factor, 1) * 85.6%), 64.7%);
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #fff;
+  height: 0.9375rem;
+  padding: 0 0.275rem;
+  margin-top: 0.075em;
+  border-radius: 0.1875rem;
+  line-height: 0.9375rem;
+  margin-left: 0.25rem;
 }

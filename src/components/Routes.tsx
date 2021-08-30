@@ -5,6 +5,8 @@ import ChannelMessagesPage from "../pages/channel/messages";
 import LoginPage from "../pages/auth/login";
 import RegisterPage from "../pages/auth/register";
 import { Spinner } from "../framework/Spinner";
+import PrivateRoute from "./private-route";
+import NotFound from "../pages/NotFound";
 // import Friends from "../pages/friends/friends";
 
 export default function Routes({ children }: { children?: ReactNode }) {
@@ -22,18 +24,20 @@ export default function Routes({ children }: { children?: ReactNode }) {
             <Route exact path="/">
               <Redirect to="/channels/@me" />
             </Route>
-            <Route
+            <PrivateRoute
               exact
               path="/channels/@me"
               component={ChannelMessagesPage}
-            ></Route>
-            <Route
+            ></PrivateRoute>
+            <PrivateRoute
               exact
               path="/channels/:guild/:channel?"
               component={ChannelMessagesPage}
-            ></Route>
+            ></PrivateRoute>
             <Route exact path="/login" component={LoginPage}></Route>
             <Route exact path="/register" component={RegisterPage}></Route>
+
+            <Route path="*" component={NotFound} />
           </Switch>
           {children}
         </Router>

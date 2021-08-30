@@ -51,28 +51,32 @@ const GuildSideBar = () => {
         <img src={FosscordLogo} className="img" alt="" />
       </div>
       <hr />
-      {guilds.map((x: any) => (
-        <div
-          id={x.id}
-          className={"guild" + (match?.params.id === x.id ? " active" : "")}
-          title={x.name}
-          key={+new Date() + "_" + x.id + "_" + Math.random()}
-          onClick={() => {
-            if (x.id) navigateTo(x.id.toString());
-          }}
-        >
-          <span className="pill"></span>
-          {x.icon ? (
-            <img
-              src={x.iconURL({ size: 1024 })}
-              alt=""
-              className="img server"
-            />
-          ) : (
-            <span className="img server">{!x.iconURL() && x?.nameAcronym}</span>
-          )}
-        </div>
-      ))}
+      {guilds
+        .sort((a: any, b: any) => (a.rawPosition > b.rawPosition ? 1 : -1))
+        .map((x: any) => (
+          <div
+            id={x.id}
+            className={"guild" + (match?.params.id === x.id ? " active" : "")}
+            title={x.name}
+            key={+new Date() + "_" + x.id + "_" + Math.random()}
+            onClick={() => {
+              if (x.id) navigateTo(x.id.toString());
+            }}
+          >
+            <span className="pill"></span>
+            {x.icon ? (
+              <img
+                src={x.iconURL({ size: 1024 })}
+                alt=""
+                className="img server"
+              />
+            ) : (
+              <span className="img server">
+                {!x.iconURL() && x?.nameAcronym}
+              </span>
+            )}
+          </div>
+        ))}
       <div
         className="guild green"
         title={t("add") + " " + t("guild")}
