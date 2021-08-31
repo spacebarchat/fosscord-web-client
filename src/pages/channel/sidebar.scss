@@ -200,11 +200,7 @@ i.icon {
       &.active {
         background-color: rgba(79, 84, 92, 0.24);
 
-        .icon {
-          color: #fff !important;
-        }
-
-        span {
+        p {
           color: #fff !important;
         }
       }

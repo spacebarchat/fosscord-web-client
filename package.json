@@ -9,6 +9,10 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "engines": {
+    "node": ">=16.4.1",
+    "npm": ">=7.21.1"
+  },
   "dependencies": {
     "@babel/core": "7.12.3",
     "@fosscord/ui": "^1.0.3",

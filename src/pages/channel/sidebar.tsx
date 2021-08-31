@@ -4,7 +4,7 @@ import useForceUpdate from "../../util/useForceUpdate";
 import { Guild, GuildChannel, ThreadChannel } from "fosscord.js";
 import { FaChevronDown, FaHashtag, FaVolumeUp } from "../../framework/radio";
 import { Text } from "../../framework/Text";
-import { Link } from "../../util/Router";
+import { Link, useHistory, useRouteMatch } from "../../util/Router";
 import { useCache } from "../../util/useCache";
 import "./sidebar.scss";
 // @ts-ignore
@@ -14,6 +14,11 @@ import SpeakerSVG from "../../assets/speaker.png";
 // @ts-ignore
 import SettingsSVG from "../../assets/settings.png";
 import Friends from "../friends/friends";
+
+export interface Params {
+  id: string;
+  channel: string;
+}
 
 const SideBar = ({ guild }: { guild: Guild | any }) => {
   const forceUpdate = useForceUpdate();
@@ -34,12 +39,20 @@ const SideBar = ({ guild }: { guild: Guild | any }) => {
   // @ts-ignore
   globalThis.test = guild?.channels?.cache?.array();
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const match = useRouteMatch<Params>({
+    path: "/channels/:id/:channel?",
+    exact: false,
+  });
+
   function renderChannels(d: (GuildChannel | ThreadChannel)[]) {
     return d.map((item) => (
       <Link
         to={`/channels/${guild?.id}/${item?.id}`}
         style={{ textDecoration: "none" }}
-        className="item"
+        className={
+          "item" + (match?.params.channel === item.id ? " active" : "")
+        }
         key={item.id}
       >
         {item.type === "GUILD_TEXT" && <FaHashtag className="icon" />}
@@ -49,7 +62,7 @@ const SideBar = ({ guild }: { guild: Guild | any }) => {
     ));
   }
 
-  console.log(data);
+  //console.log(data);
 
   return (
     <div className="sidebar-channels">
