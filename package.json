@@ -10,8 +10,7 @@
     "eject": "react-scripts eject"
   },
   "engines": {
-    "node": ">=16.4.1",
-    "npm": ">=7.21.1"
+    "node": ">=12.8.0"
   },
   "dependencies": {
     "@babel/core": "7.12.3",
