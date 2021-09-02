@@ -84,44 +84,94 @@ export default function Messages({ match }: any) {
             </div>
           </div>
           <div className="membersWrap right">
-            <h2 className="membersGroup" aria-label="👑Founders👑, 3 members">
-              <span aria-hidden="true">ONLINE -- {guild?.memberCount}</span>
-            </h2>
-            {guild?.members?.cache.map((member) => {
-              if (!member.presence) return <></>;
-              return (
-                <div key={member.id} className="member">
-                  <div className="image">
-                    <img
-                      src={member.user.displayAvatarURL({ size: 64 })}
-                      alt=""
-                    />
-                    <span
-                      className={
-                        "indicator " +
-                        (member.presence?.status === "online" ? "online" : "") +
-                        (member.presence?.status === "dnd" ? "dnd" : "") +
-                        (member.presence?.status === "idle" ? "afk" : "")
+            {guild?.roles?.cache
+              .sort((a: any, b: any) =>
+                a.rawPosition < b.rawPosition ? 1 : -2
+              )
+              .map((role) => {
+                if (
+                  role.guild.members.cache.array().length === 0 ||
+                  role.name === "@everyone"
+                )
+                  return <></>;
+
+                //console.log(role);
+                let lastRole: string = "";
+                return (
+                  <>
+                    {role.guild.members.cache.array().map((member) => {
+                      if (member.roles.cache.array()[0].id === role.id) {
+                        // console.log("T", lastRole);
+                        // console.log(role.name);
+                        if (lastRole !== role.name) {
+                          lastRole = role.name;
+                          return (
+                            <>
+                              <h2 className="membersGroup">
+                                <span aria-hidden="true">{role.name}</span>
+                              </h2>
+                              {role.members.map((member) => {
+                                return (
+                                  <div key={member.id} className="member">
+                                    <div className="image">
+                                      <img
+                                        src={member.user.displayAvatarURL({
+                                          size: 64,
+                                        })}
+                                        alt=""
+                                      />
+                                      <span
+                                        className={
+                                          "indicator " +
+                                          (member.presence?.status === "online"
+                                            ? "online"
+                                            : "") +
+                                          (member.presence?.status === "dnd"
+                                            ? "dnd"
+                                            : "") +
+                                          (member.presence?.status === "idle"
+                                            ? "afk"
+                                            : "")
+                                        }
+                                      ></span>
+                                    </div>
+                                    <div className="contentWrap">
+                                      <span
+                                        className="name"
+                                        style={{
+                                          color: `${
+                                            member.roles.cache.array()?.length >
+                                            1
+                                              ? member.displayColor !== 0
+                                                ? member.displayHexColor
+                                                : "#8e9297"
+                                              : "#8e9297"
+                                          }`,
+                                        }}
+                                      >
+                                        {member.user.username}
+                                        {member.user.bot ? (
+                                          <span className="bot">BOT</span>
+                                        ) : null}
+                                      </span>
+                                      <span className="description">
+                                        {member.presence?.activities[0]
+                                          ?.type === "PLAYING" && <>Playing </>}
+
+                                        {member.presence?.activities[0]?.name}
+                                      </span>
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                            </>
+                          );
+                        }
                       }
-                    ></span>
-                  </div>
-                  <div className="contentWrap">
-                    <span className="name">
-                      {member.user.username}
-                      {member.user.bot ? (
-                        <span className="bot">BOT</span>
-                      ) : null}
-                    </span>
-                    <span className="description">
-                      {member.presence?.activities[0]?.type === "PLAYING" && (
-                        <>Playing </>
-                      )}
-                      {member.presence?.activities[0]?.name}
-                    </span>
-                  </div>
-                </div>
-              );
-            })}
+                    })}
+                  </>
+                );
+              })}
           </div>
         </div>
       </div>
@@ -157,13 +207,41 @@ export function renderMessage(item: Message, index: number, seperators: any) {
   const { id, author, member } = item;
   const { username } = author;
 
+  function hexToRgb(hex: any) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result
+      ? "" +
+          parseInt(result[1], 16) +
+          "," +
+          parseInt(result[2], 16) +
+          "," +
+          parseInt(result[3], 16)
+      : null;
+  }
+
   const content = toHTML(escapeHTML(item.content), {
     discordCallback: {
-      user: (user: any) => `@${item.mentions.users.map((x) => x.username)}`,
+      //user: (user: any) => `@${item.mentions.users.map((x) => x.username)}`,
+      user: (user: any) =>
+        "<span>@" +
+        item.guild?.members.cache.get(user.id)?.displayName +
+        "</span>",
       role: (role: any) =>
-        `<span>@${item.mentions?.roles?.map((x) => x.name)}</span>`,
-      channel: (role: any) =>
-        `#${item.mentions?.channels?.map((x: any) => x.name)}`,
+        `<span style='background-color: ${
+          item.guild?.roles.cache.get(role.id)?.color !== 0
+            ? `rgba(${hexToRgb(
+                item.guild?.roles.cache.get(role.id)?.hexColor
+              )},0.1)`
+            : "hsla(235,calc(var(--saturation-factor, 1)*85.6%),64.7%,0.3)"
+        }; color: ${
+          item.guild?.roles.cache.get(role.id)?.color !== 0
+            ? item.guild?.roles.cache.get(role.id)?.hexColor
+            : "hsl(236,calc(var(--saturation-factor, 1)*83.3%),92.9%)"
+        }'>@${item.guild?.roles.cache.get(role.id)?.name}</span>`,
+      channel: (channel: any) =>
+        `<span>#${item.guild?.channels.cache.get(channel.id)?.name}</span>`,
+      everyone: () => "<span>@everyone</span>",
+      here: () => "<span>@here</span>",
     },
     cssModuleNames: {
       "d-mention": "d-mention",
@@ -228,64 +306,63 @@ export function renderMessage(item: Message, index: number, seperators: any) {
             })}
           </div>
         )}
-        {item.embeds &&
+        {/* {item.embeds &&
           item.embeds.map((embed: any) => {
-            const {
-              author,
-              title,
-              description,
-              url,
-              thumbnail,
-              image,
-              footer,
-            } = embed;
             return (
               <div key={embed.id} className="embed">
                 <div className="embed-primary-container">
                   <div className="embed-secondary-container">
-                    {author && (
+                    {embed.author && (
                       <div className="embed-author">
                         <img
-                          src={author.url}
+                          src={embed.author.url}
                           className="embed-author-iconUrl"
                           alt=""
                         />
-                        <span className="embed-author-name">{author}</span>
+                        <span className="embed-author-name">
+                          {embed.author}
+                        </span>
                       </div>
                     )}
-                    {title && (
+                    {embed.title && (
                       <span className="embed-title">
-                        {url && (
-                          <a href={url} className="text link">
-                            {title}
+                        {embed.url && (
+                          <a href={embed.url} className="text link">
+                            {embed.title}
                           </a>
                         )}
-                        {!url && <span className="text link">{title}</span>}
+                        {!embed.url && (
+                          <span className="text link">{embed.title}</span>
+                        )}
                       </span>
                     )}
-                    <span className="embed-description">{description}</span>
+                    <span className="embed-description">
+                      {embed.description}
+                    </span>
                   </div>
-                  {thumbnail && (
+                  {embed.thumbnail && (
                     <img
-                      src={thumbnail.url}
+                      src={embed.thumbnail.url}
                       className="embed-thumpnail"
                       alt=""
                     />
                   )}
                 </div>
-                {image && (
-                  <img src={image.url} className="embed-image" alt="" />
+                {embed.image && (
+                  <img src={embed.image.url} className="embed-image" alt="" />
                 )}
-                {footer && (
+                {embed.footer && (
                   <div className="embed-footer">
-                    {footer?.iconURL && (
+                    {embed.footer?.iconURL && (
                       <img
                         className="embed-footer-image"
-                        src={footer?.iconURL}
+                        src={embed.footer?.iconURL}
                         alt=""
                       />
                     )}
-                    <span className="embed-footer-text">{footer.text}</span>
+                    <span className="embed-footer-text">
+                      {embed.footer.text}
+                    </span>
                     {embed.timestamp && (
                       <span className="embed-timestamp">{embed.timestamp}</span>
                     )}
@@ -293,7 +370,7 @@ export function renderMessage(item: Message, index: number, seperators: any) {
                 )}
               </div>
             );
-          })}
+          })} */}
       </div>
     </div>
   );

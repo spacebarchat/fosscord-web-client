@@ -97,23 +97,44 @@
       height: 22px;
     }
 
+    pre {
+      box-sizing: border-box;
+      max-width: 90%;
+      code {
+        font-family: Consolas, Andale Mono WT, Andale Mono, Lucida Console,
+          Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono,
+          Liberation Mono, Nimbus Mono L, Monaco, Courier New, Courier,
+          monospace;
+        font-size: 0.875rem;
+        line-height: 1.125rem;
+        text-indent: 0;
+        white-space: pre-wrap;
+        scrollbar-width: thin;
+        scrollbar-color: var(--background-tertiary) var(--background-secondary);
+        background: var(--background-secondary);
+        border: 1px solid var(--background-tertiary);
+      }
+    }
+
     .d-mention {
       cursor: pointer;
-      background: hsla(
-        235,
-        calc(var(--saturation-factor, 1) * 85.6%),
-        64.7%,
-        0.3
-      );
-      color: hsl(236, calc(var(--saturation-factor, 1) * 83.3%), 92.9%);
-      &:hover {
-        color: #fff;
-        background-color: hsla(
+      span {
+        background: hsla(
           235,
           calc(var(--saturation-factor, 1) * 85.6%),
-          64.7%
+          64.7%,
+          0.3
         );
+        color: hsl(236, calc(var(--saturation-factor, 1) * 83.3%), 92.9%);
       }
+      // &:hover {
+      //   color: #fff;
+      //   background-color: hsla(
+      //     235,
+      //     calc(var(--saturation-factor, 1) * 85.6%),
+      //     64.7%
+      //   );
+      // }
     }
 
     .embed-image {

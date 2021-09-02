@@ -27,8 +27,7 @@ i.icon {
 .channelContent {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  flex: auto 1 1;
+  width: calc(115.9% - 306px);
   div.header {
     display: flex;
     align-items: center;
@@ -67,6 +66,9 @@ i.icon {
   }
   .contentWrap {
     height: calc(100% - 60px);
+    // .chatContent {
+    //   max-width: calc(83.2% - 232px);
+    // }
     .membersWrap.right {
       margin-top: 0px !important;
       width: 232px !important;

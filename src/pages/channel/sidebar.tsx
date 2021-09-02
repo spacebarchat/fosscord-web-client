@@ -14,6 +14,7 @@ import SpeakerSVG from "../../assets/speaker.png";
 // @ts-ignore
 import SettingsSVG from "../../assets/settings.png";
 import Friends from "../friends/friends";
+import { useEffect } from "react";
 
 export interface Params {
   id: string;
@@ -37,13 +38,25 @@ const SideBar = ({ guild }: { guild: Guild | any }) => {
   if (guild === null) return <Friends></Friends>;
 
   // @ts-ignore
-  globalThis.test = guild?.channels?.cache?.array();
+  globalThis.channels = guild?.channels?.cache?.array();
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const match = useRouteMatch<Params>({
     path: "/channels/:id/:channel?",
     exact: false,
   });
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  let history = useHistory();
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useEffect(() => {
+    if (match?.params.channel === undefined) {
+      history.push(
+        `/channels/${guild.id}/${data.find((x) => x.type === "GUILD_TEXT").id}`
+      );
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [guild]);
 
   function renderChannels(d: (GuildChannel | ThreadChannel)[]) {
     return d.map((item) => (
@@ -79,7 +92,13 @@ const SideBar = ({ guild }: { guild: Guild | any }) => {
                 .sort((a: any, b: any) =>
                   a.rawPosition > b.rawPosition ? 1 : -1
                 )
-
+                .sort((a: any, b: any) => (a.type === "GUILD_VOICE" ? 1 : -1))
+                .sort((a: any, b: any) =>
+                  a.rawPosition > b.rawPosition ? 1 : -1
+                )
+                .sort((a: any, b: any) =>
+                  a.type === "GUILD_STAGE_VOICE" ? 1 : -1
+                )
                 .filter((x) => !x.parentId && x.type !== "GUILD_CATEGORY")
             )}
 
