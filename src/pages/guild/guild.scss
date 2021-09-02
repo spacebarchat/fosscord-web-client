@@ -170,6 +170,10 @@ i.icon {
       font-weight: 365;
       font-size: 30px;
       pointer-events: none !important;
+      span {
+        position: relative;
+        top: -2px;
+      }
     }
 
     &:hover .img {

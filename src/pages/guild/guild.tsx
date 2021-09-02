@@ -15,7 +15,8 @@ export interface Params {
 
 const GuildSideBar = () => {
   const { t } = useTranslation("translation");
-  const guilds = useCache(client.guilds).array();
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const guilds = (globalThis as any).guilds || useCache(client.guilds).array();
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const history = useHistory();
