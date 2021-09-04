@@ -1,7 +1,7 @@
 {
   "name": "fosscord-client",
   "version": "0.1.1",
-  "private": true,
+  "private": false,
   "homepage": "/",
   "scripts": {
     "start": "react-scripts start",
