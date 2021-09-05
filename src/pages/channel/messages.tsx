@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Message } from "fosscord.js";
+import { Message, TextChannel } from "fosscord.js";
 import FlatList from "flatlist-react";
 import { Button } from "../../framework/Button";
-import { TextChannel } from "fosscord.js";
 import Drawer from "../../components/Drawer";
 import { toHTML } from "discord-markdown";
 import { relativeTime } from "../../util/Time";
@@ -27,154 +26,235 @@ export default function Messages({ match }: any) {
 
   return (
     <Drawer channel={channel} guild={guild}>
-      <div className="channelContent">
-        <div className="header">
-          <span className="typeChannel">
-            <svg
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              focusable="false"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              stroke="currentColor"
-              className="StyledIconBase-ea9ulj-0 cKCFNq sc-jrAGrp hLLxCf"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"
-              ></path>
-            </svg>
-          </span>
-          <h1 className="text headline">{(channel as TextChannel)?.name}</h1>
-          {(channel as TextChannel)?.topic && (
-            <>
-              <div className="separator"></div>
-              <span className="description">
-                {(channel as TextChannel)?.topic}
-              </span>
-            </>
-          )}
-        </div>
-        <div className="contentWrap">
-          <div className="chatContent">
-            <div className="scrolled-container scrollbar chat">
-              <div className="scrollerSpacer"></div>
-              <RenderMessages channel={channel as TextChannel}></RenderMessages>
-            </div>
-            <div className="inputMessage">
-              <div className="buttonOption">
-                <Button>➕</Button>
-              </div>
-              <input
-                type="text"
-                className="text secondary"
-                placeholder={`Message #${(channel as TextChannel)?.name}`}
-                onKeyDown={(e: any) => {
-                  if (e.which === 13) {
-                    e.preventDefault();
-                    if (!channel) return;
-                    (channel as TextChannel).send(e.target.value);
-                    e.target.value = "";
-                    return false;
-                  }
-                }}
-              />
-            </div>
+      {guild && (
+        <div className="channelContent">
+          <div className="header">
+            <span className="typeChannel">
+              <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                stroke="currentColor"
+                className="StyledIconBase-ea9ulj-0 cKCFNq sc-jrAGrp hLLxCf"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"
+                ></path>
+              </svg>
+            </span>
+            <h1 className="text headline">{(channel as TextChannel)?.name}</h1>
+            {(channel as TextChannel)?.topic && (
+              <>
+                <div className="separator"></div>
+                <span className="description">
+                  {(channel as TextChannel)?.topic}
+                </span>
+              </>
+            )}
           </div>
-          <div className="membersWrap right">
-            {guild?.roles?.cache
-              .sort((a: any, b: any) =>
-                a.rawPosition < b.rawPosition ? 1 : -2
-              )
-              .map((role) => {
-                if (
-                  role.guild.members.cache.array().length === 0 ||
-                  role.name === "@everyone"
+          <div className="contentWrap">
+            <div className="chatContent">
+              <div className="scrolled-container scrollbar chat">
+                <div className="scrollerSpacer"></div>
+                <RenderMessages
+                  channel={channel as TextChannel}
+                ></RenderMessages>
+              </div>
+              <div className="inputMessage">
+                <div className="buttonOption">
+                  <Button>➕</Button>
+                </div>
+                <input
+                  type="text"
+                  className="text secondary"
+                  placeholder={`Message #${(channel as TextChannel)?.name}`}
+                  onKeyDown={(e: any) => {
+                    if (e.which === 13) {
+                      e.preventDefault();
+                      if (!channel) return;
+                      (channel as TextChannel).send(e.target.value);
+                      e.target.value = "";
+                      return false;
+                    }
+                  }}
+                />
+              </div>
+            </div>
+            <div className="membersWrap right">
+              {guild?.roles?.cache
+                .sort((a: any, b: any) =>
+                  a.rawPosition < b.rawPosition ? 1 : -2
                 )
-                  return <></>;
+                .map((role: any) => {
+                  if (
+                    role.guild.members.cache.array().length === 0 ||
+                    role.name === "@everyone"
+                  )
+                    return <></>;
 
-                //console.log(role);
-                let lastRole: string = "";
-                return (
-                  <>
-                    {role.guild.members.cache.array().map((member) => {
-                      if (member.roles.cache.array()[0].id === role.id) {
-                        // console.log("T", lastRole);
-                        // console.log(role.name);
-                        if (lastRole !== role.name) {
-                          lastRole = role.name;
-                          return (
-                            <>
-                              <h2 className="membersGroup">
-                                <span aria-hidden="true">{role.name}</span>
-                              </h2>
-                              {role.members.map((member) => {
-                                return (
-                                  <div key={member.id} className="member">
-                                    <div className="image">
-                                      <img
-                                        src={member.user.displayAvatarURL({
-                                          size: 64,
-                                        })}
-                                        alt=""
-                                      />
-                                      <span
-                                        className={
-                                          "indicator " +
-                                          (member.presence?.status === "online"
-                                            ? "online"
-                                            : "") +
-                                          (member.presence?.status === "dnd"
-                                            ? "dnd"
-                                            : "") +
-                                          (member.presence?.status === "idle"
-                                            ? "afk"
-                                            : "")
-                                        }
-                                      ></span>
-                                    </div>
-                                    <div className="contentWrap">
-                                      <span
-                                        className="name"
-                                        style={{
-                                          color: `${
-                                            member.roles.cache.array()?.length >
-                                            1
-                                              ? member.displayColor !== 0
-                                                ? member.displayHexColor
+                  //console.log(role);
+                  let lastRole: string = "";
+                  let offline: number = 0;
+                  return (
+                    <>
+                      {role.guild.members.cache.array().map((member: any) => {
+                        if (member.roles.cache.array()[0].id === role.id) {
+                          // console.log("T", lastRole);
+                          // console.log(role.name);
+                          if (lastRole !== role.name) {
+                            lastRole = role.name;
+                            offline = 0;
+                            role.members.map((member: any) => {
+                              //console.log(member.presence?.status);
+                              if (
+                                member.presence?.status === "offline" ||
+                                member.presence?.status === undefined
+                              )
+                                offline++;
+                            });
+                            if (role.members?.array().length === offline)
+                              return <></>;
+                            return (
+                              <>
+                                <h2 className="membersGroup">
+                                  <span aria-hidden="true">
+                                    {role.name} -{" "}
+                                    {
+                                      role.members
+                                        .array()
+                                        .filter(
+                                          (x: any) =>
+                                            x.presence?.status !== undefined
+                                        ).length
+                                    }
+                                  </span>
+                                </h2>
+                                {role.members.map((member: any) => {
+                                  if (
+                                    member.presence?.status === "offline" ||
+                                    !member.presence
+                                  )
+                                    return <></>;
+                                  return (
+                                    <div key={member.id} className="member">
+                                      <div className="image">
+                                        <img
+                                          src={member.user.displayAvatarURL({
+                                            size: 64,
+                                          })}
+                                          alt=""
+                                        />
+                                        <span
+                                          className={
+                                            "indicator " +
+                                            (member.presence?.status ===
+                                            "online"
+                                              ? "online"
+                                              : "") +
+                                            (member.presence?.status === "dnd"
+                                              ? "dnd"
+                                              : "") +
+                                            (member.presence?.status === "idle"
+                                              ? "afk"
+                                              : "")
+                                          }
+                                        ></span>
+                                      </div>
+                                      <div className="contentWrap">
+                                        <span
+                                          className="name"
+                                          style={{
+                                            color: `${
+                                              member.roles.cache.array()
+                                                ?.length > 1
+                                                ? member.displayColor !== 0
+                                                  ? member.displayHexColor
+                                                  : "#8e9297"
                                                 : "#8e9297"
-                                              : "#8e9297"
-                                          }`,
-                                        }}
-                                      >
-                                        {member.user.username}
-                                        {member.user.bot ? (
-                                          <span className="bot">BOT</span>
-                                        ) : null}
-                                      </span>
-                                      <span className="description">
-                                        {member.presence?.activities[0]
-                                          ?.type === "PLAYING" && <>Playing </>}
+                                            }`,
+                                          }}
+                                        >
+                                          {member.user.username}
+                                          {member.user.bot ? (
+                                            <span className="bot">BOT</span>
+                                          ) : null}
+                                        </span>
+                                        <span className="description">
+                                          {member.presence?.activities[0]
+                                            ?.type === "PLAYING" && (
+                                            <>Playing </>
+                                          )}
 
-                                        {member.presence?.activities[0]?.name}
-                                      </span>
+                                          {member.presence?.activities[0]?.name}
+                                        </span>
+                                      </div>
                                     </div>
-                                  </div>
-                                );
-                              })}
-                            </>
-                          );
+                                  );
+                                })}
+                              </>
+                            );
+                          }
                         }
-                      }
-                    })}
-                  </>
+                      })}
+                    </>
+                  );
+                })}
+              <h2 className="membersGroup">
+                <span aria-hidden="true">
+                  OFFLINE -&nbsp;
+                  {
+                    guild?.members?.cache
+                      .array()
+                      .filter((x: any) => x.presence?.status === undefined)
+                      .length
+                  }
+                </span>
+              </h2>
+              {guild.members?.cache.map((member: any) => {
+                if (member.presence?.status !== undefined) return <></>;
+                return (
+                  <div key={member.id} className="member offline">
+                    <div className="image">
+                      <img
+                        src={member.user.displayAvatarURL({
+                          size: 64,
+                        })}
+                        alt=""
+                      />
+                      <span className={"indicator offline"}></span>
+                    </div>
+                    <div className="contentWrap">
+                      <span
+                        className="name"
+                        style={{
+                          color: `${
+                            member.roles.cache.array()?.length > 1
+                              ? member.displayColor !== 0
+                                ? member.displayHexColor
+                                : "#8e9297"
+                              : "#8e9297"
+                          }`,
+                        }}
+                      >
+                        {member.user.username}
+                        {member.user.bot ? (
+                          <span className="bot">BOT</span>
+                        ) : null}
+                      </span>
+                      <span className="description"></span>
+                    </div>
+                  </div>
                 );
               })}
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </Drawer>
   );
 }
@@ -185,7 +265,7 @@ function RenderMessages({ channel }: { channel: TextChannel }) {
   useCache(channel?.messages);
 
   useEffect(() => {
-    channel?.messages?.fetch().then((msgs) => setMessages(msgs.array()));
+    channel?.messages?.fetch().then((msgs: any) => setMessages(msgs.array()));
   }, [channel, messages]);
 
   if (!channel) return <>Please select a channel first</>;

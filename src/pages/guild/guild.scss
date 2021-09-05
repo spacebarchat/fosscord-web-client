@@ -218,6 +218,40 @@ i.icon {
   display: none;
   overflow: auto;
   background-color: var(--background-secondary);
+  &.voiceChannel {
+    padding: 0;
+    .member {
+      padding: 0;
+      height: 32px;
+      margin-left: 36px;
+      margin-top: 3px;
+      align-items: center;
+      &:hover {
+        .contentWrap .name {
+          color: #fff !important;
+        }
+      }
+      .image {
+        height: 32px;
+        margin: auto;
+        margin-left: 5px;
+        display: flex;
+        img {
+          margin: auto;
+          width: 24px;
+          height: 24px;
+        }
+      }
+      .contentWrap {
+        margin: auto;
+        margin-left: 10px;
+        color: var(--channels-default);
+        font-size: 14px;
+        line-height: 18px;
+        font-weight: 500;
+      }
+    }
+  }
   &.right {
     position: relative;
     bottom: 0;
@@ -228,7 +262,7 @@ i.icon {
     user-select: none;
   }
   .membersGroup {
-    padding: 24px 8px 0 16px;
+    padding: 10px 4px 0 16px;
     height: 40px;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -253,6 +287,9 @@ i.icon {
     border-radius: 4px;
     padding: 8px 8px 0 17px;
     cursor: pointer;
+    &.offline {
+      opacity: 0.3;
+    }
     .image {
       margin-right: 12px;
       height: 42px;

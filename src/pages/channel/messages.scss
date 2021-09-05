@@ -96,18 +96,83 @@
       width: 22px;
       height: 22px;
     }
-
+    .contentMessage {
+      width: 100%;
+    }
+    .hljs {
+      display: block;
+      overflow-x: auto;
+      padding: 0.5em;
+      border-radius: 4px;
+      color: var(--header-secondary);
+      -webkit-text-size-adjust: none;
+      -moz-text-size-adjust: none;
+      -ms-text-size-adjust: none;
+      text-size-adjust: none;
+    }
+    .hljs-comment,
+    .hljs-quote {
+      color: var(--interactive-muted);
+    }
+    .hljs-addition,
+    .hljs-keyword,
+    .hljs-selector-tag {
+      color: #859900;
+    }
+    .hljs-doctag,
+    .hljs-literal,
+    .hljs-meta .hljs-meta-string,
+    .hljs-number,
+    .hljs-regexp,
+    .hljs-string {
+      color: #2aa198;
+    }
+    .hljs-name,
+    .hljs-section,
+    .hljs-selector-class,
+    .hljs-selector-id,
+    .hljs-title {
+      color: #268bd2;
+    }
+    .hljs-attr,
+    .hljs-attribute,
+    .hljs-class .hljs-title,
+    .hljs-template-variable,
+    .hljs-type,
+    .hljs-variable {
+      color: #b58900;
+    }
+    .hljs-bullet,
+    .hljs-link,
+    .hljs-meta,
+    .hljs-meta .hljs-keyword,
+    .hljs-selector-attr,
+    .hljs-selector-pseudo,
+    .hljs-subst,
+    .hljs-symbol {
+      color: #cb4b16;
+    }
+    .hljs-built_in,
+    .hljs-deletion {
+      color: #dc322f;
+    }
+    .hljs-formula {
+      background: #073642;
+    }
+    .hljs-emphasis {
+      font-style: italic;
+    }
+    .hljs-strong {
+      font-weight: 700;
+    }
     pre {
       box-sizing: border-box;
       max-width: 90%;
       code {
-        font-family: Consolas, Andale Mono WT, Andale Mono, Lucida Console,
-          Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono,
-          Liberation Mono, Nimbus Mono L, Monaco, Courier New, Courier,
-          monospace;
         font-size: 0.875rem;
         line-height: 1.125rem;
         text-indent: 0;
+        overflow: hidden;
         white-space: pre-wrap;
         scrollbar-width: thin;
         scrollbar-color: var(--background-tertiary) var(--background-secondary);

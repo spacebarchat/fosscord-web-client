@@ -1,7 +1,9 @@
 import React from "react";
+// import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import useForceUpdate from "../../util/useForceUpdate";
 import { Guild, GuildChannel, ThreadChannel } from "fosscord.js";
+import { joinVoiceChannel } from "@discordjs/voice";
 import { FaChevronDown, FaHashtag, FaVolumeUp } from "../../framework/radio";
 import { Text } from "../../framework/Text";
 import { Link, useHistory, useRouteMatch } from "../../util/Router";
@@ -14,7 +16,7 @@ import SpeakerSVG from "../../assets/speaker.png";
 // @ts-ignore
 import SettingsSVG from "../../assets/settings.png";
 import Friends from "../friends/friends";
-import { useEffect } from "react";
+import client from "../../Client";
 
 export interface Params {
   id: string;
@@ -25,12 +27,14 @@ const SideBar = ({ guild }: { guild: Guild | any }) => {
   const forceUpdate = useForceUpdate();
   const { t } = useTranslation("translation");
 
+  const history = useHistory();
+
   const data =
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useCache(guild?.channels)
       ?.array()
       .filter(
-        (x) =>
+        (x: any) =>
           x.type === "GUILD_CATEGORY" ||
           guild.me?.permissionsIn(x).has("VIEW_CHANNEL")
       ) || [];
@@ -46,32 +50,61 @@ const SideBar = ({ guild }: { guild: Guild | any }) => {
     exact: false,
   });
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  let history = useHistory();
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  useEffect(() => {
-    if (match?.params.channel === undefined) {
-      history.push(
-        `/channels/${guild.id}/${data.find((x) => x.type === "GUILD_TEXT").id}`
-      );
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [guild]);
+  // // eslint-disable-next-line react-hooks/rules-of-hooks
+  // let history = useHistory();
+  // // eslint-disable-next-line react-hooks/rules-of-hooks
+  // useEffect(() => {
+  //   if (match?.params.channel === undefined) {
+  //     history.push(
+  //       `/channels/${guild.id}/${data.find((x) => x.type === "GUILD_TEXT").id}`
+  //     );
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [guild]);
 
   function renderChannels(d: (GuildChannel | ThreadChannel)[]) {
     return d.map((item) => (
-      <Link
-        to={`/channels/${guild?.id}/${item?.id}`}
-        style={{ textDecoration: "none" }}
-        className={
-          "item" + (match?.params.channel === item.id ? " active" : "")
-        }
-        key={item.id}
-      >
-        {item.type === "GUILD_TEXT" && <FaHashtag className="icon" />}
-        {item.type === "GUILD_VOICE" && <FaVolumeUp className="icon" />}
-        <Text className="channel-name">{item.name}</Text>
-      </Link>
+      <>
+        <div
+          onClick={() => {
+            if (item.type === "GUILD_VOICE") {
+              const connection = joinVoiceChannel({
+                channelId: item.id,
+                guildId: item.guild.id,
+                adapterCreator: item.guild.voiceAdapterCreator,
+              });
+              setTimeout(() => {
+                connection.destroy();
+              }, 5000);
+            } else history.push(`/channels/${guild?.id}/${item?.id}`);
+          }}
+          style={{ textDecoration: "none" }}
+          className={
+            "item" + (match?.params.channel === item.id ? " active" : "")
+          }
+          key={item.id}
+        >
+          {item.type === "GUILD_TEXT" && <FaHashtag className="icon" />}
+          {item.type === "GUILD_VOICE" && <FaVolumeUp className="icon" />}
+          <Text className="channel-name">{item.name}</Text>
+        </div>
+        {item.type === "GUILD_VOICE" && (
+          <div className="membersWrap voiceChannel">
+            {item.members.map((x: any) => {
+              return (
+                <div className="member">
+                  <div className="image">
+                    <img src={x.user.avatarURL({ size: 1024 })} alt="" />
+                  </div>
+                  <div className="contentWrap">
+                    <span className="name">{x.user.username}</span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </>
     ));
   }
 
@@ -99,14 +132,14 @@ const SideBar = ({ guild }: { guild: Guild | any }) => {
                 .sort((a: any, b: any) =>
                   a.type === "GUILD_STAGE_VOICE" ? 1 : -1
                 )
-                .filter((x) => !x.parentId && x.type !== "GUILD_CATEGORY")
+                .filter((x: any) => !x.parentId && x.type !== "GUILD_CATEGORY")
             )}
 
             {data
-              .filter((x) => x.type === "GUILD_CATEGORY")
+              .filter((x: any) => x.type === "GUILD_CATEGORY")
               .filter(
-                (category) =>
-                  data.find((x) => x.parentId === category.id) ||
+                (category: any) =>
+                  data.find((x: any) => x.parentId === category.id) ||
                   guild.me?.permissionsIn(category).has("MANAGE_CHANNELS")
               )
               .map((item: any) => (
@@ -115,7 +148,7 @@ const SideBar = ({ guild }: { guild: Guild | any }) => {
                     key={item.id}
                     className={"item category"}
                     onClick={() => {
-                      const i = data.find((x) => x.id === item.id);
+                      const i = data.find((x: any) => x.id === item.id);
                       // @ts-ignore
                       i.collapsed = !i.collapsed;
                       forceUpdate();
@@ -141,13 +174,13 @@ const SideBar = ({ guild }: { guild: Guild | any }) => {
             <div className="member">
               <div className="image">
                 <img
-                  src="https://cdn.vox-cdn.com/uploads/chorus_asset/file/22408516/Big_Chungus.png"
+                  src={client.user?.avatarURL({ size: 1024 }) || ""}
                   alt=""
                 />
                 <span className="indicator online"></span>
               </div>
               <div className="contentWrap">
-                <span className="name">Big Chungus</span>
+                <span className="name">{client.user?.username}</span>
                 <span className="description">Test Game playing</span>
               </div>
             </div>
