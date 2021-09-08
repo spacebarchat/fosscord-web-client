@@ -88,118 +88,105 @@ export default function Messages({ match }: any) {
             <div className="membersWrap right">
               {guild?.roles?.cache
                 .sort((a: any, b: any) =>
-                  a.rawPosition < b.rawPosition ? 1 : -2
+                  a.rawPosition < b.rawPosition ? 1 : -1
                 )
+                .filter((x: any) => x.hoist === true)
                 .map((role: any) => {
                   if (
-                    role.guild.members.cache.array().length === 0 ||
-                    role.name === "@everyone"
+                    role.members
+                      .array()
+                      .filter(
+                        (x: any) =>
+                          x.presence?.status !== undefined &&
+                          x.roles.cache
+                            .array()
+                            .filter((x: any) => x.hoist === true)[0].id ===
+                            role.id
+                      ).length === 0
                   )
                     return <></>;
 
-                  //console.log(role);
-                  let lastRole: string = "";
-                  let offline: number = 0;
                   return (
                     <>
-                      {role.guild.members.cache.array().map((member: any) => {
-                        if (member.roles.cache.array()[0].id === role.id) {
-                          // console.log("T", lastRole);
-                          // console.log(role.name);
-                          if (lastRole !== role.name) {
-                            lastRole = role.name;
-                            offline = 0;
-                            role.members.map((member: any) => {
-                              //console.log(member.presence?.status);
-                              if (
-                                member.presence?.status === "offline" ||
-                                member.presence?.status === undefined
-                              )
-                                offline++;
-                            });
-                            if (role.members?.array().length === offline)
-                              return <></>;
-                            return (
-                              <>
-                                <h2 className="membersGroup">
-                                  <span aria-hidden="true">
-                                    {role.name} -{" "}
-                                    {
-                                      role.members
-                                        .array()
-                                        .filter(
-                                          (x: any) =>
-                                            x.presence?.status !== undefined
-                                        ).length
-                                    }
-                                  </span>
-                                </h2>
-                                {role.members.map((member: any) => {
-                                  if (
-                                    member.presence?.status === "offline" ||
-                                    !member.presence
-                                  )
-                                    return <></>;
-                                  return (
-                                    <div key={member.id} className="member">
-                                      <div className="image">
-                                        <img
-                                          src={member.user.displayAvatarURL({
-                                            size: 64,
-                                          })}
-                                          alt=""
-                                        />
-                                        <span
-                                          className={
-                                            "indicator " +
-                                            (member.presence?.status ===
-                                            "online"
-                                              ? "online"
-                                              : "") +
-                                            (member.presence?.status === "dnd"
-                                              ? "dnd"
-                                              : "") +
-                                            (member.presence?.status === "idle"
-                                              ? "afk"
-                                              : "")
-                                          }
-                                        ></span>
-                                      </div>
-                                      <div className="contentWrap">
-                                        <span
-                                          className="name"
-                                          style={{
-                                            color: `${
-                                              member.roles.cache.array()
-                                                ?.length > 1
-                                                ? member.displayColor !== 0
-                                                  ? member.displayHexColor
-                                                  : "#8e9297"
-                                                : "#8e9297"
-                                            }`,
-                                          }}
-                                        >
-                                          {member.user.username}
-                                          {member.user.bot ? (
-                                            <span className="bot">BOT</span>
-                                          ) : null}
-                                        </span>
-                                        <span className="description">
-                                          {member.presence?.activities[0]
-                                            ?.type === "PLAYING" && (
-                                            <>Playing </>
-                                          )}
-
-                                          {member.presence?.activities[0]?.name}
-                                        </span>
-                                      </div>
-                                    </div>
-                                  );
-                                })}
-                              </>
-                            );
+                      <h2 className="membersGroup">
+                        <span aria-hidden="true">
+                          {role.name} -{" "}
+                          {
+                            role.members
+                              .array()
+                              .filter(
+                                (x: any) =>
+                                  x.presence?.status !== undefined &&
+                                  x.roles.cache
+                                    .array()
+                                    .filter((x: any) => x.hoist === true)[0]
+                                    .id === role.id
+                              ).length
                           }
-                        }
+                        </span>
+                      </h2>
+                      {role.members.map((member: any) => {
+                        if (
+                          member.presence?.status === "offline" ||
+                          !member.presence ||
+                          member.roles.cache
+                            .array()
+                            .filter((x: any) => x.hoist === true)[0].id !==
+                            role.id
+                        )
+                          return <></>;
+
+                        return (
+                          <div key={member.id} className="member">
+                            <div className="image">
+                              <img
+                                src={member.user.displayAvatarURL({
+                                  size: 64,
+                                })}
+                                alt=""
+                              />
+                              <span
+                                className={
+                                  "indicator " +
+                                  (member.presence?.status === "online"
+                                    ? "online"
+                                    : "") +
+                                  (member.presence?.status === "dnd"
+                                    ? "dnd"
+                                    : "") +
+                                  (member.presence?.status === "idle"
+                                    ? "afk"
+                                    : "")
+                                }
+                              ></span>
+                            </div>
+                            <div className="contentWrap">
+                              <span
+                                className="name"
+                                style={{
+                                  color: `${
+                                    member.roles.cache.array()?.length > 1
+                                      ? member.displayColor !== 0
+                                        ? member.displayHexColor
+                                        : "#8e9297"
+                                      : "#8e9297"
+                                  }`,
+                                }}
+                              >
+                                {member.user.username}
+                                {member.user.bot ? (
+                                  <span className="bot">BOT</span>
+                                ) : null}
+                              </span>
+                              <span className="description">
+                                {member.presence?.activities[0]?.type ===
+                                  "PLAYING" && <>Playing </>}
+
+                                {member.presence?.activities[0]?.name}
+                              </span>
+                            </div>
+                          </div>
+                        );
                       })}
                     </>
                   );
@@ -215,42 +202,64 @@ export default function Messages({ match }: any) {
                   }
                 </span>
               </h2>
-              {guild.members?.cache.map((member: any) => {
-                if (member.presence?.status !== undefined) return <></>;
-                return (
-                  <div key={member.id} className="member offline">
-                    <div className="image">
-                      <img
-                        src={member.user.displayAvatarURL({
-                          size: 64,
-                        })}
-                        alt=""
-                      />
-                      <span className={"indicator offline"}></span>
-                    </div>
-                    <div className="contentWrap">
-                      <span
-                        className="name"
-                        style={{
-                          color: `${
-                            member.roles.cache.array()?.length > 1
-                              ? member.displayColor !== 0
-                                ? member.displayHexColor
+              {guild.members?.cache
+                .sort(function (a, b) {
+                  if (
+                    (!a.nickname &&
+                      !b.nickname &&
+                      a.user.username.toLowerCase() <
+                        b.user.username.toLowerCase()) ||
+                    (a.nickname &&
+                      !b.nickname &&
+                      a.nickname.toLowerCase() <
+                        b.user.username.toLowerCase()) ||
+                    (!a.nickname &&
+                      b.nickname &&
+                      a.user.username.toLowerCase() <
+                        b.nickname.toLowerCase()) ||
+                    (a.nickname &&
+                      b.nickname &&
+                      a.nickname.toLowerCase() < b.nickname.toLowerCase())
+                  ) {
+                    return -1;
+                  } else return 1;
+                })
+                .map((member: any) => {
+                  if (member.presence?.status !== undefined) return <></>;
+                  return (
+                    <div key={member.id} className="member offline">
+                      <div className="image">
+                        <img
+                          src={member.user.displayAvatarURL({
+                            size: 64,
+                          })}
+                          alt=""
+                        />
+                        <span className={"indicator offline"}></span>
+                      </div>
+                      <div className="contentWrap">
+                        <span
+                          className="name"
+                          style={{
+                            color: `${
+                              member.roles.cache.array()?.length > 1
+                                ? member.displayColor !== 0
+                                  ? member.displayHexColor
+                                  : "#8e9297"
                                 : "#8e9297"
-                              : "#8e9297"
-                          }`,
-                        }}
-                      >
-                        {member.user.username}
-                        {member.user.bot ? (
-                          <span className="bot">BOT</span>
-                        ) : null}
-                      </span>
-                      <span className="description"></span>
+                            }`,
+                          }}
+                        >
+                          {member.nickname || member.user.username}
+                          {member.user.bot ? (
+                            <span className="bot">BOT</span>
+                          ) : null}
+                        </span>
+                        <span className="description"></span>
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
             </div>
           </div>
         </div>
@@ -299,15 +308,39 @@ export function renderMessage(item: Message, index: number, seperators: any) {
       : null;
   }
 
+  let me = false;
+
   const content = toHTML(escapeHTML(item.content), {
     discordCallback: {
       //user: (user: any) => `@${item.mentions.users.map((x) => x.username)}`,
-      user: (user: any) =>
-        "<span>@" +
-        item.guild?.members.cache.get(user.id)?.displayName +
-        "</span>",
-      role: (role: any) =>
-        `<span style='background-color: ${
+      user: (user: any) => {
+        if (
+          item.guild?.members.cache.get(user.id)?.displayName ===
+          client.user?.username
+        ) {
+          me = true;
+          return (
+            "<span class='mentioned-me'>@" +
+            item.guild?.members.cache.get(user.id)?.displayName +
+            "</span>"
+          );
+        } else {
+          me = false;
+          return (
+            "<span>@" +
+            item.guild?.members.cache.get(user.id)?.displayName +
+            "</span>"
+          );
+        }
+      },
+      role: (role: any) => {
+        if (
+          item.guild !== null &&
+          client.guilds.cache.get(item.guild?.id)?.roles.cache.get(role.id)
+        )
+          me = true;
+        else me = false;
+        return `<span style='background-color: ${
           item.guild?.roles.cache.get(role.id)?.color !== 0
             ? `rgba(${hexToRgb(
                 item.guild?.roles.cache.get(role.id)?.hexColor
@@ -317,7 +350,8 @@ export function renderMessage(item: Message, index: number, seperators: any) {
           item.guild?.roles.cache.get(role.id)?.color !== 0
             ? item.guild?.roles.cache.get(role.id)?.hexColor
             : "hsl(236,calc(var(--saturation-factor, 1)*83.3%),92.9%)"
-        }'>@${item.guild?.roles.cache.get(role.id)?.name}</span>`,
+        }'>@${item.guild?.roles.cache.get(role.id)?.name}</span>`;
+      },
       channel: (channel: any) =>
         `<span>#${item.guild?.channels.cache.get(channel.id)?.name}</span>`,
       everyone: () => "<span>@everyone</span>",
@@ -329,7 +363,7 @@ export function renderMessage(item: Message, index: number, seperators: any) {
   });
 
   return (
-    <div key={id} className="message">
+    <div key={id} className={"message " + (me ? "mentioned-me" : "")}>
       <img
         src={item?.author?.avatarURL({ size: 1024 })?.toString()}
         className="avatar"
@@ -366,21 +400,47 @@ export function renderMessage(item: Message, index: number, seperators: any) {
           item.attachments.map((x: any) => (
             <img
               key={x.id}
-              style={{ height: x.height / 3, width: x.width / 3 }}
+              style={{ height: x.height, width: x.width }}
               alt="Test"
               className="attachments"
               src={x.url}
             />
           ))}
         {item.reactions && (
-          <div>
+          <div className="emojis">
             {item.reactions.cache?.map((x: any) => {
               return (
-                <div key={x.id}>
+                <div key={x.id} className="emoji">
                   <button>
-                    <span>{x.emoji.id ? x.emoji.id : x.emoji.name}</span>
+                    <span>
+                      {x.emoji.id ? (
+                        x.emoji.animated ? (
+                          <span
+                            dangerouslySetInnerHTML={{
+                              __html: toHTML(
+                                escapeHTML(
+                                  "<a:" + x.emoji.name + ":" + x.emoji.id + ">"
+                                )
+                              ),
+                            }}
+                          ></span>
+                        ) : (
+                          <span
+                            dangerouslySetInnerHTML={{
+                              __html: toHTML(
+                                escapeHTML(
+                                  "<:" + x.emoji.name + ":" + x.emoji.id + ">"
+                                )
+                              ),
+                            }}
+                          ></span>
+                        )
+                      ) : (
+                        x.emoji.name
+                      )}{" "}
+                      {x.count}
+                    </span>
                   </button>
-                  <span>{x.count}</span>
                 </div>
               );
             })}

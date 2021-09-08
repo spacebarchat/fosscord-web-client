@@ -12,6 +12,7 @@
   "dependencies": {
     "@babel/core": "7.12.3",
     "@discordjs/opus": "^0.6.0",
+    "@discordjs/rest": "^0.1.0-canary.0",
     "@discordjs/voice": "^0.6.0",
     "@fosscord/ui": "^1.0.3",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.3",
@@ -29,7 +30,9 @@
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.6.0",
     "babel-loader": "8.1.0",
+    "discord-api-types": "^0.23.1",
     "discord-markdown": "^2.5.0",
+    "discord.js": "^13.1.0",
     "ffmpeg-static": "^4.4.0",
     "flatlist-react": "^1.5.0",
     "fosscord": "github:fosscord/fosscord.js",
