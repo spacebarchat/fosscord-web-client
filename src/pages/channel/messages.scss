@@ -43,6 +43,7 @@
     }
   }
 }
+
 .chatContent .scrolled-container {
   height: 100%;
   width: 100%;
@@ -76,6 +77,17 @@
     flex-direction: row;
     padding: 10px;
 
+    &.mentioned-me {
+      background: hsla(
+        38,
+        calc(var(--saturation-factor, 1) * 95.7%),
+        54.1%,
+        0.1
+      ) !important;
+      border-left: 2px solid
+        hsl(38, calc(var(--saturation-factor, 1) * 95.7%), 54.1%);
+    }
+
     img.avatar {
       cursor: pointer;
       border-radius: 50%;
@@ -92,9 +104,60 @@
       width: auto !important;
     }
 
+    .emojis {
+      display: flex;
+      margin-bottom: -0.5rem;
+      padding-bottom: 0.25rem;
+    }
+    .emoji {
+      border-radius: 0.5rem;
+      cursor: pointer;
+      margin-top: 4px;
+
+      button {
+        padding: 2px 6px;
+        min-height: 23px;
+        min-width: 44px;
+        outline: 0;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        box-sizing: border-box;
+        flex-shrink: 0;
+        margin-right: 0.25rem;
+        margin-bottom: 0.25rem;
+        user-select: none;
+        -webkit-transition: none 0.1s ease;
+        transition: none 0.1s ease;
+        transition-property: none;
+        transition-property: background-color, border-color;
+        background: hsla(
+          235,
+          calc(var(--saturation-factor, 1) * 85.6%),
+          64.7%,
+          0.15
+        );
+        border: 1px solid #5865f2;
+      }
+      span {
+        margin: 0;
+        border: 0;
+        font-weight: inherit;
+        font-style: inherit;
+        font-family: inherit;
+        font-size: 16px;
+        vertical-align: baseline;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+      }
+    }
+
     img.d-emoji {
-      width: 22px;
-      height: 22px;
+      min-width: 16px;
+      min-height: 16px;
+      max-height: 16px;
+      max-width: 16px;
     }
     .contentMessage {
       width: 100%;
@@ -207,8 +270,7 @@
     }
 
     .contentMessage {
-      display: flex;
-      flex-direction: column;
+      display: block;
       padding-left: 20px;
 
       .messageHeader {
