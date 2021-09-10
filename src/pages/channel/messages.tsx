@@ -203,7 +203,7 @@ export default function Messages({ match }: any) {
                 </span>
               </h2>
               {guild.members?.cache
-                .sort(function (a, b) {
+                .sort(function (a: any, b: any) {
                   if (
                     (!a.nickname &&
                       !b.nickname &&
