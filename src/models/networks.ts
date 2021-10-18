@@ -23,7 +23,7 @@ export interface Network {
   config: any; // TODO
   invite: string;
   gateway: string;
-  discord: boolean; // if it is the offical disocrd instance, used for backwards compatibility
+  discord: boolean; // if it is the offical discord instance, used for backwards compatibility
   api: string;
   cdn: string;
   host: string;
