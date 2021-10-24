@@ -14,6 +14,10 @@
   </a>
 </p>
 
+
+## Archived
+Continued in [fosscord-client](https://github.com/fosscord/fosscord-client)
+
 ## [About](https://github.com/fosscord/fosscord-client/wiki)
 
 Fosscord is **f**ree **o**pen **s**ource **s**oftware compatible to dis**cord**. It is a selfhostable Chat, Voice and Video platform similar to Slack, Rocket.chat and Discord-compatible.
