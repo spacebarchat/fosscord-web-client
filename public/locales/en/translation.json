@@ -26,6 +26,6 @@
 	"createChannel": "Create a Channel",
 	"createCategory": "Create a Category",
 	"sendMessage": "Message",
-	"emptyMessages": "It's appear we have found nothing here...",
+	"emptyMessages": "It seems like we have found nothing here...",
 	"addReaction": "Add a reaction"
 }
